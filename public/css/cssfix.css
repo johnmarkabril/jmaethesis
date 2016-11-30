@@ -1,0 +1,66 @@
+/*CSS FILE CREATED BY DEX & JOHN PAUL*/
+/*For design issues, please do not iterate or change*/
+.ibox-buttons{
+    padding-top: 9px;
+    padding-bottom: 9px;
+}
+select {
+    width: 100%;
+}
+.lhead{
+    background-color: gray;
+    color: #fff;
+    font-weight: bold;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    text-indent: 5px;
+}
+.permission{
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    text-align: center;
+}
+.empty
+{
+  font-family: FontAwesome, Arial;
+}
+.umbuttons{
+    margin-right: 5%;
+    margin-top: 0%;
+    margin-bottom: 0%;
+}
+.accordbutton{
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+.accordcontrol{
+    vertical-align: middle;
+}
+#createform{
+    margin-top: -7.5px;
+}
+.icheckbox_square-green{
+    position: relative;
+}
+.ibox-buttons {
+ -moz-border-bottom-colors: none;
+ -moz-border-left-colors: none;
+ -moz-border-right-colors: none;
+ -moz-border-top-colors: none;
+ background-color: white;
+ border-color: #e7eaec ;
+ border-image: none;
+ border-style: solid;
+ border-width: 3px 0px 0;
+ color: inherit;
+ margin-bottom: 0;
+ min-height: 48px; 
+}
+.unselected{
+    opacity: 0.4;
+}
+.ct-chart .ct-chart-pie {
+ width:100%;
+}

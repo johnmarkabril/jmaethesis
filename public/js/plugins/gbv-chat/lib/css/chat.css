@@ -1,0 +1,173 @@
+.container{
+	height: 100% !important;
+	width: 100% !important;
+}
+.panel-primary {
+    border-radius: 0 !important;
+    height: auto;
+}
+.panel-heading {
+    height: 36px !important;
+    width: auto !important;
+    border-radius: 0 !important;
+}
+
+.panel-footer {
+	height: auto !important;
+	width: auto !important;
+}
+
+.chat li{
+	min-height: 80px;
+}
+
+
+.tabs-container .tabs-left .panel-body-chat {
+    height: 400px !important;
+    padding: 15px !important;   
+    word-wrap: break-word;
+    overflow-y: scroll;
+}
+/*Media Query*/
+
+@media screen and (height: 480px) {
+    .tabs-container .tabs-left .panel-body-chat {
+        height: 240px !important;
+        word-wrap: break-word;
+        overflow-y: scroll;
+    }
+}
+
+@media screen and (height: 1024px) {
+    .tabs-container .tabs-left .panel-body-chat {
+        height: 500px !important;
+        word-wrap: break-word;
+        overflow-y: scroll;
+    }
+}
+
+@media screen and (height: 2560px) {
+    .tabs-container .tabs-left .panel-body-chat {
+        height: 400px !important;
+        padding: 15px !important;   
+        word-wrap: break-word;
+        overflow-y: scroll;
+    }
+}
+
+@media screen and (height: 568px) {
+    .tabs-container .tabs-left .panel-body-chat {
+        height: 330px !important;
+        padding: 15px !important;   
+        word-wrap: break-word;
+        overflow-y: scroll;
+    }
+}
+
+@media screen and (height: 627px) {
+    .tabs-container .tabs-left .panel-body-chat {
+        height: 384px !important;
+        padding: 15px !important;   
+        word-wrap: break-word;
+        overflow-y: scroll;
+    }
+}
+
+@media screen and (height: 736px) {
+    .tabs-container .tabs-left .panel-body-chat {
+        height: 415px !important;
+        padding: 15px !important;   
+        word-wrap: break-word;
+        overflow-y: scroll;
+    }
+}
+
+@media screen and (height: 640px) {
+    .tabs-container .tabs-left .panel-body-chat {
+        height: 400px !important;
+        padding: 15px !important;   
+        word-wrap: break-word;
+        overflow-y: scroll;
+    }
+}
+
+@media screen and (height: 1280px) {
+    .tabs-container .tabs-left .panel-body-chat {
+        height: 420px !important;
+        padding: 15px !important;   
+        word-wrap: break-word;
+        overflow-y: scroll;
+    }
+}
+
+@media screen and (height: 567px) {
+    .tabs-container .tabs-left .panel-body-chat {
+        height: 330px !important;
+        padding: 15px !important;   
+        word-wrap: break-word;
+        overflow-y: scroll;
+    }
+}
+
+@media screen and (height: 659px) {
+    .tabs-container .tabs-left .panel-body-chat {
+        height: 410px !important;
+        padding: 15px !important;   
+        word-wrap: break-word;
+        overflow-y: scroll;
+    }
+}
+
+@media screen and (height: 960px) {
+    .tabs-container .tabs-left .panel-body-chat {
+        height: 420px !important;
+        padding: 15px !important;   
+        word-wrap: break-word;
+        overflow-y: scroll;
+    }
+}
+
+@media screen and (height: 960px) {
+    .tabs-container .tabs-left .panel-body-chat {
+        height: 420px !important;
+        padding: 15px !important;   
+        word-wrap: break-word;
+        overflow-y: scroll;
+    }
+}
+
+@media screen and (height: 900px) {
+    .tabs-container .tabs-left .panel-body-chat {
+        height: 420px !important;
+        padding: 15px !important;   
+        word-wrap: break-word;
+        overflow-y: scroll;
+    }
+}
+
+@media screen and (height: 800px) {
+    .tabs-container .tabs-left .panel-body-chat {
+        height: 420px !important;
+        padding: 15px !important;   
+        word-wrap: break-word;
+        overflow-y: scroll;
+    }
+}
+
+@media screen and (height: 950px) {
+    .tabs-container .tabs-left .panel-body-chat {
+        height: 420px !important;
+        padding: 15px !important;   
+        word-wrap: break-word;
+        overflow-y: scroll;
+    }
+}
+
+@media screen and (height: 533px) {
+    .tabs-container .tabs-left .panel-body-chat {
+        height: 290px !important;
+        padding: 15px !important;   
+        word-wrap: break-word;
+        overflow-y: scroll;
+    }
+}
