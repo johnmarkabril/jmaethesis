@@ -1,3 +1,49 @@
 body {
 	background-color: #ffffff;
 }
+
+/*NAV BAR CENTER*/
+.navbar .navbar-nav {
+  display: inline-block;
+  float: none;
+  vertical-align: top;
+}
+
+.navbar .navbar-collapse {
+  text-align: center;
+}
+/*END OF NAV BAR CENTER*/
+
+/*MARGIN CODING*/
+
+.no-margin {
+	margin: 0px;
+}
+
+/*END OF MARGIN CODING*/
+
+/* PADDING CODING */
+
+.no-padding {
+	padding: 0px;
+}
+
+.padding-bottom {
+	padding-bottom: 15px;
+}
+
+/* END OF PADDING CODING*/
+
+/*FONT CUSTOMIZING CODING*/
+.text-bold {
+	font-weight: bolder;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.text-left {
+	text-align: left;
+}
+/*END OF FONT CUSTOMIZING*/

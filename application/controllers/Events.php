@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Template extends CI_Controller {
+class Events extends CI_Controller {
 
 	public function __construct()
     {
         parent::__construct();
-        $this->curpage = "Home";
+        $this->curpage = "Events";
     }
 
 	public function index()
@@ -15,7 +15,7 @@ class Template extends CI_Controller {
 
 		);
 
-		$data['content']	=	$this->load->view('user/landingpage/landingpage', $details, TRUE);
+		$data['content']	=	$this->load->view('user/events', $details, TRUE);
 		$data['curpage']	= 	$this->curpage;
 		$this->load->view('template', $data);
 	}
