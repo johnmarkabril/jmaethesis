@@ -1,4 +1,4 @@
-<nav class="nav2 navbar navbar-default no-margin" style="background-color: #F3F3F4;font-size: 13px;">
+<nav class="nav2 navbar navbar-default no-margin no-border-radius" style="background-color: #1A1919;font-size: 11px;">
     <div class="container">
         <div class="col-lg-3">
             <div class="text-center">
