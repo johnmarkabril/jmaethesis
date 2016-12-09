@@ -1,24 +1,19 @@
     <section id="features" class="container services">
         <div class="row">
-            <div class="col-sm-3">
-                <h2>Full responsive</h2>
+            <div class="col-sm-4">
+                <h2>Administrator Page</h2>
                 <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
-                <p><a class="navy-link" href="#" role="button">Details &raquo;</a></p>
+                <!-- <p><a class="navy-link" href="#" role="button">Details &raquo;</a></p> -->
             </div>
-            <div class="col-sm-3">
-                <h2>LESS/SASS Files</h2>
+            <div class="col-sm-4">
+                <h2>Full Responsive</h2>
                 <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
-                <p><a class="navy-link" href="#" role="button">Details &raquo;</a></p>
+                <!-- <p><a class="navy-link" href="#" role="button">Details &raquo;</a></p> -->
             </div>
-            <div class="col-sm-3">
-                <h2>6 Charts Library</h2>
+            <div class="col-sm-4">
+                <h2>PayPal Integration</h2>
                 <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
-                <p><a class="navy-link" href="#" role="button">Details &raquo;</a></p>
-            </div>
-            <div class="col-sm-3">
-                <h2>Advanced Forms</h2>
-                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
-                <p><a class="navy-link" href="#" role="button">Details &raquo;</a></p>
+                <!-- <p><a class="navy-link" href="#" role="button">Details &raquo;</a></p> -->
             </div>
         </div>
     </section>
@@ -27,19 +22,23 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <div class="navy-line"></div>
-                <h1>Over 40+ unique view<br/> <span class="navy"> with many custom components</span> </h1>
+                <h1>Over 10+ unique design<br/> <span class="navy"> with many complex components</span> </h1>
                 <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. </p>
             </div>
         </div>
         <div class="row">
             <div class="col-md-3 text-center wow fadeInLeft">
                 <div>
-                    <i class="fa fa-mobile features-icon"></i>
+                    <div class="hvr-buzz-out">
+                        <i class="fa fa-mobile features-icon"></i>
+                    </div>
                     <h2>Full responsive</h2>
                     <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
                 </div>
                 <div class="m-t-lg">
-                    <i class="fa fa-bar-chart features-icon"></i>
+                    <div class="hvr-buzz-out">
+                        <i class="fa fa-bar-chart features-icon"></i>
+                    </div>
                     <h2>6 Charts Library</h2>
                     <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
                 </div>
