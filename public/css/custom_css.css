@@ -32,6 +32,14 @@ body {
 	padding-bottom: 15px;
 }
 
+.padding-top {
+	padding-top: 15px;
+}
+
+.padding-all {
+	padding: 15px;
+}
+
 /* END OF PADDING CODING*/
 
 /*FONT CUSTOMIZING CODING*/

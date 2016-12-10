@@ -1,5 +1,4 @@
-
-
+<div class="landing-page">
     <section id="contact" class="gray-section contact">
         <div class="container">
             <div class="row m-b-lg">
@@ -47,3 +46,4 @@
             </div>
         </div>
     </section>
+</div>

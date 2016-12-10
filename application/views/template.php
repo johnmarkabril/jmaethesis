@@ -27,6 +27,8 @@
 	    			echo $content;
 	    			break;
 			}
+
+			$this->load->view('common/footer_user'); 
 		?>
 		<?php $this->load->view('common/js_files_includes'); ?>
 	</body>
