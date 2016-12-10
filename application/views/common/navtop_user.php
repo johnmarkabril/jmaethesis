@@ -36,13 +36,14 @@
                 </li>
 
                 <li class="text-center">
-                    <a class="hvr-underline-reveal" ><strong>ACCOUNT</strong></a>
+                    <a class="hvr-underline-reveal" data-toggle="modal" data-target="#loginModal"><strong>ACCOUNT</strong></a>
                 </li>
 
             </ul>
         </div>
         </div>
     </div>
-
-    
 </nav>
+
+
+<?php $this->load->view('login'); ?>
