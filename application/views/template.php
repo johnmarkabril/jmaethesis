@@ -5,31 +5,18 @@
 		<?php $this->load->view('common/css_files_includes'); ?>
 	</head>
 	<body>
-		<?php 
-			$this->load->view('common/navtop_user'); 
-			switch ($curpage) {
-	    		case 'Home':
-	    			echo $content;
-	    			break;
-	    		case 'Events':
-	    			echo $content;
-	    			break;
-	    		case 'Sites':
-	    			echo $content;
-	    			break;
-	    		case 'Templates':
-	    			echo $content;
-	    			break;
-	    		case 'Team':
-	    			echo $content;
-	    			break;
-	    		case 'Testimonials':
-	    			echo $content;
-	    			break;
-			}
+		<div class="landing-page">
+			<?php 
+				//$this->load->view('common/navtop_user'); 
+				//switch ($curpage) {
+		    	//	case 'Home':
+		    	//		echo $content;
+		    	//		break;
+				//}
 
-			$this->load->view('common/footer_user'); 
-		?>
+				//$this->load->view('common/footer_user'); 
+			?>
+		</div>
 		<?php $this->load->view('common/js_files_includes'); ?>
 	</body>
 </html>

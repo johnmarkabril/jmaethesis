@@ -1,4 +1,4 @@
-<div class="landing-page">
+<div class="">
     <section id="contact" class="gray-section contact">
         <div class="container">
             <div class="row m-b-lg">
