@@ -5,17 +5,20 @@
 		<?php $this->load->view('common/css_files_includes'); ?>
 	</head>
 	<body>
+		<?php 
+			$this->load->view('common/navtop'); 
+		?>
 		<div class="landing-page">
-			<?php 
-				//$this->load->view('common/navtop_user'); 
-				//switch ($curpage) {
-		    	//	case 'Home':
-		    	//		echo $content;
-		    	//		break;
-				//}
+		<?php
+			switch ($curpage) {
+		    	case 'Home':
+		    		echo $content;
+		    		break;
+			}
 
-				//$this->load->view('common/footer_user'); 
-			?>
+			$this->load->view('common/footer_user'); 
+		?>
+
 		</div>
 		<?php $this->load->view('common/js_files_includes'); ?>
 	</body>

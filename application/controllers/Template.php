@@ -15,7 +15,7 @@ class Template extends CI_Controller {
 
 		);
 
-		$data['content']	=	$this->load->view('user/landingpage/landingpage', $details, TRUE);
+		$data['content']	=	$this->load->view('user/homecontent', $details, TRUE);
 		$data['curpage']	= 	$this->curpage;
 		$this->load->view('template', $data);
 	}
