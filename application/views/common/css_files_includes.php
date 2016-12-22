@@ -28,6 +28,10 @@
 
 <link rel="stylesheet" href="<?php echo base_url();?>public/css/plugins/multipleimage/thumbnail-slider.css">
 
+<link rel="stylesheet" href="<?php echo base_url();?>public/css/plugins/owncarousel/owl.carousel.min.css">
+
+<link rel="stylesheet" href="<?php echo base_url();?>public/css/plugins/owncarousel/owl.theme.min.css">
+
 <link rel="stylesheet" href="<?php echo base_url();?>public/css/animate.css">
 
 <link rel="stylesheet" href="<?php echo base_url();?>public/font-awesome/css/font-awesome.css">

@@ -14,6 +14,12 @@
 		    	case 'Home':
 		    		echo $content;
 		    		break;
+		    	case 'Templates':
+		    		echo $content;
+		    		break;
+		    	case 'Events':
+		    		echo $content;
+		    		break;
 			}
 
 			$this->load->view('common/footer_user'); 

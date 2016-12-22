@@ -1,6 +1,6 @@
 <div class="">
     <div class="container">
-        <div class="navy-line"></div>
+        <div class="navy-line padding-top"></div>
         <h2 class="no-margin padding-top text-bold">
             Website Available 
         </h2>

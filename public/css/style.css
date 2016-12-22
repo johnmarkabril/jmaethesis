@@ -6474,7 +6474,7 @@ body.landing-page {
 .landing-page .navy-line {
   width: 60px;
   height: 1px;
-  margin: 60px auto 0;
+  margin: 15px auto 0;
   border-bottom: 2px solid #2098D1;
 }
 .landing-page .navbar-wrapper {
@@ -6742,7 +6742,7 @@ body.landing-page {
 }
 .landing-page .gray-section {
   background: #f4f4f4;
-  margin-top: 60px;
+  margin-top: 15px;
 }
 .landing-page .team-member {
   text-align: center;

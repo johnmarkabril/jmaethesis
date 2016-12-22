@@ -10,6 +10,7 @@
 <script src="<?php echo base_url();?>public/js/inspinia.js"></script>
 <script src="<?php echo base_url();?>public/js/plugins/pace/pace.min.js"></script>
 <script src="<?php echo base_url();?>public/js/plugins/wow/wow.min.js"></script>
+<script src="<?php echo base_url();?>public/js/plugins/owncarousel/owl.carousel.min.js"></script>
 
 <script src="<?php echo base_url();?>public/js/plugins/metisMenu/jquery.metisMenu.js"></script>
 <script src="<?php echo base_url();?>public/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
@@ -18,6 +19,20 @@
 
 	// PUT THE DEFAULT CODE HERE - START
 	$(document).ready(function(){
+
+        $("#testimonial-slider").owlCarousel({
+        items:2,
+        itemsDesktop:[1199,2],
+        itemsDesktopSmall:[979,1],
+        itemsTablet:[768,1],
+        itemsMobile:[600,1],
+        pagination:false,
+        navigation:true,
+        navigationText:["",""],
+        slideSpeed:1000,
+        autoPlay:true
+    });
+
 		// TOOLTIP AND POPOVER
         $('[data-toggle="tooltip"]').tooltip(); 
         $('[data-toggle="popover"]').popover();

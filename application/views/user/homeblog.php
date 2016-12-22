@@ -1,10 +1,9 @@
-<div class="container">
-	<div class="navy-line"></div>
+<div class="">
     <h2 class="no-margin padding-top text-bold">
-        Blog Updates
+        Blog
     </h2>
     <div>
-       	Current blog or event
+       	Current blog
     </div>
     <div class="padding-top-bottom">
     		

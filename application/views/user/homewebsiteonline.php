@@ -1,6 +1,6 @@
-<div class="gray-section padding-bottom-sixty">
+<div class="gray-section">
     <div class="container">
-        <div class="navy-line"></div>
+        <div class="navy-line padding-top"></div>
     	<h2 class="no-margin padding-top text-bold">
     		Website Online 
     	</h2>
@@ -71,6 +71,6 @@
             </div>
 
         </div>
-        <a href="#" class="pull-right"> See more online site </a>
+        <a href="#" class="pull-right  padding-bottom"> See more online site </a>
     </div>
 </div>

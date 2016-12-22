@@ -1,5 +1,6 @@
 body {
 	background-color: #E9EBEE;
+    font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
 }
 
 /*NAV BAR CENTER*/
@@ -20,6 +21,23 @@ body {
 	margin: 0px;
 }
 
+.margin-top {
+    margin-top: 15px;
+}
+
+.margin-top-bottom {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.margin-top-fifty {
+    margin-top: 50px;
+}
+
+.margin-bottom {
+    margin-bottom: 15px;
+}
+
 /*END OF MARGIN CODING*/
 
 /* PADDING CODING */
@@ -33,7 +51,7 @@ body {
 }
 
 .padding-bottom-sixty {
-  padding-bottom: 60px;
+  /*padding-bottom: 60px;*/
 }
 
 .padding-top {
@@ -126,3 +144,85 @@ body {
   -webkit-transform: translateY(0);
   transform: translateY(0);
 }
+
+/* TESTIMONIAL CODE START*/
+
+.testimonial{
+    text-align: center;
+}
+.testimonial .testimonial-content{
+    padding: 30px 50px;
+    background: #2098D1;
+    border-radius: 100px 0;
+    position: relative;
+    margin: 0 10px 35px;
+}
+.testimonial .testimonial-content:after{
+    content: "";
+    position: absolute;
+    border-top: 10px solid #2098D1;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    bottom: -9px;
+    left: 47%;
+}
+.testimonial .description{
+    font-size: 14px;
+    color: #fdfffc;
+    line-height: 25px;
+    margin: 0;
+}
+.testimonial .pic{
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 15px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.testimonial .pic img{
+    width: 100%;
+    height: auto;
+}
+.testimonial .testimonial-title{
+    display: block;
+    font-size: 17px;
+    font-weight: bold;
+    color: #011627;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin: 0 0 7px 0;
+}
+.testimonial .post{
+    display: block;
+    font-size: 14px;
+    color: #2098D1;
+}
+.owl-theme .owl-controls{
+    border-top: 1px solid #d5d5d5;
+    margin-top: 15px;
+    padding-top: 15px;
+}
+.owl-theme .owl-controls .owl-buttons div{
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    background: #2098D1;
+    border-radius: 4px;
+    opacity: 1;
+    padding: 0;
+}
+.owl-prev:before,
+.owl-next:before{
+    content: "\f053";
+    font-family: 'FontAwesome';
+    color: #fdfffc;
+}
+.owl-next:before{
+    content: "\f054";
+}
+.owl-prev:hover:before,
+.owl-next:hover:before{
+    color: #011627;
+}
+
+/* TESTIMONIAL END */
