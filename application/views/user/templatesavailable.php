@@ -11,34 +11,25 @@
         <div class="row padding-top-bottom">
             
             <div class="col-md-12">
-                <div class="pull-right form-group">
-                    <div class="pull-right dropdown">
-                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select
-                        <span class="caret"></span></button>
-                        <ul class="dropdown-menu">
-                            <li><a href="<?php echo base_url();?>recipes/option/alphabetical">Alphabetically</a></li>
-                            <li><a href="<?php echo base_url();?>recipes/option/ascending">Low price to Highest price</a></li>
-                            <li><a href="<?php echo base_url();?>recipes/option/descending">Highest price to Low price</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-12">
                 <div class="row">
-                    <div class="col-md-4">
+                    <?php
+                        if ( !empty($get_all_available_templates) ) {
+                            foreach ( $get_all_available_templates as $gaat ) :
+                    ?>
+                    <div class="col-md-4 padding-top">
                         <div class="ibox-content product-box">
                             <div>
-                                <img src="<?php echo base_url(); ?>public/img/template/1.jpg" class="img-responsive" />
+                                <img src="<?php echo base_url(); ?>public/img/template/<?php echo $gaat->IMAGEURL; ?>" class="img-responsive" />
                             </div>
                             <div class="product-desc">
                                 <span class="product-price">
-                                    P 20,000
+                                    P <?php echo $gaat->PRICE; ?>
                                 </span>
                                 <small class="text-muted">Renting for half-year.</small>
-                                <a href="#" class="product-name"> Food E-Commerce</a>
+                                <div href="#" class="product-name"> <?php echo $gaat->TEMPLATENAME; ?></div>
 
                                 <div class="small m-t-xs">
-                                    BootStrap | Inspinia | CodeIgniter Framework
+                                    <?php echo $gaat->LIBRARYUSE; ?>
                                 </div>
                                 <div class="m-t text-righ">
                                     <a href="#" class="btn btn-xs btn-outline btn-primary">Rent this site</i> </a>
@@ -46,52 +37,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="ibox-content product-box">
-                            <div>
-                                <img src="<?php echo base_url(); ?>public/img/template/2.jpg" class="img-responsive" />
-                            </div>
-                            <div class="product-desc">
-                                <span class="product-price">
-                                    P 20,000
-                                </span>
-                                <small class="text-muted">Renting for half-year.</small>
-                                <a href="#" class="product-name"> Food E-Commerce</a>
-
-
-
-                                <div class="small m-t-xs">
-                                    BootStrap | Inspinia | CodeIgniter Framework
-                                </div>
-                                <div class="m-t text-righ">
-                                    <a href="#" class="btn btn-xs btn-outline btn-primary">Rent this site</i> </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="ibox-content product-box">
-                            <div>
-                                <img src="<?php echo base_url(); ?>public/img/template/3.jpg" class="img-responsive" />
-                            </div>
-                            <div class="product-desc">
-                                <span class="product-price">
-                                    P 20,000
-                                </span>
-                                <small class="text-muted">Renting for half-year.</small>
-                                <a href="#" class="product-name"> Food E-Commerce</a>
-
-
-
-                                <div class="small m-t-xs">
-                                    BootStrap | Inspinia | CodeIgniter Framework
-                                </div>
-                                <div class="m-t text-righ">
-                                    <a href="#" class="btn btn-xs btn-outline btn-primary">Rent this site</i> </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <?php
+                            endforeach;
+                        }
+                    ?>
                 </div>
             </div>
         </div>

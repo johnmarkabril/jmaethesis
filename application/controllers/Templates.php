@@ -7,12 +7,13 @@ class Templates extends CI_Controller {
     {
         parent::__construct();
         $this->curpage = "Templates";
+        $this->load->model('Templates_model'); 
     }
 
 	public function index()
 	{
 		$details = array (
-
+			'get_all_available_templates'		=>	$this->Templates_model->get_all_available_templates()
 		);
 
 		$data['content']	=	$this->load->view('user/templatescontent', $details, TRUE);

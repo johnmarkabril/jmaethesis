@@ -9,68 +9,35 @@
     	</div>
 
     	<div class="row padding-top-bottom">
-    		<div class="col-md-4">
-    			<div class="ibox-content product-box">
-                    <div>
-    					<img src="<?php echo base_url(); ?>public/img/template/1.jpg" class="img-responsive" />
-                    </div>
-                    <div class="product-desc">
-                        
-                        <a href="#" class="product-name"> Food E-Commerce</a>
+            <?php
+                if ( !empty($get_all_rented_templates_limit) ) {
+                    foreach ( $get_all_rented_templates_limit as $gartl ) :
+            ?>
+                		<div class="col-md-3">
+                			<div class="ibox-content product-box">
+                                <div>
+                					<img src="<?php echo base_url(); ?>public/img/template/<?php echo $gartl->IMAGEURL; ?>" class="img-responsive" />
+                                </div>
+                                <div class="product-desc">
+                                    
+                                    <a href="#" class="product-name" style="height: 44px;"> <?php echo $gartl->TEMPLATENAME; ?></a>
 
 
 
-                        <div class="small m-t-xs">
-                            BootStrap | Inspinia | CodeIgniter Framework
+                                    <div class="small m-t-xs">
+                                        <?php echo $gartl->LIBRARYUSE; ?>
+                                    </div>
+                                    <div class="m-t text-righ">
+                                        <a href="#" class="btn btn-xs btn-outline btn-link">See this site</i> </a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="m-t text-righ">
-                            <a href="#" class="btn btn-xs btn-outline btn-link">See this site</i> </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="ibox-content product-box">
-                    <div>
-                        <img src="<?php echo base_url(); ?>public/img/template/2.jpg" class="img-responsive" />
-                    </div>
-                    <div class="product-desc">
-                        
-                        <a href="#" class="product-name"> Food E-Commerce</a>
-
-
-
-                        <div class="small m-t-xs">
-                            BootStrap | Inspinia | CodeIgniter Framework
-                        </div>
-                        <div class="m-t text-righ">
-                            <a href="#" class="btn btn-xs btn-outline btn-link">See this site</i> </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="ibox-content product-box">
-                    <div>
-                        <img src="<?php echo base_url(); ?>public/img/template/3.jpg" class="img-responsive" />
-                    </div>
-                    <div class="product-desc">
-                        
-                        <a href="#" class="product-name"> Food E-Commerce</a>
-
-
-
-                        <div class="small m-t-xs">
-                            BootStrap | Inspinia | CodeIgniter Framework
-                        </div>
-                        <div class="m-t text-righ">
-                            <a href="#" class="btn btn-xs btn-outline btn-link">See this site</i> </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+            <?php
+                    endforeach;
+                }
+            ?>
         </div>
-        <a href="#" class="pull-right  padding-bottom"> See more online site </a>
+        <a href="#" class="padding-bottom"> See more online site </a>
     </div>
 </div>
