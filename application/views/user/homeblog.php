@@ -7,44 +7,33 @@
            	Current blog
         </div>
         <div class="padding-all">
-        		
-       		<div class="ibox-content full-width no-padding-bottom">
-                <div class="vertical-timeline-block">
-                    <div class="vertical-timeline-icon">
-                        <img class="img-responsive img-circle" src="<?php echo base_url();?>public/img/prof1.jpg"/>
-                    </div>
+        	<?php
+                if ( !empty($get_all_blog_limit) ) {
+                    foreach ( $get_all_blog_limit as $gabl ) :
+            ?>
+                   		<div class="ibox-content full-width no-padding-bottom">
+                            <div class="vertical-timeline-block">
+                                <div class="vertical-timeline-icon">
+                                    <img class="img-responsive img-circle" src="<?php echo base_url();?>public/img/<?php echo $gabl->IMAGEURL; ?>"/>
+                                </div>
 
-                    <div class="vertical-timeline-content">
-                        <h2>Meeting</h2>
-                        <div class="pull-left">Conference on the sales results for the previous year. Monica please examine sales trends in marketing and products. Below please find the current status of the sale.</div>
+                                <div class="vertical-timeline-content no-padding-top">
+                                    <h2 class="no-margin-bottom"><?php echo $gabl->TITLE; ?></h2>
+                                    <small ><?php echo $gabl->DATE; ?></small>
+                                    <div class="pull-left" style="padding-top: 5px;">
+                                        <?php echo substr($gabl->DESCRIPTION, 0,150)."..."; ?>
+                                    </div>
 
-                        <div class="pull-right"><a href="#" class="btn btn-sm btn-link"> More info</a></div>
-                        <span class="vertical-date">
-                            <small>December 22, 2016</small>
-                        </span>
+                                    <div class="pull-right"><a href="<?php echo base_url(); ?>blog/post/<?php echo $gabl->RANDOMCODE; ?>" class="btn btn-sm btn-link"> see more</a></div>
 
-                    </div>
-                </div>
-            </div>
+                                </div>
+                            </div>
+                        </div>
+            <?php
+                    endforeach;
+                }
+            ?>
                 
-            <div class="ibox-content full-width no-padding-bottom">
-                <div class="vertical-timeline-block">
-                    <div class="vertical-timeline-icon">
-                        <img class="img-responsive img-circle" src="<?php echo base_url();?>public/img/prof1.jpg"/>
-                    </div>
-
-                    <div class="vertical-timeline-content">
-                        <h2>Meeting</h2>
-                        <div class="pull-left">Conference on the sales results for the previous year. Monica please examine sales trends in marketing and products. Below please find the current status of the sale.</div>
-
-                        <div class="pull-right"><a href="#" class="btn btn-sm btn-link"> More info</a></div>
-                        <span class="vertical-date">
-                            <small>December 22, 2016</small>
-                        </span>
-
-                    </div>
-                </div>
-            </div>
 
         </div>
     </div>

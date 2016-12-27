@@ -7,10 +7,10 @@ class Template extends CI_Controller {
     {
         parent::__construct();
         $this->curpage = "Home";
+        $this->load->model('Blog_model'); 
         $this->load->model('Team_model'); 
         $this->load->model('Templates_model'); 
-
-		
+        $this->load->model('Testimonial_model'); 
     }
 
 	public function index()
@@ -18,7 +18,13 @@ class Template extends CI_Controller {
 		$details = array (
 			"get_all_team"						=>	$this->Team_model->get_all_team(),
 			'get_all_available_templates_limit'	=>	$this->Templates_model->get_all_available_templates_limit(),
-			'get_all_rented_templates_limit'	=>	$this->Templates_model->get_all_rented_templates_limit()
+			'available_limit_ctr'				=>	"4",
+			'numrows_available_limit'			=>	$this->Templates_model->get_all_available_templates_limit_numrow(),
+			'get_all_rented_templates_limit'	=>	$this->Templates_model->get_all_rented_templates_limit(),
+			'rented_limit_ctr'					=>	"4",
+			'numrows_rented_limit'				=>	$this->Templates_model->get_all_rented_templates_limit_numrow(),
+			'get_all_testimonial'				=>	$this->Testimonial_model->get_all_testimonial(),
+			'get_all_blog_limit'				=>	$this->Blog_model->get_all_blog_limit()
 		);
 
 		$data['content']	=	$this->load->view('user/homecontent', $details, TRUE);

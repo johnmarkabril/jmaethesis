@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 27, 2016 at 05:19 AM
+-- Generation Time: Dec 28, 2016 at 12:20 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.8
 
@@ -19,6 +19,31 @@ SET time_zone = "+00:00";
 --
 -- Database: `jmaethesis`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `blog`
+--
+
+CREATE TABLE `blog` (
+  `NO` int(11) NOT NULL,
+  `NAME` varchar(500) NOT NULL,
+  `TITLE` varchar(100) NOT NULL,
+  `DATE` varchar(100) NOT NULL,
+  `HOUR` varchar(100) NOT NULL,
+  `DESCRIPTION` varchar(5000) NOT NULL,
+  `IMAGEURL` varchar(500) NOT NULL,
+  `DELETION` int(11) NOT NULL,
+  `RANDOMCODE` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `blog`
+--
+
+INSERT INTO `blog` (`NO`, `NAME`, `TITLE`, `DATE`, `HOUR`, `DESCRIPTION`, `IMAGEURL`, `DELETION`, `RANDOMCODE`) VALUES
+(1, 'Mae Gregorio', 'Merry Christmas', 'December 25, 2016', '01:00 AM', 'Thanks for giving us\r\nthe opportunity to serve you\r\nwe look forward to \r\nmeeting you again in our shop\r\nwe greatly value your business\r\nwarm christmas holiday wishes', 'prof1.jpg', 0, 'AN6KM7cmjIqKOFC');
 
 -- --------------------------------------------------------
 
@@ -77,6 +102,31 @@ INSERT INTO `templates` (`NO`, `TEMPLATENAME`, `TEMPLATECATEGORY`, `DESCRIPTION`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `testimonial`
+--
+
+CREATE TABLE `testimonial` (
+  `NO` int(11) NOT NULL,
+  `NAME` varchar(500) NOT NULL,
+  `DESCRIPTION` varchar(260) NOT NULL,
+  `DATE` varchar(100) NOT NULL,
+  `HOUR` varchar(100) NOT NULL,
+  `JOB` varchar(100) NOT NULL,
+  `DELETION` int(11) NOT NULL,
+  `IMAGEURL` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `testimonial`
+--
+
+INSERT INTO `testimonial` (`NO`, `NAME`, `DESCRIPTION`, `DATE`, `HOUR`, `JOB`, `DELETION`, `IMAGEURL`) VALUES
+(1, 'William Son', 'I has been using JMAE Site Provider for a month. Their website templates are incredibly reliable and easy to maintain. We work with all types of business to help create user-friendly websites and always recommended JMAE Site Provider to our clients.', 'December 15, 2016', '07:29 PM', 'Best Buddy Cakes, Owner', 0, 'a1.jpg'),
+(2, 'Kristiana Augustin', 'I wanted to find a creative designer that could interpret my design for a playful yet professional feature, JMAE Site rovider did exactly that. Professionalism is an understatement, communication was answered promptly and perfectly.', 'December 29, 2016', '09:11 AM', 'Entrepreneur', 0, 'a6.jpg');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 
@@ -110,6 +160,12 @@ INSERT INTO `user` (`ID`, `FIRSTNAME`, `LASTNAME`, `USERNAME`, `PHONENUMBER`, `E
 --
 
 --
+-- Indexes for table `blog`
+--
+ALTER TABLE `blog`
+  ADD PRIMARY KEY (`NO`);
+
+--
 -- Indexes for table `team`
 --
 ALTER TABLE `team`
@@ -119,6 +175,12 @@ ALTER TABLE `team`
 -- Indexes for table `templates`
 --
 ALTER TABLE `templates`
+  ADD PRIMARY KEY (`NO`);
+
+--
+-- Indexes for table `testimonial`
+--
+ALTER TABLE `testimonial`
   ADD PRIMARY KEY (`NO`);
 
 --
@@ -132,6 +194,11 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `blog`
+--
+ALTER TABLE `blog`
+  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT for table `team`
 --
 ALTER TABLE `team`
@@ -141,6 +208,11 @@ ALTER TABLE `team`
 --
 ALTER TABLE `templates`
   MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `testimonial`
+--
+ALTER TABLE `testimonial`
+  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `user`
 --

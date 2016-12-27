@@ -14,13 +14,16 @@
 		    	case 'Blog':
 		    		echo $content;
 		    		break;
+		    	case 'Events':
+		    		echo $content;
+		    		break;
 		    	case 'Home':
 		    		echo $content;
 		    		break;
-		    	case 'Templates':
+		    	case 'Online':
 		    		echo $content;
 		    		break;
-		    	case 'Events':
+		    	case 'Templates':
 		    		echo $content;
 		    		break;
 			}

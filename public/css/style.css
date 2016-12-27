@@ -3370,7 +3370,7 @@ video {
   padding: 0 20px;
 }
 .wrapper-content {
-  padding: 20px;
+  padding: 15px;
   padding-bottom: 0px;
 }
 #page-wrapper {
@@ -3646,7 +3646,7 @@ code {
 }
 .ibox {
   clear: both;
-  margin-bottom: 25px;
+  margin-bottom: 15px;
   margin-top: 0;
   padding: 0;
 }
@@ -5064,10 +5064,10 @@ dd.project-people {
 }
 .article-title {
   text-align: center;
-  margin: 40px 0 100px 0;
+  margin: 15px 0 15px 0;
 }
 .article .ibox-content {
-  padding: 40px;
+  padding: 15px;
 }
 /* ISSUE TRACKER */
 .issue-tracker .btn-link {
