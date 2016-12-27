@@ -4,7 +4,8 @@
         <div class="col-md-6">
             <div class="text-center">
                 <ul class="nav navbar-nav" style="display: inline-block;">
-                    <li><a class="no-padding" href="<?php echo base_url();?>"><img class="img-responsive" src="<?php echo base_url(); ?>public/img/logo3.png"/></a></li>
+                    <li><a class="no-padding" href="<?php echo base_url();?>">
+                    <img class="img-responsive" src="<?php echo base_url(); ?>public/img/logo4.png" style="height: 50px;width:200px; padding: 5px;" /></a></li>
                 </ul>
             </div>
         </div>
