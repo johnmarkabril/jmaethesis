@@ -11,6 +11,9 @@
 		<div class="landing-page">
 		<?php
 			switch ($curpage) {
+		    	case 'Blog':
+		    		echo $content;
+		    		break;
 		    	case 'Home':
 		    		echo $content;
 		    		break;
