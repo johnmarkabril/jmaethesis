@@ -7,12 +7,13 @@ class Template extends CI_Controller {
     {
         parent::__construct();
         $this->curpage = "Home";
+        $this->load->model('Team_model'); 
     }
 
 	public function index()
 	{
 		$details = array (
-
+			"get_all_team"		=>	$this->Team_model->get_all_team()
 		);
 
 		$data['content']	=	$this->load->view('user/homecontent', $details, TRUE);

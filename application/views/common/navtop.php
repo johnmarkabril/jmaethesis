@@ -1,14 +1,14 @@
 
-<nav class="nav2 navbar navbar-default no-margin no-border-radius" style="background-color: #2098D1;font-size: 11px;">
-    <div class="container">
-        <div class="col-lg-3">
+<nav class="nav2 navbar navbar-default no-margin no-border-radius" style="background-color: #0076BE;font-size: 11px;">
+    <div class="container-fluid">
+        <div class="col-md-6">
             <div class="text-center">
                 <ul class="nav navbar-nav" style="display: inline-block;">
-                    <li><a class="no-padding" href="<?php echo base_url();?>"><img class="img-responsive" src="<?php echo base_url(); ?>public/img/logo.png"/></a></li>
+                    <li><a class="no-padding" href="<?php echo base_url();?>"><img class="img-responsive" src="<?php echo base_url(); ?>public/img/logo3.png"/></a></li>
                 </ul>
             </div>
         </div>
-        <div class="col-lg-9">
+        <div class="col-md-6">
             <div class="text-center">
                 <ul class="nav navbar-nav" style="display: inline-block;">
 

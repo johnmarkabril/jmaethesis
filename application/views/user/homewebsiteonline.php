@@ -1,4 +1,4 @@
-<div class="gray-section">
+<div class="">
     <div class="container">
         <div class="navy-line padding-top"></div>
     	<h2 class="no-margin padding-top text-bold">

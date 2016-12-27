@@ -18,7 +18,7 @@
                                 </p>
                             </div>
                             <div class="pic">
-                                <img src="<?php echo base_url();?>public/img/prof1.jpg" alt="">
+                                <img src="<?php echo base_url();?>public/img/prof1.jpg" alt="" >
                             </div>
                             <h3>Williamson</h3>
                             <span class="post">Web Designer</span>

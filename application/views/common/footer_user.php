@@ -1,20 +1,19 @@
 <div class="">
-    <section id="contact" class="gray-section contact">
+    <section id="contact" class="gray-section contact no-margin">
         <div class="container">
             <div class="row m-b-lg">
                 <div class="col-lg-12 text-center">
                     <div class="navy-line padding-top"></div>
-                    <h1>Contact Us</h1>
-                    <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod.</p>
+                    <h2 class="no-margin-bottom text-bold">Contact Us</h2>
                 </div>
             </div>
             <div class="row m-b-lg no-margin">
                 <div class="col-lg-3 col-lg-offset-3">
                     <address>
-                        <strong><span class="navy">Company name, Inc.</span></strong><br/>
-                        795 Folsom Ave, Suite 600<br/>
-                        San Francisco, CA 94107<br/>
-                        <abbr title="Phone">P:</abbr> (123) 456-7890
+                        <strong><span class="navy">JMAE Company</span></strong><br/>
+                        655 D. Guillermo St.<br/>
+                        Tondo, Manila<br/>
+                        <abbr title="Phone">P:</abbr> +63-948-441-0511
                     </address>
                 </div>
                 <div class="col-lg-4">
@@ -25,7 +24,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center m-t-lg m-b-lg margin-top-bottom">
-                    <p><strong>&copy; 2015 Company Name</strong><br/> consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
+                    <strong>&copy; 2016 JMAE Company</strong><br/>
                 </div>
             </div>
         </div>

@@ -1,8 +1,8 @@
-<div class="">
+<div class="gray-section">
     <div class="container">
         <div class="navy-line padding-top"></div>
         <h2 class="no-margin padding-top text-bold">
-            Website Available 
+            Templates Available 
         </h2>
         <div>
             Since 2016 we develop a lot of templates. New templates added below.
@@ -78,7 +78,7 @@
             </div>
         </div>
 
-        <a href="#" class="pull-right"> See more site available </a>
+        <a href="<?php echo base_url(); ?>templates" class="pull-right"> See more site available </a>
 
     </div>
 </div>

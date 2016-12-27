@@ -21,6 +21,10 @@ body {
 	margin: 0px;
 }
 
+.no-margin-bottom {
+  margin-bottom: 0px;
+}
+
 .margin-top {
     margin-top: 15px;
 }
@@ -48,6 +52,10 @@ body {
 
 .padding-bottom {
 	padding-bottom: 15px;
+}
+
+.no-padding-bottom {
+  padding-bottom: 0px;
 }
 
 .padding-bottom-sixty {
