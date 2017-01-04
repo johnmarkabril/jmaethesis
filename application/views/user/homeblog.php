@@ -1,12 +1,12 @@
 <div class="container">
     <div class="row">
         <div class="navy-line padding-top"></div>
-        <h2 class="no-margin padding-top text-bold">
+        <!-- <h2 class="no-margin padding-top text-bold">
             Blog
         </h2>
         <div>
             Current blog
-        </div>
+        </div> -->
 
         <?php
             if ( !empty($get_all_blog_limit) ) {
