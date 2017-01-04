@@ -11,12 +11,16 @@ class Events extends CI_Controller {
 
 	public function index()
 	{
-		$details = array (
+		if ( $this->session->userdata('account_type') == "User" || $this->session->userdata('account_type') == "" ) {
+			$details = array (
 
-		);
+			);
 
-		$data['content']	=	$this->load->view('user/eventscontent', $details, TRUE);
-		$data['curpage']	= 	$this->curpage;
-		$this->load->view('template', $data);
+			$data['content']	=	$this->load->view('user/eventscontent', $details, TRUE);
+			$data['curpage']	= 	$this->curpage;
+			$this->load->view('template', $data);
+		} else {
+			redirect('/admin');
+		}
 	}
 }

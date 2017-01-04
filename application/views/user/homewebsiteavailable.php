@@ -45,7 +45,7 @@
                                 </div>
                                 <div class="product-desc">
                                     <span class="product-price">
-                                        P ?????.??
+                                        P 0.00
                                     </span>
                                     <small class="text-muted">Renting for half-year.</small>
                                     <div class="product-name" style="height: 44px;"> TEMPLATE NAME</div>
@@ -70,7 +70,7 @@
                                 </div>
                                 <div class="product-desc">
                                     <span class="product-price">
-                                        P ?????.??
+                                        P 0.00
                                     </span>
                                     <small class="text-muted">Renting for half-year.</small>
                                     <div class="product-name" style="height: 44px;"> TEMPLATE NAME</div>

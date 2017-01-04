@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 28, 2016 at 12:20 AM
+-- Generation Time: Jan 04, 2017 at 03:59 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.8
 
@@ -44,6 +44,31 @@ CREATE TABLE `blog` (
 
 INSERT INTO `blog` (`NO`, `NAME`, `TITLE`, `DATE`, `HOUR`, `DESCRIPTION`, `IMAGEURL`, `DELETION`, `RANDOMCODE`) VALUES
 (1, 'Mae Gregorio', 'Merry Christmas', 'December 25, 2016', '01:00 AM', 'Thanks for giving us\r\nthe opportunity to serve you\r\nwe look forward to \r\nmeeting you again in our shop\r\nwe greatly value your business\r\nwarm christmas holiday wishes', 'prof1.jpg', 0, 'AN6KM7cmjIqKOFC');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `blog_comment`
+--
+
+CREATE TABLE `blog_comment` (
+  `NO` int(11) NOT NULL,
+  `NAME` varchar(500) NOT NULL,
+  `USERNAME` varchar(500) NOT NULL,
+  `DESCRIPTION` varchar(5000) NOT NULL,
+  `DATE` varchar(100) NOT NULL,
+  `HOUR` varchar(100) NOT NULL,
+  `BLOGHASH` varchar(500) NOT NULL,
+  `IMAGEURL` varchar(500) NOT NULL,
+  `DELETION` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `blog_comment`
+--
+
+INSERT INTO `blog_comment` (`NO`, `NAME`, `USERNAME`, `DESCRIPTION`, `DATE`, `HOUR`, `BLOGHASH`, `IMAGEURL`, `DELETION`) VALUES
+(1, 'Farrahmae Gregorio', 'gregs17', 'Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for ''lorem ipsum'' will uncover many web sites still default model text.', 'January 1, 2017', '10:41 AM', 'AN6KM7cmjIqKOFC', 'prof1.jpg', 0);
 
 -- --------------------------------------------------------
 
@@ -144,7 +169,7 @@ CREATE TABLE `user` (
   `VERIFICATIONCODE` varchar(50) NOT NULL,
   `PERMISSION` varchar(5000) NOT NULL,
   `IMAGEURL` varchar(100) NOT NULL,
-  `DELETION` varchar(10) NOT NULL
+  `DELETION` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -152,8 +177,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`ID`, `FIRSTNAME`, `LASTNAME`, `USERNAME`, `PHONENUMBER`, `EMAIL`, `PASSWORD`, `ACCOUNT_TYPE`, `ACTIVATED`, `VERIFIED`, `VERIFICATIONCODE`, `PERMISSION`, `IMAGEURL`, `DELETION`) VALUES
-(1, 'John Mark', 'Abril', 'jmabril17', '09208317004', 'johnmarkabril@gmail.com', '34c87211821751f911c058bbf0cfb822', 'Administrator', 1, '', '', '', '', ''),
-(2, 'Farrah Mae', 'Gregorio', 'frrhmgrgrio', '0948410511', 'frrhmgrgrio@gmail.com', '9d156de36890b0681f3595426e2bbee3', 'Administrator', 1, '', '', '', '', '');
+(1, 'John Mark', 'Abril', 'jmabril17', '09208317004', 'johnmarkabril@gmail.com', '34c87211821751f911c058bbf0cfb822', 'User', 1, 'YES', '', '', '', 0),
+(2, 'Farrah Mae', 'Gregorio', 'frrhmgrgrio', '0948410511', 'frrhmgrgrio@gmail.com', '19a2be974580740e9ec96ab7fc016d1b', 'Administrator', 1, 'YES', '', '', '', 0);
 
 --
 -- Indexes for dumped tables
@@ -163,6 +188,12 @@ INSERT INTO `user` (`ID`, `FIRSTNAME`, `LASTNAME`, `USERNAME`, `PHONENUMBER`, `E
 -- Indexes for table `blog`
 --
 ALTER TABLE `blog`
+  ADD PRIMARY KEY (`NO`);
+
+--
+-- Indexes for table `blog_comment`
+--
+ALTER TABLE `blog_comment`
   ADD PRIMARY KEY (`NO`);
 
 --
@@ -197,6 +228,11 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `blog`
 --
 ALTER TABLE `blog`
+  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `blog_comment`
+--
+ALTER TABLE `blog_comment`
   MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `team`

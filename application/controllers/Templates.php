@@ -12,12 +12,16 @@ class Templates extends CI_Controller {
 
 	public function index()
 	{
-		$details = array (
-			'get_all_available_templates'		=>	$this->Templates_model->get_all_available_templates()
-		);
+		if ( $this->session->userdata('account_type') == "User" || $this->session->userdata('account_type') == "" ) {
+			$details = array (
+				'get_all_available_templates'		=>	$this->Templates_model->get_all_available_templates()
+			);
 
-		$data['content']	=	$this->load->view('user/templatescontent', $details, TRUE);
-		$data['curpage']	= 	$this->curpage;
-		$this->load->view('template', $data);
+			$data['content']	=	$this->load->view('user/templatescontent', $details, TRUE);
+			$data['curpage']	= 	$this->curpage;
+			$this->load->view('template', $data);
+		} else {
+			redirect('/admin');
+		}
 	}
 }

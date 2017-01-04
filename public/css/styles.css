@@ -46,6 +46,11 @@ body {
 
 /* PADDING CODING */
 
+.padding-top-bottom-thirty {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
 .no-padding {
 	padding: 0px;
 }
@@ -100,6 +105,10 @@ body {
 
 .no-border-radius {
 	border-radius:0px;
+}
+
+.no-border {
+  border: 0px;
 }
 
 .containerBox {

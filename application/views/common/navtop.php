@@ -28,11 +28,31 @@
                             <a class="hvr-underline-reveal" class="" href="<?php echo base_url();?>events"><strong>EVENTS</strong></a>
                         </li>
 
-                        <li class="text-center">
-                            <a class="hvr-underline-reveal" data-toggle="modal" data-target="#loginModal"><strong>ACCOUNT</strong></a>
-                        </li>
+                        <?php
+                            if( !$this->session->userdata('user_session') ){
+                        ?>
+                                <li class="text-center">
+                                    <a class="hvr-underline-reveal" data-toggle="modal" data-target="#loginModal"><strong>ACCOUNT</strong></a>
+                                </li>
+                        <?php
+                            } else {
+                        ?>
+
+                                <li class="text-center">
+                                    <a class="hvr-underline-reveal" href="#" ><strong>PROFILE</strong></a>
+                                </li>
+
+                                <li class="text-center">
+                                    <a class="hvr-underline-reveal" href="<?php echo base_url(); ?>logout" ><strong>LOGOUT</strong></a>
+                                </li>
+                        <?php
+                            }
+                        ?>
+
                     </ul>
             </div>
         </div>
     </div>
 </nav>
+
+<?php $this->load->view('login'); ?>

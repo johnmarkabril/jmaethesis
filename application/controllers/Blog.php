@@ -8,21 +8,31 @@ class Blog extends CI_Controller {
         parent::__construct();
         $this->curpage = "Blog";
         $this->load->model('Blog_model'); 
+        $this->load->model('Blog_comment_model'); 
     }
 
 	public function index()
 	{
-		redirect('/');
+		if ( $this->session->userdata('account_type') == "User" || $this->session->userdata('account_type') == "" ) {
+			redirect('/');
+		} else {
+			redirect('/admin');
+		}
 	}
 
 	public function post($randomcode)
 	{
-		$details = array (
-			'get_specific_blog'		=>	$this->Blog_model->get_specific_blog($randomcode)
-		);
+		if ( $this->session->userdata('account_type') == "User" || $this->session->userdata('account_type') == "" ) {
+			$details = array (
+				'get_specific_blog'		=>	$this->Blog_model->get_specific_blog($randomcode),
+				'get_comment_per_blog'	=>	$this->Blog_comment_model->get_comment_per_blog($randomcode)
+			);
 
-		$data['content']	=	$this->load->view('user/blogcontent', $details, TRUE);
-		$data['curpage']	= 	$this->curpage;
-		$this->load->view('template', $data);
+			$data['content']	=	$this->load->view('user/blogcontent', $details, TRUE);
+			$data['curpage']	= 	$this->curpage;
+			$this->load->view('template', $data);
+		} else {
+			redirect('/admin');
+		}
 	}
 }
