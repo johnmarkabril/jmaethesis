@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 04, 2017 at 03:59 AM
+-- Generation Time: Jan 04, 2017 at 07:52 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.8
 
@@ -69,6 +69,32 @@ CREATE TABLE `blog_comment` (
 
 INSERT INTO `blog_comment` (`NO`, `NAME`, `USERNAME`, `DESCRIPTION`, `DATE`, `HOUR`, `BLOGHASH`, `IMAGEURL`, `DELETION`) VALUES
 (1, 'Farrahmae Gregorio', 'gregs17', 'Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for ''lorem ipsum'' will uncover many web sites still default model text.', 'January 1, 2017', '10:41 AM', 'AN6KM7cmjIqKOFC', 'prof1.jpg', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `events`
+--
+
+CREATE TABLE `events` (
+  `NO` int(11) NOT NULL,
+  `NAME` varchar(500) NOT NULL,
+  `TITLE` varchar(500) NOT NULL,
+  `DESCRIPTION` varchar(5000) NOT NULL,
+  `DATE` varchar(100) NOT NULL,
+  `HOUR` varchar(100) NOT NULL,
+  `IMAGEURL` varchar(500) NOT NULL,
+  `DELETION` int(11) NOT NULL,
+  `RANDOMCODE` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `events`
+--
+
+INSERT INTO `events` (`NO`, `NAME`, `TITLE`, `DESCRIPTION`, `DATE`, `HOUR`, `IMAGEURL`, `DELETION`, `RANDOMCODE`) VALUES
+(1, 'Farrahmae Gregorio', 'Testing Event', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent cursus imperdiet nisl et mollis. Ut dictum aliquam augue, nec sollicitudin nulla semper sit amet. Proin luctus lorem congue, molestie elit non, dapibus nisi. Etiam facilisis et velit vitae efficitur. Mauris tincidunt nisl quis ex facilisis, non pulvinar purus tincidunt. Maecenas fermentum mattis ultrices. Pellentesque venenatis odio consectetur nisi viverra iaculis. Suspendisse quis diam lectus. Curabitur ut tortor risus. Praesent iaculis vel tortor nec volutpat. Integer augue lorem, tempor quis enim a, commodo semper arcu.\r\n\\n\r\nVestibulum et dui vitae ipsum euismod venenatis at ac mi. Sed iaculis risus at tellus vehicula tempus. Nullam viverra laoreet eros, vel tincidunt lacus vestibulum a. Vestibulum interdum aliquet lorem sit amet porttitor. Mauris eros enim, consectetur quis hendrerit ut, ullamcorper sit amet erat. Duis tincidunt dolor sed lorem laoreet, in efficitur risus lobortis. Ut vel maximus lectus. Suspendisse porta sem quis lorem tristique faucibus. Suspendisse tincidunt ante quis lectus viverra, sed pharetra ex sollicitudin. Mauris quis ante id ex posuere ullamcorper quis sit amet lacus. Nunc et lacinia velit, eget porttitor erat. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse sodales aliquet lacus, a facilisis nulla blandit in. Vestibulum ut dapibus velit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.', 'January 04, 2017', '02:35 PM', '', 0, '253e2278727f2b7ea20e35ca26b3e749'),
+(2, 'Farrahmae Gregorio', 'Testing Event 2', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec augue ante. Nulla augue diam, accumsan in magna non, cursus aliquet purus. Phasellus in nibh et urna dapibus pharetra nec vestibulum felis. Nullam nec finibus nulla, et semper lectus. Morbi cursus leo ut nibh pellentesque, et eleifend nulla facilisis. In enim dui, cursus dapibus massa et, sagittis tincidunt dui. Maecenas tempus augue et maximus auctor. Suspendisse lacinia elementum auctor. Nam vestibulum blandit nulla, vitae iaculis massa placerat vitae. Quisque auctor egestas rutrum. Vivamus vel commodo orci. Quisque ut pellentesque erat. Sed tempus augue erat, sed rhoncus ligula tincidunt sit amet. Vivamus in orci enim. Nam ut pulvinar nunc, vestibulum gravida leo.\r\n\\n\r\nAenean tellus lectus, placerat eu nisl a, auctor sagittis nibh. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam id scelerisque tellus. Aliquam feugiat erat fringilla aliquam egestas. Suspendisse sit amet nunc justo. Etiam vel vulputate ipsum, vel laoreet dolor. Aenean libero sem, interdum vitae eleifend ut, pretium et nisi. Nulla vitae pellentesque diam. Nam vel viverra neque.\r\n\\n\r\nMaecenas nec tincidunt dui. Aenean imperdiet mattis interdum. Donec convallis scelerisque condimentum. Quisque eros dolor, sagittis vitae lectus eget, aliquet aliquam nunc. Curabitur sed eros volutpat, iaculis dolor lobortis, sagittis urna. Duis mattis urna non augue dignissim pharetra. Cras imperdiet a turpis eget sodales. Ut nec cursus elit. Sed commodo placerat nunc ut scelerisque. Proin a lectus diam.', 'January 04, 2017', '02:37 PM', '', 0, '54357a3f983e8edb62b5431076b2d407');
 
 -- --------------------------------------------------------
 
@@ -197,6 +223,12 @@ ALTER TABLE `blog_comment`
   ADD PRIMARY KEY (`NO`);
 
 --
+-- Indexes for table `events`
+--
+ALTER TABLE `events`
+  ADD PRIMARY KEY (`NO`);
+
+--
 -- Indexes for table `team`
 --
 ALTER TABLE `team`
@@ -234,6 +266,11 @@ ALTER TABLE `blog`
 --
 ALTER TABLE `blog_comment`
   MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `events`
+--
+ALTER TABLE `events`
+  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `team`
 --
