@@ -17,33 +17,33 @@
                     <ul class="nav navbar-nav" style="display: inline-block;">
 
                         <li class="text-center">
-                            <a class="hvr-underline-reveal" href="<?php echo base_url();?>"><strong>HOME</strong></a>
+                            <a class="hvr-underline-reveal" href="<?php echo base_url();?>"><strong>Home</strong></a>
                         </li>
 
                         <li class="text-center">
-                            <a class="hvr-underline-reveal" class="" href="<?php echo base_url();?>templates"><strong>TEMPLATES</strong></a>
+                            <a class="hvr-underline-reveal" class="" href="<?php echo base_url();?>templates"><strong>Templates</strong></a>
                         </li>
 
                         <li class="text-center">
-                            <a class="hvr-underline-reveal" class="" href="<?php echo base_url();?>events"><strong>EVENTS</strong></a>
+                            <a class="hvr-underline-reveal" class="" href="<?php echo base_url();?>events"><strong>Events</strong></a>
                         </li>
 
                         <?php
                             if( !$this->session->userdata('user_session') ){
                         ?>
                                 <li class="text-center">
-                                    <a class="hvr-underline-reveal" data-toggle="modal" data-target="#loginModal"><strong>ACCOUNT</strong></a>
+                                    <a class="hvr-underline-reveal" data-toggle="modal" data-target="#loginModal"><strong>Account</strong></a>
                                 </li>
                         <?php
                             } else {
                         ?>
 
                                 <li class="text-center">
-                                    <a class="hvr-underline-reveal" href="#" ><strong>PROFILE</strong></a>
+                                    <a class="hvr-underline-reveal" href="#" ><strong>Profile</strong></a>
                                 </li>
 
                                 <li class="text-center">
-                                    <a class="hvr-underline-reveal" href="<?php echo base_url(); ?>logout" ><strong>LOGOUT</strong></a>
+                                    <a class="hvr-underline-reveal" href="<?php echo base_url(); ?>logout" ><strong>Logout</strong></a>
                                 </li>
                         <?php
                             }
