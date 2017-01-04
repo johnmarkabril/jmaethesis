@@ -8,18 +8,27 @@
                 </div>
             </div>
             <div class="row m-b-lg no-margin">
-                <div class="col-lg-3 col-lg-offset-3">
+                <div class="col-lg-3 col-lg-offset-1">
                     <address>
-                        <strong><span class="navy">JMAE Company</span></strong><br/>
-                        655 D. Guillermo St.<br/>
-                        Tondo, Manila<br/>
-                        <abbr title="Phone">P:</abbr> +63-948-441-0511
+                        <span class="glyphicon glyphicon-map-marker"></span> 655 D. Guillermo St. Tondo, Manila<br/>
+                        <span class="glyphicon glyphicon-envelope"></span> johnmarkabril@gmail.com<br/>
+                        <span class="glyphicon glyphicon-phone"></span> +63-948-441-0511<br/>
+                        <span class="glyphicon glyphicon-phone-alt"></span> 2519476
                     </address>
                 </div>
                 <div class="col-lg-4">
                     <p class="text-color">
-                        Consectetur adipisicing elit. Aut eaque, totam corporis laboriosam veritatis quis ad perspiciatis, totam corporis laboriosam veritatis, consectetur adipisicing elit quos non quis ad perspiciatis, totam corporis ea,
+                        <strong><span class="navy">JF Site Provider</span></strong> is owned and operate by JMAE Company as a site provider to help your businesses become better.
                     </p>
+                </div>
+                <div>
+                    <strong>Follow Us: </strong><br/>
+                    <h2 class="no-margin"><ul class="list-inline">
+                         <li><a href=""><i class="fa fa-facebook"></i></a></li>
+                         <li><a href=""><i class="fa fa-twitter"></i></a></li>
+                         <li><a href=""><i class="fa fa-instagram"></i></a></li>
+                         <li><a href=""><i class="fa fa-google-plus"></i></a></li>
+                    </ul></h2>
                 </div>
             </div>
             <div class="row">
