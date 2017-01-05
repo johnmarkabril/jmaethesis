@@ -8,7 +8,7 @@
                 </div>
             </div>
             <div class="row m-b-lg no-margin">
-                <div class="col-lg-3 col-lg-offset-1">
+                <div class="col-md-3 col-md-offset-1">
                     <address>
                         <span class="glyphicon glyphicon-map-marker"></span> 655 D. Guillermo St. Tondo, Manila<br/>
                         <span class="glyphicon glyphicon-envelope"></span> johnmarkabril@gmail.com<br/>
@@ -16,12 +16,12 @@
                         <span class="glyphicon glyphicon-phone-alt"></span> 2519476
                     </address>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-md-4">
                     <p class="text-color">
-                        <strong><span class="navy">JF Site Provider</span></strong> is owned and operate by JMAE Company as a site provider to help your businesses become better.
+                        <strong><span class="navy">JF Site Provider</span></strong> is owned and operated by JMAE Company as a site provider for you to help your business become better.
                     </p>
                 </div>
-                <div>
+                <div class="col-md-3">
                     <strong>Follow Us: </strong><br/>
                     <h2 class="no-margin"><ul class="list-inline">
                          <li><a href=""><i class="fa fa-facebook"></i></a></li>

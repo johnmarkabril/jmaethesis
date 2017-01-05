@@ -1,6 +1,6 @@
 <div class="modal inmodal" id="loginModal" tabindex="-1" role="dialog"  aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content animated flipInY">
+        <div class="modal-content animated fadeInDown">
             <?php
                 if( !$this->session->userdata('user_session') ){
                     echo form_open('Login');
