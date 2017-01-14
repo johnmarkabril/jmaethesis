@@ -1,3 +1,4 @@
+<div class="landing-page">
     <div id="inSlider" class="landing-page carousel carousel-fade" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#inSlider" data-slide-to="0" class="active"></li>
@@ -7,23 +8,26 @@
             <div class="item active">
                 <div class="container">
                     <div class="carousel-caption">
-                        <h1>Internet is the future for<br/>
-                            your business. We can<br/>
-                            help you to be the first</h1>
+                        <h1>We craft<br/>
+                            brands, web apps,<br/>
+                            and user interfaces<br/>
+                            we are IN+ studio</h1>
+                        <p>Lorem Ipsum is simply dummy text of the printing.</p>
                         <p>
                             <a class="btn btn-lg btn-primary" href="#" role="button">READ MORE</a>
+                            <a class="caption-link" href="#" role="button">Inspinia Theme</a>
                         </p>
                     </div>
                 </div>
                 <div class="header-back one">
                     <img src="<?php echo base_url();?>public/img/landing/header_one.png" alt="laptop"/>
                 </div>
-
             </div>
             <div class="item">
                 <div class="container">
                     <div class="carousel-caption">
-                        <h1>We make responsive website <br/> for a better future.</h1>
+                        <h1>We create meaningful <br/> interfaces that inspire.</h1>
+                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
                         <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
                     </div>
                 </div>
@@ -41,3 +45,4 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
+</div>

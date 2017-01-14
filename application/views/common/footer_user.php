@@ -1,4 +1,4 @@
-<div class="">
+<div class="landing-page">
     <section id="contact" class="gray-section contact no-margin">
         <div class="container">
             <div class="row m-b-lg">
@@ -16,18 +16,16 @@
                         <span class="glyphicon glyphicon-phone-alt"></span> 2519476
                     </address>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <p class="text-color">
                         <strong><span class="navy">JF Site Provider</span></strong> is owned and operated by JMAE Company as a site provider for you to help your business become better.
                     </p>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <strong>Follow Us: </strong><br/>
                     <h2 class="no-margin"><ul class="list-inline">
-                         <li><a href=""><i class="fa fa-facebook"></i></a></li>
-                         <li><a href=""><i class="fa fa-twitter"></i></a></li>
-                         <li><a href=""><i class="fa fa-instagram"></i></a></li>
-                         <li><a href=""><i class="fa fa-google-plus"></i></a></li>
+                         <li><a href="https://www.facebook.com/jmaesiteprovider/" target="_blank" ><i class="fa fa-facebook"></i></a></li>
+                         <li><a href="https://twitter.com/jmaesiteprovide" target="_blank" ><i class="fa fa-twitter"></i></a></li>
                     </ul></h2>
                 </div>
             </div>

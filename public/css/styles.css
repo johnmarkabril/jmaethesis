@@ -1,8 +1,8 @@
 body {
 	background-color: #E9EBEE;
-    font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+    /*font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;*/
+    font-family: "Oxygen","Oxygen","Segoe UI","Helvetica Neue",sans-serif;
 }
-
 /*NAV BAR CENTER*/
 .navbar .navbar-nav {
   display: inline-block;
@@ -15,7 +15,19 @@ body {
 }
 /*END OF NAV BAR CENTER*/
 
+ul.dropdown-lr {
+  width: 300px;
+}
 
+/* mobile fix */
+@media (max-width: 768px) {
+  .dropdown-lr h3 {
+    color: #eee;
+  }
+  .dropdown-lr label {
+    color: #eee;
+  }
+}
 /*MARGIN CODING*/
 
 .no-margin {

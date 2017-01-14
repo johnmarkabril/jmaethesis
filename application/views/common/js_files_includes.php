@@ -21,17 +21,17 @@
 	$(document).ready(function(){
 
         $("#testimonial-slider").owlCarousel({
-        items:2,
-        itemsDesktop:[1199,2],
-        itemsDesktopSmall:[979,1],
-        itemsTablet:[768,1],
-        itemsMobile:[600,1],
-        pagination:false,
-        navigation:true,
-        navigationText:["",""],
-        slideSpeed:1000,
-        autoPlay:true
-    });
+            items:2,
+            itemsDesktop:[1199,2],
+            itemsDesktopSmall:[979,2],
+            itemsTablet:[768,2],
+            itemsMobile:[600,1],
+            pagination:true,
+            navigation:false,
+            navigationText:["",""],
+            slideSpeed:1000,
+            autoPlay:true
+        });
 
 		// TOOLTIP AND POPOVER
         $('[data-toggle="tooltip"]').tooltip(); 

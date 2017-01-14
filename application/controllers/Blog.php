@@ -14,7 +14,13 @@ class Blog extends CI_Controller {
 	public function index()
 	{
 		if ( $this->session->userdata('account_type') == "User" || $this->session->userdata('account_type') == "" ) {
-			redirect('/');
+			$details = array (
+				'get_all_blog'			=>	$this->Blog_model->get_all_blog()
+			);
+
+			$data['content']	=	$this->load->view('user/blogcontent', $details, TRUE);
+			$data['curpage']	= 	$this->curpage;
+			$this->load->view('template', $data);
 		} else {
 			redirect('/admin');
 		}

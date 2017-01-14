@@ -4,6 +4,10 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
+<link rel="icon" 
+     type="image/png" 
+     href="<?php echo base_url(); ?>public/img/logo4.png">
+
 <link rel="stylesheet" href="<?php echo base_url();?>public/css/bootstrap.min.css"/>
 
 <link rel="stylesheet" href="<?php echo base_url();?>public/css/plugins/toastr/toastr.min.css">

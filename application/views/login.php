@@ -1,6 +1,6 @@
 <div class="modal inmodal" id="loginModal" tabindex="-1" role="dialog"  aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content animated fadeInDown">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content animated bounceIn">
             <?php
                 if( !$this->session->userdata('user_session') ){
                     echo form_open('Login');
@@ -21,15 +21,15 @@
                                 <label>Password</label>
                                 <input type="password" class="form-control" name="login_password" id="login-password" />
                             </div>
-                            <div class="form-group">
+                            <div class="form-group no-margin">
                                 <input type="submit" class="btn btn-primary full-width" value="Login"/>
                                 <div class="row padding-top">
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <div class="text-center">
                                             <small class="text-center"><a href="#">Forgot your Password?</a></small>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <div class="text-center">
                                             <small class="text-center"><a href="#">Create an Account?</a></small>
                                         </div>

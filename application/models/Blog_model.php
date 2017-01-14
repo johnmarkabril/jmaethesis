@@ -16,11 +16,10 @@ class Blog_model extends CI_Model
 		parent::__construct();
 	}
 
-	public function get_all_blog_limit()
+	public function get_all_blog()
 	{
 		$row = $this->db->where($this->deletion, "0")
 						->order_by($this->dbno, "ASC")
-						->limit(3)
 						->get($this->table);
 
 		return $row->result();

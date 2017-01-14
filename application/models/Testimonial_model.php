@@ -19,7 +19,6 @@ class Testimonial_model extends CI_Model
 	{
 		$row = $this->db->where($this->deletion, "0")
 						->order_by($this->dbno, "DESC")
-						->limit(5)
 						->get($this->table);
 
 		return $row->result();
