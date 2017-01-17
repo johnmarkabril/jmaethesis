@@ -24,7 +24,8 @@
                                 <?php echo $gaat->LIBRARYUSE; ?>
                             </div>
                             <div class="m-t text-righ text-center">
-                                <a href="#" class="btn btn-xs btn-outline btn-primary">Rent this site</i> </a>
+                                <a href="<?php echo $gaat->SITEURL; ?>" class="btn btn-xs btn-outline btn-info">Site Preview</i> </a>
+                                <span><a href="#" class="btn btn-xs btn-outline btn-primary">Rent this site</i> </a> </span>
                             </div>
                         </div>
                     </div>
