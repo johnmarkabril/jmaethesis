@@ -269,3 +269,9 @@ ul.dropdown-lr {
 }
 
 /* TESTIMONIAL END */
+
+@media screen and (max-width: 767px) {
+    #navtop-login-color {
+        color: #F0A32F;
+    }
+}
