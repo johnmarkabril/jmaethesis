@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 20, 2017 at 10:02 PM
+-- Generation Time: Jan 22, 2017 at 05:29 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.8
 
@@ -157,7 +157,7 @@ INSERT INTO `testimonial` (`NO`, `NAME`, `DESCRIPTION`, `DATE`, `HOUR`, `JOB`, `
 --
 
 CREATE TABLE `user` (
-  `ID` int(11) NOT NULL,
+  `NO` int(11) NOT NULL,
   `FIRSTNAME` varchar(100) NOT NULL,
   `LASTNAME` varchar(100) NOT NULL,
   `USERNAME` varchar(50) NOT NULL,
@@ -177,9 +177,9 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`ID`, `FIRSTNAME`, `LASTNAME`, `USERNAME`, `PHONENUMBER`, `EMAIL`, `PASSWORD`, `ACCOUNT_TYPE`, `ACTIVATED`, `VERIFIED`, `VERIFICATIONCODE`, `PERMISSION`, `IMAGEURL`, `DELETION`) VALUES
-(1, 'John Mark', 'Abril', 'jmabril17', '09208317004', 'johnmarkabril@gmail.com', '34c87211821751f911c058bbf0cfb822', 'User', 1, 'YES', '', '', '', 0),
-(2, 'Farrah Mae', 'Gregorio', 'frrhmgrgrio', '0948410511', 'frrhmgrgrio@gmail.com', '19a2be974580740e9ec96ab7fc016d1b', 'Administrator', 1, 'YES', '', '', '', 0);
+INSERT INTO `user` (`NO`, `FIRSTNAME`, `LASTNAME`, `USERNAME`, `PHONENUMBER`, `EMAIL`, `PASSWORD`, `ACCOUNT_TYPE`, `ACTIVATED`, `VERIFIED`, `VERIFICATIONCODE`, `PERMISSION`, `IMAGEURL`, `DELETION`) VALUES
+(1, 'John Mark', 'Abril', 'jmabril17', '09208317004', 'johnmarkabril@gmail.com', '34c87211821751f911c058bbf0cfb822', 'User', 1, 'YES', '', '', 'prof3.jpg', 0),
+(2, 'Farrah Mae', 'Gregorio', 'frrhmgrgrio', '0948410511', 'frrhmgrgrio@gmail.com', '19a2be974580740e9ec96ab7fc016d1b', 'Administrator', 1, 'YES', '', 'Dashboard|Messages|Compose Message|Inbox|Notification|Statistics|Settings|About My Site|Events|PayPal Configuration|User Management|Accounts|Agent|Co-Administrator|Website Online|Template|Team', 'prof1.jpg', 0);
 
 --
 -- Indexes for dumped tables
@@ -219,7 +219,7 @@ ALTER TABLE `testimonial`
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`NO`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -254,7 +254,7 @@ ALTER TABLE `testimonial`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
