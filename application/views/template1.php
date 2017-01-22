@@ -58,10 +58,10 @@
 						    	case 'Team':
 						    		echo $content;
 						    		break;
-						    	case 'Template':
+						    	case 'Website Online':
 						    		echo $content;
 						    		break;
-						    	case 'Website Online':
+						    	case 'Website Template':
 						    		echo $content;
 						    		break;
 							}

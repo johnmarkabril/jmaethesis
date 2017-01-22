@@ -99,12 +99,6 @@
                 </li>
             <?php } ?>
             
-            <?php if ( in_array("Template", $permission) ) { ?>
-                <li class="<?php echo ($this->curpage == 'Template') ? 'active' : ''; ?>">
-                    <a href="<?php echo base_url(); ?>admin/template"><i class="fa fa-bell"></i> <span class="nav-label">Template</span></a>
-                </li>
-            <?php } ?>
-            
             <?php if ( in_array("User Management", $permission) ) { ?>
                 <li class="<?php echo ($this->curpage == 'User Management' || $this->curpage == 'Account' || $this->curpage == 'Agent' || $this->curpage == 'Co-Administrator') ? 'active' : ''; ?>">
                     <a href="#"><i class="fa fa-cogs"></i> <span class="nav-label">User Management</span><span class="fa arrow"></span></a>
@@ -128,6 +122,12 @@
             <?php if ( in_array("Website Online", $permission) ) { ?>
                 <li class="<?php echo ($this->curpage == 'Website Online') ? 'active' : ''; ?>">
                     <a href="<?php echo base_url(); ?>admin/website_online"><i class="fa fa-bell"></i> <span class="nav-label">Website Online</span></a>
+                </li>
+            <?php } ?>
+            
+            <?php if ( in_array("Template", $permission) ) { ?>
+                <li class="<?php echo ($this->curpage == 'Website Template') ? 'active' : ''; ?>">
+                    <a href="<?php echo base_url(); ?>admin/website_template"><i class="fa fa-bell"></i> <span class="nav-label">Website Template</span></a>
                 </li>
             <?php } ?>
         </ul>
