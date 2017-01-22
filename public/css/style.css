@@ -363,7 +363,7 @@ body.canvas-menu .logo-element {
 }
 body.mini-navbar .nav-header {
   padding: 0;
-  background-color: #FF6BAE;
+  background-color: #0076BE;
 }
 body.canvas-menu .nav-header {
   padding: 33px 25px;
@@ -3367,10 +3367,10 @@ video {
   overflow-x: hidden;
 }
 .wrapper {
-  padding: 0 20px;
+  padding: 0 0px;
 }
 .wrapper-content {
-  padding: 15px;
+  padding: 0px;
   padding-bottom: 0px;
 }
 #page-wrapper {

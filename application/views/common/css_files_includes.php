@@ -6,7 +6,7 @@
 
 <link rel="icon" 
      type="image/png" 
-     href="<?php echo base_url(); ?>public/img/logo4.png">
+     href="<?php echo base_url(); ?>public/img/headlogo.png">
 
 <link rel="stylesheet" href="<?php echo base_url();?>public/css/bootstrap.min.css"/>
 

@@ -11,13 +11,17 @@ class Dashboard extends CI_Controller {
 
 	public function index()
 	{
-		$details = array (
+		if ( $this->session->userdata('user_session')->ACCOUNT_TYPE == "Administrator" ) {
+			$details = array (
 
-		);
+			);
 
-		$data['content']	=	$this->load->view('admin/dashboard', $details, TRUE);
-		$data['curpage']	= 	$this->curpage;
-		$this->load->view('template1', $data);
+			$data['content']	=	$this->load->view('admin/dashboard', $details, TRUE);
+			$data['curpage']	= 	$this->curpage;
+			$this->load->view('template1', $data);
+		} else {
+			redirect('/');
+		}	
 	}
 
 }

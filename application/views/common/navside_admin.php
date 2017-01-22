@@ -18,7 +18,6 @@
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
                         <li><a href="">Profile</a></li>
                         <li><a href="">Contacts</a></li>
-                        <li><a href="">Local Inbox</a></li>
                     </ul>
                 </div>
                 <div class="logo-element">
@@ -53,19 +52,21 @@
                 </ul>
             </li>
             <li class="">
-                <a href="#"><i class="fa fa-product-hunt"></i> <span class="nav-label">Product Management </span><span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level collapse">
-                    <li><a href="">Product Category</a></li>
-                    <li><a href="">Product Grid</a></li>
-                    <li><a href="">Product Sales</a></li>
-                </ul>
+                <a href=""><i class="fa fa-bell"></i> <span class="nav-label">Team</span></a>
+            </li>
+            <li class="">
+                <a href=""><i class="fa fa-bell"></i> <span class="nav-label">Template</span></a>
             </li>
             <li class="">
                 <a href="#"><i class="fa fa-cogs"></i> <span class="nav-label">User Management </span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse">
                     <li><a href="">Accounts</a></li>
+                    <li><a href="">Agent</a></li>
                     <li><a href="">Co-Administrator</a></li>
                 </ul>
+            </li>
+            <li class="">
+                <a href=""><i class="fa fa-bell"></i> <span class="nav-label">Website Online</span></a>
             </li>
         </ul>
     </div>

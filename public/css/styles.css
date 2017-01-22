@@ -19,6 +19,10 @@ ul.dropdown-lr {
   width: 300px;
 }
 
+.bg-white {
+  background-color: #FFFFFF;
+}
+
 /* mobile fix */
 @media (max-width: 768px) {
   .dropdown-lr h3 {
@@ -100,6 +104,11 @@ ul.dropdown-lr {
 .padding-left-right {
   padding-left: 15px;
   padding-right: 15px;
+}
+
+.no-padding-left-right {
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 .padding-all {
