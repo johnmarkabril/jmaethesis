@@ -2,7 +2,10 @@
 
 <nav class="navbar navbar-static-top no-margin-bottom padding-left-right bg-white" role="navigation">
     <ul class="nav navbar-top-links navbar-left text-center">
-        <h2 class="pad-left text-color-def text-bold">JMAE SITE PROVIDER</h2>
+        <center>
+            <img src="<?php echo base_url(); ?>public/img/logo5.png" class="img-responsive " style="height: 60px;width:150px;"/>
+        </center>
+        <!-- <h2 class="pad-left text-color-def text-bold">JMAE SITE PROVIDER</h2> -->
     </ul>
 
     <ul class="nav navbar-top-links navbar-right text-center">

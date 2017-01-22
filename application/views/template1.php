@@ -16,7 +16,52 @@
             		<div class="padding-top">
 						<?php
 							switch ($curpage) {
+						    	case 'About My Site':
+						    		echo $content;
+						    		break;
+						    	case 'Account':
+						    		echo $content;
+						    		break;
+						    	case 'Agent':
+						    		echo $content;
+						    		break;
+						    	case 'Compose Message':
+						    		echo $content;
+						    		break;
+						    	case 'Contact':
+						    		echo $content;
+						    		break;
+						    	case 'Co-Administrator':
+						    		echo $content;
+						    		break;
 						    	case 'Dashboard':
+						    		echo $content;
+						    		break;
+						    	case 'Events':
+						    		echo $content;
+						    		break;
+						    	case 'Inbox':
+						    		echo $content;
+						    		break;
+						    	case 'Notification':
+						    		echo $content;
+						    		break;
+						    	case 'PayPal Configuration':
+						    		echo $content;
+						    		break;
+						    	case 'Profile':
+						    		echo $content;
+						    		break;
+						    	case 'Reports':
+						    		echo $content;
+						    		break;
+						    	case 'Team':
+						    		echo $content;
+						    		break;
+						    	case 'Template':
+						    		echo $content;
+						    		break;
+						    	case 'Website Online':
 						    		echo $content;
 						    		break;
 							}

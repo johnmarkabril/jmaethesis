@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Dashboard extends CI_Controller {
+class Events extends CI_Controller {
 
 	public function __construct()
     {
         parent::__construct();
-        $this->curpage = "Dashboard";
+        $this->curpage = "Events";
         $this->load->model('Users_model');
     }
 
@@ -19,7 +19,7 @@ class Dashboard extends CI_Controller {
 				'get_admin_specific'		=>	$this->Users_model->get_admin_specific($user_session->NO)
 			);
 
-			$data['content']	=	$this->load->view('admin/dashboard', $details, TRUE);
+			$data['content']	=	$this->load->view('admin/events', $details, TRUE);
 			$data['curpage']	= 	$this->curpage;
 			$this->load->view('template1', $data);
 		} else {

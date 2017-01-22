@@ -6,11 +6,13 @@ if (!defined('BASEPATH'))
 class Users_model extends CI_Model
 {
 
-	public $email 		=	"EMAIL";
-	public $password 	=	"PASSWORD";
-	public $deletion	=	"DELETION";
-	public $verified	=	"VERIFIED";
-	public $table		=	"user";
+	public $email 			=	"EMAIL";
+	public $password 		=	"PASSWORD";
+	public $deletion		=	"DELETION";
+	public $account_type 	=	"ACCOUNT_TYPE";
+	public $verified		=	"VERIFIED";
+	public $dbno			=	"NO";
+	public $table			=	"user";
 
 	function __construct()
 	{
@@ -28,4 +30,13 @@ class Users_model extends CI_Model
 			return $row->row();
 	}
 
+	function get_admin_specific($no)
+	{
+		$row = $this->db->where($this->dbno,$no)
+						->where($this->account_type, 'Administrator')
+						->limit(1)
+						->get($this->table);
+
+			return $row->result();
+	}
 }
