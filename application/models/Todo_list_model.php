@@ -45,4 +45,14 @@ class Todo_list_model extends CI_Model
 				 ->where($this->liststatus, '1')
 				 ->update($this->table,$params);
 	}
+
+	public function get_numrows_todo_for_specific_admin($nouser)
+	{
+		$row = $this->db->where($this->deletion, "0")
+						->where($this->nouser, $nouser)
+						->order_by($this->dbno, "DESC")
+						->get($this->table);
+
+		return $row->num_rows();
+	}
 }

@@ -21,12 +21,38 @@
 
 
 <script>
-
+    <?php 
+        if($this->session->flashdata('error_message')){
+        ?>
+            toastr.error("<?php echo $this->session->flashdata('error_message'); ?>");
+    <?php } ?>
 	// PUT THE DEFAULT CODE HERE - START
 	$(document).ready(function(){
+        
 
         <?php 
             if ( $this->curpage == "Dashboard" ) {
+                if ( !empty ($get_all_issue_tracker) ) {
+                    foreach ( $get_all_issue_tracker as $gait ) :
+        ?>
+                        $("#replyID<?php echo $gait->NO; ?>").click(function(){
+                            $.ajax ({
+                                url: '<?php echo base_url(); ?>admin/dashboard/getReplyIssueTracker',
+                                method: "POST",
+                                data: {
+                                    no           : $("#replyNO<?php echo $gait->NO; ?>").val()
+                                },
+                                success:function(data){
+                                    $("#data-body-modal-issue-tracker<?php echo $gait->NO; ?>").html(data);
+                                },
+                                error:function(){
+                                    toastr.error('ERROR: Please refresh the page!');
+                                }
+                            });
+                        });
+        <?php
+                    endforeach;
+                }
                 if ( !empty($get_all_todo_for_specific_admin) ) {
                     foreach ( $get_all_todo_for_specific_admin as $gatfsa ) :
         ?> 

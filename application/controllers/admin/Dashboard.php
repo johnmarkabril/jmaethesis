@@ -7,6 +7,7 @@ class Dashboard extends CI_Controller {
     {
         parent::__construct();
         $this->curpage = "Dashboard";
+        $this->load->model('Issue_tracker_model');
         $this->load->model('Contact_admin_model');
         $this->load->model('Todo_list_model');
         $this->load->model('Users_model');
@@ -25,7 +26,8 @@ class Dashboard extends CI_Controller {
 			$details = array (
 				'get_admin_specific'					=>	$this->Users_model->get_admin_specific($user_session->NO),
 				'get_all_contact_for_specific_admin'	=>	$this->Contact_admin_model->get_all_contact_for_specific_admin($user_session->NO),
-				'get_all_todo_for_specific_admin'		=>	$this->Todo_list_model->get_all_todo_for_specific_admin($user_session->NO)
+				'get_all_todo_for_specific_admin'		=>	$this->Todo_list_model->get_all_todo_for_specific_admin($user_session->NO),
+				'get_all_issue_tracker'					=>	$this->Issue_tracker_model->get_all_issue_tracker()
 			);
 
 			$data['content']	=	$this->load->view('admin/dashboard', $details, TRUE);
@@ -106,18 +108,23 @@ class Dashboard extends CI_Controller {
 
 		if ( isset($_POST['dashTodo_create']) ) {
 
-			$params = array(
-				'NO'			=> 	'',
-				'NOUSER'		=> 	$this->nouser,
-				'LISTNAME'		=> 	$dashTodo_title_create,
-				'LISTSTATUS'	=> 	'0',
-				'DATE'			=> 	$this->date,
-				'TIME'			=> 	$this->time,
-				'DELETION'		=> 	'0'
-			);
+			$numrows_todo = $this->Todo_list_model->get_numrows_todo_for_specific_admin($this->nouser);
+			if ( $numrows_todo >= 7 ) {
+				$this->session->set_flashdata('error_message', 'To-Do List reached the maximum limit!');
+				redirect('/admin');
+			} else {
+				$params = array(
+					'NO'			=> 	'',
+					'NOUSER'		=> 	$this->nouser,
+					'LISTNAME'		=> 	$dashTodo_title_create,
+					'LISTSTATUS'	=> 	'0',
+					'DATE'			=> 	$this->date,
+					'TIME'			=> 	$this->time,
+					'DELETION'		=> 	'0'
+				);
 
-			$this->Todo_list_model->insert($params);
-			redirect('/');
+				$this->Todo_list_model->insert($params);
+			}
 		} else {
 			redirect('/');
 		}
@@ -134,4 +141,25 @@ class Dashboard extends CI_Controller {
 		redirect('/');
 	}
 
+	public function getReplyIssueTracker()
+	{
+		$no = $this->input->post('no');
+		$get_reply = $this->Issue_tracker_model->get_reply($no);
+
+		foreach ( $get_reply as $gr ) :
+			echo '
+				<div class="social-comment">
+                    <a href="" class="pull-left">
+                        <img alt="image" src="public/img/'.$gr->IMAGEURL.'">
+                    </a>
+                    <div class="media-body">
+                        <div class="text-bold">'.$gr->FIRSTNAME.' '.$gr->LASTNAME.'</div>
+                        '.$gr->REPLY.'
+                        <br>
+                        <small class="text-muted">'.$gr->DATE.'</small>
+                    </div>
+                </div>
+			';
+		endforeach;
+	}
 }
