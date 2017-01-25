@@ -13,7 +13,7 @@
             		<div class="row border-bottom">
             			<?php $this->load->view('common/navtop_admin'); ?>
             		</div>
-            		<div class="padding-top">
+            		<div>
 						<?php
 							switch ($curpage) {
 						    	case 'About My Site':

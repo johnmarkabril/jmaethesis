@@ -19,7 +19,7 @@ class Team extends CI_Controller {
 				'get_admin_specific'		=>	$this->Users_model->get_admin_specific($user_session->NO)
 			);
 
-			$data['content']	=	$this->load->view('admin/tean', $details, TRUE);
+			$data['content']	=	$this->load->view('admin/team', $details, TRUE);
 			$data['curpage']	= 	$this->curpage;
 			$this->load->view('template1', $data);
 		} else {

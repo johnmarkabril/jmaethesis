@@ -6,7 +6,7 @@
 
 <link rel="icon" 
      type="image/png" 
-     href="<?php echo base_url(); ?>public/img/headlogo.png">
+     href="<?php echo base_url(); ?>public/img/logo5.png">
 
 <link rel="stylesheet" href="<?php echo base_url();?>public/css/bootstrap.min.css"/>
 
@@ -27,6 +27,8 @@
 <link rel="stylesheet" href="<?php echo base_url();?>public/css/plugins/chosen/chosen.css">
 
 <link rel="stylesheet" href="<?php echo base_url();?>public/css/plugins/iCheck/custom.css">
+
+<link rel="stylesheet" href="<?php echo base_url();?>public/css/plugins/morris/morris-0.4.3.min.css">
 
 <link rel="stylesheet" href="<?php echo base_url();?>public/css/plugins/multipleimage/ninja-slider.css">
 

@@ -19,6 +19,12 @@ ul.dropdown-lr {
   width: 300px;
 }
 
+#tbody-issue-tracker {
+    height:315px;
+    overflow:scroll;
+    display:block;
+}
+
 .bg-white {
   background-color: #FFFFFF;
 }
@@ -66,6 +72,11 @@ ul.dropdown-lr {
 /*END OF MARGIN CODING*/
 
 /* PADDING CODING */
+
+.no-padding-top-bottom {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
 
 .padding-top-bottom-thirty {
   padding-top: 30px;
@@ -283,4 +294,16 @@ ul.dropdown-lr {
     #navtop-login-color {
         color: #F0A32F;
     }
+    .min-height {
+        height: auto;
+    }
+}
+
+.min-height {
+    min-height: 70%;
+}
+
+.img-prof-sidebar {
+  width: 100px;
+  height: 100px;
 }

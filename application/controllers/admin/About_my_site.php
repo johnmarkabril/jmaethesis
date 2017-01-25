@@ -7,7 +7,13 @@ class About_my_site extends CI_Controller {
     {
         parent::__construct();
         $this->curpage = "About My Site";
+        $this->load->model('About_my_site_model');
         $this->load->model('Users_model');
+
+        $this->nouser = $this->session->userdata('user_session')->NO;
+    	date_default_timezone_set("Asia/Manila");
+    	$this->date = date("F d, Y");
+    	$this->time = date("g:i A");
     }
 
 	public function index()
@@ -16,7 +22,9 @@ class About_my_site extends CI_Controller {
 
 		if ( $this->session->userdata('user_session')->ACCOUNT_TYPE == "Administrator" ) {
 			$details = array (
-				'get_admin_specific'		=>	$this->Users_model->get_admin_specific($user_session->NO)
+				'get_admin_specific'		=>	$this->Users_model->get_admin_specific($user_session->NO),
+				'get_all_aboutmysite'		=>	$this->About_my_site_model->get_all_aboutmysite(),
+				'get_specific'				=>	$this->About_my_site_model->get_latest()
 			);
 
 			$data['content']	=	$this->load->view('admin/aboutmysite', $details, TRUE);
@@ -27,4 +35,79 @@ class About_my_site extends CI_Controller {
 		}	
 	}
 
+	public function information($no)
+	{
+		$user_session = $this->session->userdata('user_session');
+
+		if ( $this->session->userdata('user_session')->ACCOUNT_TYPE == "Administrator" ) {
+			$details = array (
+				'get_admin_specific'		=>	$this->Users_model->get_admin_specific($user_session->NO),
+				'get_all_aboutmysite'		=>	$this->About_my_site_model->get_all_aboutmysite(),
+				'get_specific'				=>	$this->About_my_site_model->get_specific($no)
+			);
+
+			$data['content']	=	$this->load->view('admin/aboutmysite', $details, TRUE);
+			$data['curpage']	= 	$this->curpage;
+			$this->load->view('template1', $data);
+		} else {
+			redirect('/');
+		}
+	}
+
+	public function insert()
+	{
+		$ams_title			=	$this->input->post('ams_title');
+		$ams_description	=	$this->input->post('ams_description');
+
+		if ( $this->session->userdata('user_session')->ACCOUNT_TYPE == "Administrator" ) {
+
+			$params = array(
+				'NO'			=>	'',
+				'NOUSER'		=>	$this->nouser,
+				'TITLE'			=>	$ams_title,
+				'DESCRIPTION'	=>	$ams_description,
+				'DATE'			=>	$this->date,
+				'IMAGEURL'		=>	'',
+				'ACTIVE'		=>	'0',
+				'DELETION'		=>	'0'	
+			);
+
+			$this->About_my_site_model->insert($params);
+		} else {
+			redirect('/');
+		}
+	}
+	
+	public function update()
+	{
+		$ams_no_update			=	$this->input->post('ams_no_update');
+		$ams_title_update		=	$this->input->post('ams_title_update');
+		$ams_description_update	=	$this->input->post('ams_description_update');
+
+		if ( $this->session->userdata('user_session')->ACCOUNT_TYPE == "Administrator" ) {
+
+			$params = array(
+				'NOUSER'		=>	$this->nouser,
+				'TITLE'			=>	$ams_title_update,
+				'DESCRIPTION'	=>	$ams_description_update
+			);
+
+			$this->About_my_site_model->update($params, $ams_no_update);
+
+
+		} else {
+			redirect('/');
+		}
+	}
+
+	public function delete($no)
+	{
+		$params = array(
+			'DELETION'		=>	'1'
+		);
+
+
+		$this->About_my_site_model->update($params, $no);
+		redirect('/admin/about_my_site');
+	}
 }

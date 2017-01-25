@@ -3,19 +3,19 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Events_model extends CI_Model
+class About_my_site_model extends CI_Model
 {
 
-	public $table			=	"events";
+	public $table			=	"about_my_site";
 	public $dbno			=	"NO";
-	public $deletion		= 	"DELETION";
+	public $deletion		=	"DELETION";
 
 	function __construct()
 	{
 		parent::__construct();
 	}
 
-	public function get_all_events()
+	public function get_all_aboutmysite()
 	{
 		$row = $this->db->where($this->deletion, "0")
 						->order_by($this->dbno, "DESC")
@@ -60,5 +60,4 @@ class Events_model extends CI_Model
 		$this->db->where($this->dbno, $no)
 				 ->update($this->table, $params);
 	}
-
 }
