@@ -124,6 +124,7 @@ class Dashboard extends CI_Controller {
 				);
 
 				$this->Todo_list_model->insert($params);
+				redirect('/');
 			}
 		} else {
 			redirect('/');
@@ -161,5 +162,16 @@ class Dashboard extends CI_Controller {
                 </div>
 			';
 		endforeach;
+	}
+
+	public function solved_issue($no)
+	{
+		$params = array(
+			'DATE'		=> 	$this->date,
+			'TIME'		=> 	$this->time,
+			'STATUS'	=> 	'1'
+		);
+		$this->Issue_tracker_model->update($params,$no);
+		redirect('/');
 	}
 }

@@ -5,9 +5,9 @@ if (!defined('BASEPATH'))
 
 class Issue_tracker_model extends CI_Model
 {
-
+	public $tableUser		=	"user";
 	public $table			=	"issue_tracker";
-	public $dbno			=	"user.NO";
+	public $dbno			=	"NO";
 	public $nouser 			=	"NOUSER";
 	public $deletion		= 	"DELETION";
 
@@ -19,9 +19,9 @@ class Issue_tracker_model extends CI_Model
 	public function get_all_issue_tracker()
 	{
 		$row = $this->db->where('user.DELETION', "0")
-						->join('user','issue_tracker.NO = user.NO')
-						->order_by($this->dbno, "DESC")
-						->get($this->table);
+						->join('issue_tracker','user.NO = issue_tracker.NOUSER')
+						->order_by('user.NO', "DESC")
+						->get($this->tableUser);
 
 		return $row->result();
 	}
@@ -36,6 +36,12 @@ class Issue_tracker_model extends CI_Model
 						->get($this->table);
 
 		return $row->result();
+	}
+
+	public function update($params, $no)
+	{
+		$this->db->where($this->dbno, $no)
+				 ->update($this->table, $params);
 	}
 
 }

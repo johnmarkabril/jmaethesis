@@ -38,7 +38,7 @@
                                     </td>
                                     <input type="text" style="display: none;" id="replyNO<?php echo $gait->NO; ?>" value="<?php echo $gait->NO; ?>"/>
                                     <td class="text-center">
-                                        <a class="btn btn-white btn-xs full-width"> Resolve</a>
+                                        <a href="<?php echo base_url(); ?>admin/dashboard/solved_issue/<?php echo $gait->NO; ?>" class="btn btn-white btn-xs full-width"> Resolve</a>
                                         <a data-toggle="modal" id="replyID<?php echo $gait->NO; ?>" data-target="#replyIssueDashModal<?php echo $gait->NO; ?>" class="btn btn-white btn-xs full-width"> Reply</a>
                                     </td>
                                 </tr>

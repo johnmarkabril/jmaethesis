@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 25, 2017 at 09:40 PM
+-- Generation Time: Jan 26, 2017 at 12:42 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.8
 
@@ -149,6 +149,54 @@ INSERT INTO `events` (`NO`, `NOUSER`, `TITLE`, `DESCRIPTION`, `DATE`, `IMAGEURL`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `issue_tracker`
+--
+
+CREATE TABLE `issue_tracker` (
+  `NO` int(11) NOT NULL,
+  `NOUSER` varchar(500) NOT NULL,
+  `TITLE` varchar(100) NOT NULL,
+  `DESCRIPTION` varchar(5000) NOT NULL,
+  `IMAGEURL` varchar(500) NOT NULL,
+  `DATE` varchar(100) NOT NULL,
+  `TIME` varchar(100) NOT NULL,
+  `STATUS` varchar(100) NOT NULL,
+  `DELETION` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `issue_tracker`
+--
+
+INSERT INTO `issue_tracker` (`NO`, `NOUSER`, `TITLE`, `DESCRIPTION`, `IMAGEURL`, `DATE`, `TIME`, `STATUS`, `DELETION`) VALUES
+(1, '1', 'CHANGE IP ADDRESS', 'I WANT TO CHANGE MY IP ADDRESS FROM 31.220.58.2 TO 31.220.58.18', 'prof1.jpg', 'January 26, 2017', '05:18 AM', '2', 0),
+(2, '1', 'DISABLE MY DOMAIN NAME', 'I WANT TO DISABLE MY DOMAIN NAME ON MY VPS SERVER?', 'prof1.jpg', 'January 26, 2017', '7:32 AM', '1', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `issue_tracker_reply`
+--
+
+CREATE TABLE `issue_tracker_reply` (
+  `NO` int(11) NOT NULL,
+  `ISSUETRACKERNO` varchar(500) NOT NULL,
+  `NOREPLYFROM` varchar(500) NOT NULL,
+  `REPLY` varchar(5000) NOT NULL,
+  `DELETION` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `issue_tracker_reply`
+--
+
+INSERT INTO `issue_tracker_reply` (`NO`, `ISSUETRACKERNO`, `NOREPLYFROM`, `REPLY`, `DELETION`) VALUES
+(1, '1', '2', 'Could you please tell us what is the reason you would like to change IP Address, as the IP assigned to a server is a dedicated one?', 0),
+(2, '1', '1', 'Because my domain name jmaeprovider.xyz has an ip address 31.220.110.18 and i can''t access the cpanel of my server ! I thought if i purchased a vps server i can automatically access my cpanel and create a subdomain using php code!', 0);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `team`
 --
 
@@ -250,10 +298,11 @@ INSERT INTO `todo_list` (`NO`, `NOUSER`, `LISTNAME`, `LISTSTATUS`, `DATE`, `TIME
 (1, '2', 'Total Sales', '0', 'January 26, 2017', '4:23 AM', 0),
 (2, '2', 'Last Month Sales', '0', 'January 26, 2017', '4:23 AM', 0),
 (3, '2', 'Total Templates', '0', 'January 26, 2017', '4:22 AM', 0),
-(4, '2', 'Site Visit', '0', 'January 26, 2017', '4:30 AM', 0),
+(4, '2', 'Site Visit', '1', 'January 26, 2017', '7:33 AM', 1),
 (5, '2', 'Sales for the year', '0', 'January 26, 2017', '4:30 AM', 0),
-(6, '2', 'Contact', '1', 'January 26, 2017', '4:39 AM', 1),
-(7, '2', 'Todo List', '0', 'January 26, 2017', '4:32 AM', 0);
+(6, '2', 'Contact', '1', 'January 26, 2017', '7:33 AM', 0),
+(7, '2', 'Todo List', '1', 'January 26, 2017', '7:33 AM', 0),
+(9, '2', 'Issue tracker', '1', 'January 26, 2017', '7:33 AM', 0);
 
 -- --------------------------------------------------------
 
@@ -321,6 +370,18 @@ ALTER TABLE `events`
   ADD PRIMARY KEY (`NO`);
 
 --
+-- Indexes for table `issue_tracker`
+--
+ALTER TABLE `issue_tracker`
+  ADD PRIMARY KEY (`NO`);
+
+--
+-- Indexes for table `issue_tracker_reply`
+--
+ALTER TABLE `issue_tracker_reply`
+  ADD PRIMARY KEY (`NO`);
+
+--
 -- Indexes for table `team`
 --
 ALTER TABLE `team`
@@ -380,6 +441,16 @@ ALTER TABLE `contact_admin`
 ALTER TABLE `events`
   MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
+-- AUTO_INCREMENT for table `issue_tracker`
+--
+ALTER TABLE `issue_tracker`
+  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `issue_tracker_reply`
+--
+ALTER TABLE `issue_tracker_reply`
+  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT for table `team`
 --
 ALTER TABLE `team`
@@ -398,7 +469,7 @@ ALTER TABLE `testimonial`
 -- AUTO_INCREMENT for table `todo_list`
 --
 ALTER TABLE `todo_list`
-  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `user`
 --
