@@ -11,13 +11,13 @@
                     <div class="table-responsive">
 
                         <table class="table table-striped text-center">
-                            <?php if(!empty($get_all_aboutmysite)) {?>
+                            <?php if(!empty($get_all_inbox_spec_user)) {?>
                                 <tbody class="list" id="aboutmysite_left_list">
 
-                                    <?php foreach($get_all_aboutmysite as $gaa) :?>
+                                    <?php foreach($get_all_inbox_spec_user as $gaisu) :?>
                                         <tr>
                                             <td class="title">
-                                                <a href="<?php echo base_url();?>admin/about_my_site/information/<?php echo $gaa->NO;?>"><?php echo $gaa->TITLE;?></a>
+                                                <a href="<?php echo base_url();?>admin/message/content/<?php echo $gaisu->NO;?>"><?php echo $gaisu->SUBJECT;?></a>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
