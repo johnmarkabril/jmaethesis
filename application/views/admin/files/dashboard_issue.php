@@ -8,6 +8,7 @@
                 <table class="table table-hover issue-tracker">
                     <tbody id="tbody-issue-tracker">
                         <?php
+                            // print_r($get_all_issue_tracker);
                             foreach ( $get_all_issue_tracker as $gait ) :
                         ?>
                                 <tr>
@@ -34,7 +35,7 @@
                                         <?php echo $gait->FIRSTNAME.' '.$gait->LASTNAME; ?>
                                     </td>
                                     <td class="text-center">
-                                        <?php echo $gait->TIME." ".$gait->DATE; ?>
+                                        <?php echo $gait->DATEINSERT; ?>
                                     </td>
                                     <input type="text" style="display: none;" id="replyNO<?php echo $gait->NO; ?>" value="<?php echo $gait->NO; ?>"/>
                                     <td class="text-center">
@@ -75,7 +76,7 @@
                                         <img alt="image" src="<?php echo base_url(); ?>public/img/<?php echo $this->session->userdata('user_session')->IMAGEURL; ?>">
                                     </a>
                                     <div class="media-body">
-                                        <textarea class="form-control" placeholder="Write comment..." style="max-height: 20%;min-height: 20%;"></textarea>
+                                        <textarea class="form-control" id="replyforIssueID<?php echo $gait->NO; ?>" placeholder="Write comment..." style="max-height: 20%;min-height: 20%;"></textarea>
                                     </div>
                                 </div>
 

@@ -56,18 +56,9 @@
                 </li>
             <?php } ?>
 
-            <?php if ( in_array("Messages", $permission) ) { ?>
-                <li class="<?php echo ($this->curpage == 'Messages' || $this->curpage == 'Compose Message' || $this->curpage == 'Inbox') ? 'active' : ''; ?>">
-                    <a href=""><i class="fa fa-envelope"></i> <span class="nav-label">Messages </span><span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level collapse">
-                        <?php if ( in_array("Compose Message", $permission) ) { ?>
-                            <li><a href="<?php echo base_url(); ?>admin/compose_message">Compose Message</a></li>
-                        <?php } ?>
-
-                        <?php if ( in_array("Inbox", $permission) ) { ?>
-                            <li><a href="<?php echo base_url(); ?>admin/inbox">Inbox</a></li>
-                        <?php } ?>
-                    </ul>
+            <?php if ( in_array("Message", $permission) ) { ?>
+                <li class="<?php echo ($this->curpage == 'Message') ? 'active' : ''; ?>">
+                    <a href="<?php echo base_url(); ?>admin/message"><i class="fa fa-envelope"></i> <span class="nav-label">Message</span></a>
                 </li>
             <?php } ?>
             

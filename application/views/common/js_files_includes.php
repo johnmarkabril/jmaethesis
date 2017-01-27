@@ -28,13 +28,38 @@
     <?php } ?>
 	// PUT THE DEFAULT CODE HERE - START
 	$(document).ready(function(){
-        
+
 
         <?php 
             if ( $this->curpage == "Dashboard" ) {
                 if ( !empty ($get_all_issue_tracker) ) {
                     foreach ( $get_all_issue_tracker as $gait ) :
         ?>
+                        $('#replyforIssueID<?php echo $gait->NO; ?>').keypress(function(event) {
+                            if (event.keyCode == 13 && !event.shiftKey) {
+                                if ( $('#replyforIssueID<?php echo $gait->NO; ?>').val() ) {
+                                    $.ajax ({
+                                        url: '<?php echo base_url(); ?>admin/dashboard/insert_reply',
+                                        method: "POST",
+                                        data: {
+                                            issueTrackerNo      :   '<?php echo $gait->NO; ?>',
+                                            issueTrackerReply   :   $('#replyforIssueID<?php echo $gait->NO; ?>').val()
+                                        },
+                                        success:function(data){
+                                            location.reload('/admin');
+                                        },
+                                        error:function(){
+                                            toastr.error('ERROR: Please refresh the page!');
+                                        }
+                                    });
+                                } else {
+                                    return false;
+                                }
+                            }
+                        });
+
+
+
                         $("#replyID<?php echo $gait->NO; ?>").click(function(){
                             $.ajax ({
                                 url: '<?php echo base_url(); ?>admin/dashboard/getReplyIssueTracker',

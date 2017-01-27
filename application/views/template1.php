@@ -25,9 +25,6 @@
 						    	case 'Agent':
 						    		echo $content;
 						    		break;
-						    	case 'Compose Message':
-						    		echo $content;
-						    		break;
 						    	case 'Contact':
 						    		echo $content;
 						    		break;
@@ -40,7 +37,7 @@
 						    	case 'Events':
 						    		echo $content;
 						    		break;
-						    	case 'Inbox':
+						    	case 'Message':
 						    		echo $content;
 						    		break;
 						    	case 'Notification':

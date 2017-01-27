@@ -20,7 +20,7 @@ class Issue_tracker_model extends CI_Model
 	{
 		$row = $this->db->where('user.DELETION', "0")
 						->join('issue_tracker','user.NO = issue_tracker.NOUSER')
-						->order_by('user.NO', "DESC")
+						->order_by('issue_tracker.NO', "DESC")
 						->get($this->tableUser);
 
 		return $row->result();
@@ -30,9 +30,9 @@ class Issue_tracker_model extends CI_Model
 	{
 		$row = $this->db->join('issue_tracker_reply','issue_tracker.NO = issue_tracker_reply.ISSUETRACKERNO')
 						->join('user','issue_tracker_reply.NOREPLYFROM = user.NO')
-						->order_by('issue_tracker.NO', "ASC")
 						->where('issue_tracker_reply.DELETION', '0')
 						->where('issue_tracker_reply.ISSUETRACKERNO', $no)
+						->order_by('issue_tracker_reply.NO', "ASC")
 						->get($this->table);
 
 		return $row->result();

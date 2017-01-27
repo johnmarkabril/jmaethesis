@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 26, 2017 at 12:42 AM
+-- Generation Time: Jan 27, 2017 at 04:43 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.8
 
@@ -158,9 +158,8 @@ CREATE TABLE `issue_tracker` (
   `TITLE` varchar(100) NOT NULL,
   `DESCRIPTION` varchar(5000) NOT NULL,
   `IMAGEURL` varchar(500) NOT NULL,
-  `DATE` varchar(100) NOT NULL,
-  `TIME` varchar(100) NOT NULL,
   `STATUS` varchar(100) NOT NULL,
+  `DATEINSERT` varchar(100) NOT NULL,
   `DELETION` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -168,9 +167,9 @@ CREATE TABLE `issue_tracker` (
 -- Dumping data for table `issue_tracker`
 --
 
-INSERT INTO `issue_tracker` (`NO`, `NOUSER`, `TITLE`, `DESCRIPTION`, `IMAGEURL`, `DATE`, `TIME`, `STATUS`, `DELETION`) VALUES
-(1, '1', 'CHANGE IP ADDRESS', 'I WANT TO CHANGE MY IP ADDRESS FROM 31.220.58.2 TO 31.220.58.18', 'prof1.jpg', 'January 26, 2017', '05:18 AM', '2', 0),
-(2, '1', 'DISABLE MY DOMAIN NAME', 'I WANT TO DISABLE MY DOMAIN NAME ON MY VPS SERVER?', 'prof1.jpg', 'January 26, 2017', '7:32 AM', '1', 0);
+INSERT INTO `issue_tracker` (`NO`, `NOUSER`, `TITLE`, `DESCRIPTION`, `IMAGEURL`, `STATUS`, `DATEINSERT`, `DELETION`) VALUES
+(1, '1', 'CHANGE IP ADDRESS', 'I WANT TO CHANGE MY IP ADDRESS FROM 31.220.58.2 TO 31.220.58.18', 'prof1.jpg', '1', 'January 27, 2017 11:10 AM', 0),
+(2, '1', 'DISABLE MY DOMAIN NAME', 'I WANT TO DISABLE MY DOMAIN NAME ON MY VPS SERVER?', 'prof1.jpg', '1', 'January 27, 2017 11:10 AM', 0);
 
 -- --------------------------------------------------------
 
@@ -183,6 +182,8 @@ CREATE TABLE `issue_tracker_reply` (
   `ISSUETRACKERNO` varchar(500) NOT NULL,
   `NOREPLYFROM` varchar(500) NOT NULL,
   `REPLY` varchar(5000) NOT NULL,
+  `DATE` varchar(100) NOT NULL,
+  `TIME` varchar(100) NOT NULL,
   `DELETION` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -190,9 +191,16 @@ CREATE TABLE `issue_tracker_reply` (
 -- Dumping data for table `issue_tracker_reply`
 --
 
-INSERT INTO `issue_tracker_reply` (`NO`, `ISSUETRACKERNO`, `NOREPLYFROM`, `REPLY`, `DELETION`) VALUES
-(1, '1', '2', 'Could you please tell us what is the reason you would like to change IP Address, as the IP assigned to a server is a dedicated one?', 0),
-(2, '1', '1', 'Because my domain name jmaeprovider.xyz has an ip address 31.220.110.18 and i can''t access the cpanel of my server ! I thought if i purchased a vps server i can automatically access my cpanel and create a subdomain using php code!', 0);
+INSERT INTO `issue_tracker_reply` (`NO`, `ISSUETRACKERNO`, `NOREPLYFROM`, `REPLY`, `DATE`, `TIME`, `DELETION`) VALUES
+(1, '1', '2', 'Could you please tell us what is the reason you would like to change IP Address, as the IP assigned to a server is a dedicated one?', 'January 25, 2017', '10:01 AM', 0),
+(2, '1', '1', 'Because my domain name jmaeprovider.xyz has an ip address 31.220.110.18 and i can''t access the cpanel of my server ! I thought if i purchased a vps server i can automatically access my cpanel and create a subdomain using php code!', 'January 25, 2017', '10:01 AM', 0),
+(3, '2', '2', 'Testing #1', 'January 26, 2017', '10:01 AM', 0),
+(4, '2', '2', 'Open this issue.', 'January 26, 2017', '10:01 AM', 0),
+(7, '2', '2', 'TEsting # 3', 'January 27, 2017', '10:01 AM', 0),
+(8, '2', '2', 'TEsting # 4', 'January 27, 2017', '10:01 AM', 0),
+(9, '2', '2', 'Yes this reply is done!', 'January 27, 2017', '10:01 AM', 0),
+(10, '2', '1', 'Testing', 'January 27, 2017', '11:08 AM', 0),
+(11, '1', '2', 'Testing # 6', 'January 27, 2017', '11:10 AM', 0);
 
 -- --------------------------------------------------------
 
@@ -296,13 +304,14 @@ CREATE TABLE `todo_list` (
 
 INSERT INTO `todo_list` (`NO`, `NOUSER`, `LISTNAME`, `LISTSTATUS`, `DATE`, `TIME`, `DELETION`) VALUES
 (1, '2', 'Total Sales', '0', 'January 26, 2017', '4:23 AM', 0),
-(2, '2', 'Last Month Sales', '0', 'January 26, 2017', '4:23 AM', 0),
+(2, '2', 'Last Month Sales', '0', 'January 27, 2017', '10:51 AM', 0),
 (3, '2', 'Total Templates', '0', 'January 26, 2017', '4:22 AM', 0),
-(4, '2', 'Site Visit', '1', 'January 26, 2017', '7:33 AM', 1),
-(5, '2', 'Sales for the year', '0', 'January 26, 2017', '4:30 AM', 0),
-(6, '2', 'Contact', '1', 'January 26, 2017', '7:33 AM', 0),
-(7, '2', 'Todo List', '1', 'January 26, 2017', '7:33 AM', 0),
-(9, '2', 'Issue tracker', '1', 'January 26, 2017', '7:33 AM', 0);
+(4, '2', 'Site Visit', '1', 'January 26, 2017', '3:30 PM', 1),
+(5, '2', 'Sales for the year', '0', 'January 26, 2017', '3:26 PM', 0),
+(6, '2', 'Contact', '1', 'January 26, 2017', '3:30 PM', 0),
+(7, '2', 'Todo List', '1', 'January 26, 2017', '3:30 PM', 0),
+(9, '2', 'Issue tracker', '1', 'January 26, 2017', '3:30 PM', 1),
+(10, '2', 'Issue tracker', '1', 'January 26, 2017', '3:30 PM', 0);
 
 -- --------------------------------------------------------
 
@@ -333,7 +342,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`NO`, `FIRSTNAME`, `LASTNAME`, `USERNAME`, `PHONENUMBER`, `EMAIL`, `PASSWORD`, `ACCOUNT_TYPE`, `ACTIVATED`, `VERIFIED`, `VERIFICATIONCODE`, `PERMISSION`, `IMAGEURL`, `DELETION`) VALUES
 (1, 'John Mark', 'Abril', 'jmabril17', '09208317004', 'johnmarkabril@gmail.com', 'ae2b1fca515949e5d54fb22b8ed95575', 'User', 1, 'YES', '', '', 'prof3.jpg', 0),
-(2, 'Farrah Mae', 'Gregorio', 'frrhmgrgrio', '0948410511', 'frrhmgrgrio@gmail.com', 'ae2b1fca515949e5d54fb22b8ed95575', 'Administrator', 1, 'YES', '', 'Dashboard|Messages|Compose Message|Inbox|Notification|Statistics|Settings|About My Site|Events|PayPal Configuration|User Management|Accounts|Agent|Co-Administrator|Website|Website Online|Website Template|Team', 'prof1.jpg', 0);
+(2, 'Farrah Mae', 'Gregorio', 'frrhmgrgrio', '0948410511', 'frrhmgrgrio@gmail.com', 'ae2b1fca515949e5d54fb22b8ed95575', 'Administrator', 1, 'YES', '', 'Dashboard|Message|Notification|Statistics|Settings|About My Site|Events|PayPal Configuration|User Management|Accounts|Agent|Co-Administrator|Website|Website Online|Website Template|Team', 'prof1.jpg', 0);
 
 --
 -- Indexes for dumped tables
@@ -449,7 +458,7 @@ ALTER TABLE `issue_tracker`
 -- AUTO_INCREMENT for table `issue_tracker_reply`
 --
 ALTER TABLE `issue_tracker_reply`
-  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `team`
 --
@@ -469,7 +478,7 @@ ALTER TABLE `testimonial`
 -- AUTO_INCREMENT for table `todo_list`
 --
 ALTER TABLE `todo_list`
-  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `user`
 --

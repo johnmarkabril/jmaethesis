@@ -8,6 +8,7 @@ class Dashboard extends CI_Controller {
         parent::__construct();
         $this->curpage = "Dashboard";
         $this->load->model('Issue_tracker_model');
+        $this->load->model('Issue_tracker_reply_model');
         $this->load->model('Contact_admin_model');
         $this->load->model('Todo_list_model');
         $this->load->model('Users_model');
@@ -157,7 +158,7 @@ class Dashboard extends CI_Controller {
                         <div class="text-bold">'.$gr->FIRSTNAME.' '.$gr->LASTNAME.'</div>
                         '.$gr->REPLY.'
                         <br>
-                        <small class="text-muted">'.$gr->DATE.'</small>
+                        <small class="text-muted">'.$gr->DATE.' - '.$gr->TIME.'</small>
                     </div>
                 </div>
 			';
@@ -167,11 +168,34 @@ class Dashboard extends CI_Controller {
 	public function solved_issue($no)
 	{
 		$params = array(
-			'DATE'		=> 	$this->date,
-			'TIME'		=> 	$this->time,
-			'STATUS'	=> 	'1'
+			'STATUS'	=> 	'1',
+			'DATEINSERT'	=>	$this->date.' '.$this->time
 		);
 		$this->Issue_tracker_model->update($params,$no);
 		redirect('/');
+	}
+
+	public function insert_reply()
+	{
+		$issueTrackerNo 	= $this->input->post('issueTrackerNo');
+		$issueTrackerReply 	= $this->input->post('issueTrackerReply');
+		
+		$params = array(
+			'NO'				=> '',
+			'ISSUETRACKERNO'	=> $issueTrackerNo,
+			'NOREPLYFROM'		=> $this->nouser,
+			'REPLY'				=> $issueTrackerReply,
+			'DATE'				=> $this->date,
+			'TIME'				=> $this->time,
+			'DELETION'			=> 0
+		);
+		$this->Issue_tracker_reply_model->insert_reply($params);
+
+		$params = array(
+			'STATUS'		=> 	'2',
+			'DATEINSERT'	=>	$this->date.' '.$this->time
+		);
+
+		$this->Issue_tracker_model->update($params, $issueTrackerNo);
 	}
 }

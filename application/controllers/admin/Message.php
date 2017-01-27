@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Compose_message extends CI_Controller {
+class Message extends CI_Controller {
 
 	public function __construct()
     {
         parent::__construct();
-        $this->curpage = "Compose Message";
+        $this->curpage = "Message";
         $this->load->model('Users_model');
     }
 
@@ -19,7 +19,7 @@ class Compose_message extends CI_Controller {
 				'get_admin_specific'		=>	$this->Users_model->get_admin_specific($user_session->NO)
 			);
 
-			$data['content']	=	$this->load->view('admin/composemessage', $details, TRUE);
+			$data['content']	=	$this->load->view('admin/message', $details, TRUE);
 			$data['curpage']	= 	$this->curpage;
 			$this->load->view('template1', $data);
 		} else {
