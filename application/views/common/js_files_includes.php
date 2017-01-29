@@ -29,6 +29,116 @@
 	// PUT THE DEFAULT CODE HERE - START
 	$(document).ready(function(){
 
+        function clearAllErrorMessage()
+        {
+            $('#error_cm_subject').text('');
+            $('#error_cm_message').text('');
+        }
+
+        $('#cm_create').click(function(){
+            var email = $('#cm_email').val();
+            var subject = $('#cm_subject').val();
+            var message = $('#cm_message').val();
+            if ( email ) {
+
+                $.ajax ({
+                    url: '<?php echo base_url(); ?>admin/message/checkEmail',
+                    method: "POST",
+                    data: {
+                        email    :     $('#cm_email').val()
+                    },
+                    success:function(data){
+                        if ( data == 0 ) {
+                            $('#error_cm_email').text('  ERROR: Email address is invalid!');
+                            // alert('asdf');
+                        } else {
+                            $('#error_cm_email').text('');
+                            if ( subject ) {
+                                if ( message ) {
+                                    $.ajax ({
+                                        url: '<?php echo base_url(); ?>admin/message/new_message',
+                                        method: "POST",
+                                        data: {
+                                            email       :       $('#cm_email').val(),
+                                            subject     :       $('#cm_subject').val(),
+                                            message     :       $('#cm_message').val()
+                                        },
+                                        success:function(data){
+                                            location.reload('/message/');
+                                            // alert(data);
+                                        },
+                                        error:function(){
+                                            toastr.error('ERROR: Please refresh the page!');
+                                        }
+                                    }); 
+                                } else {
+                                    clearAllErrorMessage();
+                                    $('#error_cm_message').text('  ERROR: Please fill this field!');
+                                }
+                            } else {
+                                clearAllErrorMessage();
+                                $('#error_cm_subject').text('  ERROR: Please fill this field!');
+                            }
+                        }
+                    },
+                    error:function(){
+                        toastr.error('ERROR: Please refresh the page!');
+                    }
+                });   
+            } else {
+                clearAllErrorMessage();
+                $('#error_cm_email').text('  ERROR: Please fill this field!');
+            }
+        });
+
+        $('#cm_email').on('input',function(e){
+            var email = $('#cm_email').val();
+            if ( email.length >= 10 ) {
+                $.ajax ({
+                    url: '<?php echo base_url(); ?>admin/message/checkEmail',
+                    method: "POST",
+                    data: {
+                        email    :     $('#cm_email').val()
+                    },
+                    success:function(data){
+                        if ( data == 0 ) {
+                            $('#error_cm_email').text('  ERROR: Email address is invalid!');
+                            // alert('asdf');
+                        } else {
+                            $('#error_cm_email').text('');
+                        }
+                    },
+                    error:function(){
+                        toastr.error('ERROR: Please refresh the page!');
+                    }
+                });            
+            } else {
+                $('#error_cm_email').text('');
+            }
+        });
+
+        $('#messageReply').keypress(function(event) {
+            if (event.keyCode == 13 && !event.shiftKey) {
+                if ( $('#messageReply').val() ) {
+                    $.ajax ({
+                        url: '<?php echo base_url(); ?>admin/message/insert_reply',
+                        method: "POST",
+                        data: {
+                            replyMessage    :     $('#messageReply').val(),
+                            messageNo       :     '<?php echo $this->uri->segment(4); ?>'
+                        },
+                        success:function(data){
+                            location.reload('/message/content/'+'<?php echo $this->uri->segment(4); ?>');
+                        },
+                        error:function(){
+                            toastr.error('ERROR: Please refresh the page!');
+                        }
+                    });
+                } else {
+                    return false;
+                }
+            }
+        });
 
         <?php 
             if ( $this->curpage == "Dashboard" ) {

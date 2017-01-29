@@ -35,19 +35,23 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content animated pulse">
             <div class="modal-header">
-                <h4 class="modal-title">About My Site - Create</h4>
+                <h4 class="modal-title">Compose Message</h4>
             </div>
             <div class="modal-body no-padding-bottom">
                 <div class="form-group">
-                    <label>Title</label>
-                    <input type="text" class="form-control" id="ams_title" />
+                    <label>Email Address</label><small id="error_cm_email" style="color:red;"></small>
+                    <input type="text" class="form-control" id="cm_email" />
                 </div>
                 <div class="form-group">
-                    <label>Description</label>
-                    <textarea style="min-height: 150px;max-height: 150px;max-width: 100%" id="ams_description" class="form-control"></textarea>
+                    <label>Subject</label><small id="error_cm_subject" style="color:red;"></small>
+                    <input type="text" class="form-control" id="cm_subject" />
                 </div>
                 <div class="form-group">
-                    <input type="button" class="btn btn-success full-width" id="ams_create" data-dismiss="modal" value="Submit"/>
+                    <label>Message</label><small id="error_cm_message" style="color:red;"></small>
+                    <textarea style="min-height: 150px;max-height: 150px;max-width: 100%" id="cm_message" class="form-control"></textarea>
+                </div>
+                <div class="form-group">
+                    <input type="button" class="btn btn-success full-width" id="cm_create" value="Send message"/>
                 </div>
             </div>
         </div>

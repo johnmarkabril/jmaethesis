@@ -27,4 +27,9 @@ class Inbox_reply_model extends CI_Model
 				return $row->result();
 	}
 
+	public function insert($params)
+	{
+		$this->db->insert($this->table, $params);
+	}
+
 }

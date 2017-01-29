@@ -8,7 +8,7 @@ class Inbox_model extends CI_Model
 
 	public $table			=	"inbox";
 	public $dbno			=	"NO";
-	public $userto 		=	"USERTO";
+	public $userto 			=	"USERTO";
 	public $deletion		=	"DELETION";
 
 	function __construct()
@@ -34,5 +34,10 @@ class Inbox_model extends CI_Model
 						->get($this->table);
 
 				return $row->result();
+	}
+
+	public function new_message($params)
+	{
+		$this->db->insert($this->table, $params);
 	}
 }

@@ -39,4 +39,13 @@ class Users_model extends CI_Model
 
 			return $row->result();
 	}
+
+	function checkEmail($email)
+	{
+		$row = $this->db->where($this->email,$email)
+						->limit(1)
+						->get($this->table);
+
+			return $row->result();
+	}
 }

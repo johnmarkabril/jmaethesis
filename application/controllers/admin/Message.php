@@ -52,4 +52,58 @@ class Message extends CI_Controller {
 		}	
 	}
 
+	public function insert_reply()
+	{
+		$replyMessage 	= 	$this->input->post('replyMessage');
+		$messageNo 		=	$this->input->post('messageNo');
+
+		// print_r($messageNo);
+		$params = array(
+			'NO'			=>	'',
+			'NOINBOX'		=>	$messageNo,
+			'NOUSER'		=>	$this->nouser,
+			'REPLY'			=>	$replyMessage,
+			'DATE'			=>	$this->date,
+			'TIME'			=>	$this->time,
+			'DELETION'		=>	'0'
+		);
+
+		$this->Inbox_reply_model->insert($params);
+	}
+
+	public function new_message()
+	{
+		$cm_email		= $this->input->post('email');
+		$cm_subject		= $this->input->post('subject');
+		$cm_message		= $this->input->post('message');
+
+		$result = $this->Users_model->checkEmail($cm_email);
+
+		$params = array(
+			'NO'			=> '',
+			'USERFROM'		=> $this->nouser,
+			'USERTO'		=> $result[0]->NO,
+			'SUBJECT'		=> $cm_subject,
+			'CONTENT'		=> $cm_message,
+			'DATE'			=> $this->date,
+			'TIME'			=> $this->time,
+			'DELETION'		=> '0'
+		);
+
+		$this->Inbox_model->new_message($params);
+		// print_r($result[0]->NO);
+	}
+
+	public function checkEmail()
+	{
+		$email = $this->input->post('email');
+
+		$result = $this->Users_model->checkEmail($email);
+
+		if ( empty($result) ) {
+			echo '0';
+		} else {
+			echo '1';
+		}
+	}
 }
