@@ -3,7 +3,7 @@
         List
         <span class="pull-right"><a data-toggle="modal" data-target="#createModal">Create</a></span>
     </div>
-    <div class="ibox-content min-height">
+    <div class="ibox-content min-height" id="search">
         <div class="no-margins">
             <div class="row">
                 <div class="col-md-12">
@@ -12,7 +12,7 @@
 
                         <table class="table table-striped text-center">
                             <?php if(!empty($get_all_aboutmysite)) {?>
-                                <tbody class="list" id="aboutmysite_left_list">
+                                <tbody class="list">
 
                                     <?php foreach($get_all_aboutmysite as $gaa) :?>
                                         <tr>

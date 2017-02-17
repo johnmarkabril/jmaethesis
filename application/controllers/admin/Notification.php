@@ -7,6 +7,7 @@ class Notification extends CI_Controller {
     {
         parent::__construct();
         $this->curpage = "Notification";
+        $this->load->model('Notification_admin_model');
         $this->load->model('Users_model');
     }
 
@@ -16,7 +17,8 @@ class Notification extends CI_Controller {
 
 		if ( $this->session->userdata('user_session')->ACCOUNT_TYPE == "Administrator" ) {
 			$details = array (
-				'get_admin_specific'		=>	$this->Users_model->get_admin_specific($user_session->NO)
+				'get_admin_specific'		=>	$this->Users_model->get_admin_specific($user_session->NO),
+				'get_all_notification'		=>	$this->Notification_admin_model->get_all_notification()
 			);
 
 			$data['content']	=	$this->load->view('admin/notification', $details, TRUE);

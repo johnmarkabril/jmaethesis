@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 27, 2017 at 04:43 AM
+-- Generation Time: Jan 30, 2017 at 02:47 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.8
 
@@ -149,6 +149,57 @@ INSERT INTO `events` (`NO`, `NOUSER`, `TITLE`, `DESCRIPTION`, `DATE`, `IMAGEURL`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `inbox`
+--
+
+CREATE TABLE `inbox` (
+  `NO` int(11) NOT NULL,
+  `USERFROM` varchar(500) NOT NULL,
+  `USERTO` int(11) NOT NULL,
+  `SUBJECT` varchar(500) NOT NULL,
+  `CONTENT` varchar(5000) NOT NULL,
+  `DATE` varchar(100) NOT NULL,
+  `TIME` varchar(100) NOT NULL,
+  `DELETION` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `inbox`
+--
+
+INSERT INTO `inbox` (`NO`, `USERFROM`, `USERTO`, `SUBJECT`, `CONTENT`, `DATE`, `TIME`, `DELETION`) VALUES
+(1, '1', 2, 'How did we do? (AEM-HGTLD-431)', 'Recently you have contacted our support service. Please help us improve and kindly rate your latest experience with hostinger.ph.', 'January 27, 2017', '02:13 PM', 0),
+(2, '1', 2, 'Testing Subject', 'Testing Message', 'January 30, 2017', '4:10 AM', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `inbox_reply`
+--
+
+CREATE TABLE `inbox_reply` (
+  `NO` int(11) NOT NULL,
+  `NOINBOX` varchar(500) NOT NULL,
+  `NOUSER` varchar(500) NOT NULL,
+  `REPLY` varchar(5000) NOT NULL,
+  `DATE` varchar(500) NOT NULL,
+  `TIME` varchar(500) NOT NULL,
+  `IMAGEURL` varchar(500) NOT NULL,
+  `DELETION` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `inbox_reply`
+--
+
+INSERT INTO `inbox_reply` (`NO`, `NOINBOX`, `NOUSER`, `REPLY`, `DATE`, `TIME`, `IMAGEURL`, `DELETION`) VALUES
+(1, '1', '2', 'This is reply of user MAE', '', '', 'prof3.jpg', 0),
+(2, '1', '1', 'This is reply of user JM', '', '', 'prof1.jpg', 0),
+(3, '1', '2', 'This is 2nd reply of Mae', 'January 30, 2017', '3:26 AM', '', 0);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `issue_tracker`
 --
 
@@ -168,8 +219,8 @@ CREATE TABLE `issue_tracker` (
 --
 
 INSERT INTO `issue_tracker` (`NO`, `NOUSER`, `TITLE`, `DESCRIPTION`, `IMAGEURL`, `STATUS`, `DATEINSERT`, `DELETION`) VALUES
-(1, '1', 'CHANGE IP ADDRESS', 'I WANT TO CHANGE MY IP ADDRESS FROM 31.220.58.2 TO 31.220.58.18', 'prof1.jpg', '1', 'January 27, 2017 11:10 AM', 0),
-(2, '1', 'DISABLE MY DOMAIN NAME', 'I WANT TO DISABLE MY DOMAIN NAME ON MY VPS SERVER?', 'prof1.jpg', '1', 'January 27, 2017 11:10 AM', 0);
+(1, '1', 'CHANGE IP ADDRESS', 'I WANT TO CHANGE MY IP ADDRESS FROM 31.220.58.2 TO 31.220.58.18', 'prof1.jpg', '2', 'January 28, 2017 1:15 AM', 0),
+(2, '1', 'DISABLE MY DOMAIN NAME', 'I WANT TO DISABLE MY DOMAIN NAME ON MY VPS SERVER?', 'prof1.jpg', '1', 'January 28, 2017 1:35 PM', 0);
 
 -- --------------------------------------------------------
 
@@ -200,7 +251,54 @@ INSERT INTO `issue_tracker_reply` (`NO`, `ISSUETRACKERNO`, `NOREPLYFROM`, `REPLY
 (8, '2', '2', 'TEsting # 4', 'January 27, 2017', '10:01 AM', 0),
 (9, '2', '2', 'Yes this reply is done!', 'January 27, 2017', '10:01 AM', 0),
 (10, '2', '1', 'Testing', 'January 27, 2017', '11:08 AM', 0),
-(11, '1', '2', 'Testing # 6', 'January 27, 2017', '11:10 AM', 0);
+(11, '1', '2', 'Testing # 6', 'January 27, 2017', '11:10 AM', 0),
+(12, '1', '2', 'Testing # 7', 'January 27, 2017', '10:00 PM', 0),
+(13, '1', '2', 'Testing # 8', 'January 28, 2017', '1:15 AM', 0),
+(14, '2', '2', 'Nag reply na ako', 'January 28, 2017', '1:35 PM', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `notification_admin`
+--
+
+CREATE TABLE `notification_admin` (
+  `NO` int(11) NOT NULL,
+  `NOUSER` varchar(500) NOT NULL,
+  `CONTENT` varchar(100) NOT NULL,
+  `DATE` varchar(100) NOT NULL,
+  `TIME` varchar(100) NOT NULL,
+  `DELETION` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `notification_admin`
+--
+
+INSERT INTO `notification_admin` (`NO`, `NOUSER`, `CONTENT`, `DATE`, `TIME`, `DELETION`) VALUES
+(1, '1', 'John Mark change his/her profile picture', 'January 25, 2017', '01:01 AM', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `paypal_configuration`
+--
+
+CREATE TABLE `paypal_configuration` (
+  `NO` int(11) NOT NULL,
+  `NOUSER` varchar(500) NOT NULL,
+  `PAYPAL_EMAIL` varchar(500) NOT NULL,
+  `STATUS` varchar(500) NOT NULL,
+  `DELETION` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `paypal_configuration`
+--
+
+INSERT INTO `paypal_configuration` (`NO`, `NOUSER`, `PAYPAL_EMAIL`, `STATUS`, `DELETION`) VALUES
+(1, '2', 'jmaethesis@gmail.com', 'enabled', 0),
+(2, '2', 'maegregorio@gmail.com', 'disabled', 0);
 
 -- --------------------------------------------------------
 
@@ -304,10 +402,10 @@ CREATE TABLE `todo_list` (
 
 INSERT INTO `todo_list` (`NO`, `NOUSER`, `LISTNAME`, `LISTSTATUS`, `DATE`, `TIME`, `DELETION`) VALUES
 (1, '2', 'Total Sales', '0', 'January 26, 2017', '4:23 AM', 0),
-(2, '2', 'Last Month Sales', '0', 'January 27, 2017', '10:51 AM', 0),
-(3, '2', 'Total Templates', '0', 'January 26, 2017', '4:22 AM', 0),
+(2, '2', 'Last Month Sales', '0', 'January 28, 2017', '1:27 PM', 0),
+(3, '2', 'Total Templates', '0', 'January 28, 2017', '1:27 PM', 0),
 (4, '2', 'Site Visit', '1', 'January 26, 2017', '3:30 PM', 1),
-(5, '2', 'Sales for the year', '0', 'January 26, 2017', '3:26 PM', 0),
+(5, '2', 'Sales for the year', '0', 'January 28, 2017', '1:27 PM', 0),
 (6, '2', 'Contact', '1', 'January 26, 2017', '3:30 PM', 0),
 (7, '2', 'Todo List', '1', 'January 26, 2017', '3:30 PM', 0),
 (9, '2', 'Issue tracker', '1', 'January 26, 2017', '3:30 PM', 1),
@@ -379,6 +477,18 @@ ALTER TABLE `events`
   ADD PRIMARY KEY (`NO`);
 
 --
+-- Indexes for table `inbox`
+--
+ALTER TABLE `inbox`
+  ADD PRIMARY KEY (`NO`);
+
+--
+-- Indexes for table `inbox_reply`
+--
+ALTER TABLE `inbox_reply`
+  ADD PRIMARY KEY (`NO`);
+
+--
 -- Indexes for table `issue_tracker`
 --
 ALTER TABLE `issue_tracker`
@@ -388,6 +498,18 @@ ALTER TABLE `issue_tracker`
 -- Indexes for table `issue_tracker_reply`
 --
 ALTER TABLE `issue_tracker_reply`
+  ADD PRIMARY KEY (`NO`);
+
+--
+-- Indexes for table `notification_admin`
+--
+ALTER TABLE `notification_admin`
+  ADD PRIMARY KEY (`NO`);
+
+--
+-- Indexes for table `paypal_configuration`
+--
+ALTER TABLE `paypal_configuration`
   ADD PRIMARY KEY (`NO`);
 
 --
@@ -450,6 +572,16 @@ ALTER TABLE `contact_admin`
 ALTER TABLE `events`
   MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
+-- AUTO_INCREMENT for table `inbox`
+--
+ALTER TABLE `inbox`
+  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `inbox_reply`
+--
+ALTER TABLE `inbox_reply`
+  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
 -- AUTO_INCREMENT for table `issue_tracker`
 --
 ALTER TABLE `issue_tracker`
@@ -458,7 +590,17 @@ ALTER TABLE `issue_tracker`
 -- AUTO_INCREMENT for table `issue_tracker_reply`
 --
 ALTER TABLE `issue_tracker_reply`
-  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+--
+-- AUTO_INCREMENT for table `notification_admin`
+--
+ALTER TABLE `notification_admin`
+  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `paypal_configuration`
+--
+ALTER TABLE `paypal_configuration`
+  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `team`
 --

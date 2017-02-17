@@ -30,6 +30,8 @@
 
 <link rel="stylesheet" href="<?php echo base_url();?>public/css/plugins/morris/morris-0.4.3.min.css">
 
+<link rel="stylesheet" href="<?php echo base_url();?>public/css/plugins/chartist/chartist.min.css">
+
 <link rel="stylesheet" href="<?php echo base_url();?>public/css/plugins/multipleimage/ninja-slider.css">
 
 <link rel="stylesheet" href="<?php echo base_url();?>public/css/plugins/multipleimage/thumbnail-slider.css">

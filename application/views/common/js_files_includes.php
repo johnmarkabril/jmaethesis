@@ -14,20 +14,95 @@
 <script src="<?php echo base_url();?>public/js/plugins/owncarousel/own.carousel.min.js"></script>
 <script src="<?php echo base_url();?>public/js/plugins/validate/jquery.validate.min.js"></script>
 
+<!-- LIST -->
+<script src="<?php echo base_url();?>public/js/plugins/list/list.min.js"></script>
 
 <?php if ($this->curpage == "Dashboard") { ?>
     <script src="<?php echo base_url();?>public/js/plugins/chartJs/Chart.min.js"></script>
 <?php } ?>
 
+<?php if ( $this->curpage == 'Reports' ) { ?>
+    <script src="<?php echo base_url();?>public/js/plugins/chartJs/Chart.min.js"></script>
+    <script src="<?php echo base_url();?>public/js/plugins/chartist/chartist.min.js"></script>
+<?php } ?>
+
+
 
 <script>
+
     <?php 
         if($this->session->flashdata('error_message')){
         ?>
             toastr.error("<?php echo $this->session->flashdata('error_message'); ?>");
     <?php } ?>
+
+    <?php 
+        if($this->session->flashdata('success_message')){
+        ?>
+            toastr.success("<?php echo $this->session->flashdata('success_message'); ?>");
+    <?php } ?>
+
 	// PUT THE DEFAULT CODE HERE - START
 	$(document).ready(function(){
+        
+        // DONT DELETE IT - REGULAR EXPRESSION
+            //     var checkFname      = /^[a-zA-Z-_]+( [a-zA-Z-_]+)*$/.test(txt_team_firstname);
+            //     var checkLname      = /^[a-zA-Z-_]+( [a-zA-Z-_]+)*$/.test(txt_team_lastname);
+            //     var checkContact    = /^(0|\[0-9]{1,5})?([7-9][0-9]{9})$/.test(txt_team_contact);
+            //     var checkEmail      = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(txt_team_email);
+        // END OF DONT DELETE CODE
+
+
+        $('#btn_update_paypal_account').click(function(){
+            var txt_paypal_no = $('#txt_paypal_no').val();
+            var txt_paypal_email_upd = $('#txt_paypal_email_upd').val();
+            var paypal_email_status = $('#paypal_email_status').val();
+            if ( txt_paypal_email_upd ) {
+                    $.ajax ({
+                        url: "<?php echo base_url(); ?>admin/paypal_configuration/update",
+                        method: "POST",
+                        data: {
+                            txt_paypal_no           :   txt_paypal_no,
+                            txt_paypal_email_upd    :   txt_paypal_email_upd,
+                            paypal_email_status     :   paypal_email_status
+                        },
+                        success:function(data){
+                            location.reload('/paypal_configuration');
+                        },
+                        error:function(){
+                            toastr.error("Error: Please refresh the page or contact the administrator");
+                        }
+                    });
+            } else {
+                $('#error_message_paypal').text('ERROR: No email address found!');
+            }
+        });
+        
+        $('#btn_paypal_save_new').click(function(){
+            var paypal_email = $('#txt_paypal_email').val();
+            var checkEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(paypal_email);
+            if ( paypal_email ) {
+                if ( checkEmail ) {
+                    $.ajax ({
+                        url: "<?php echo base_url(); ?>admin/paypal_configuration/create",
+                        method: "POST",
+                        data: {
+                            paypal_email : paypal_email
+                        },
+                        success:function(data){
+                            location.reload('/paypal_configuration');
+                        },
+                        error:function(){
+                            toastr.error('ERROR: Please refresh the page!');
+                        }
+                    });
+                } else {
+                    $('#error_message_paypal').text('ERROR: Email address is invalid!');
+                }
+            } else {
+                $('#error_message_paypal').text('ERROR: No email address found!');
+            }
+        });
 
         function clearAllErrorMessage()
         {
@@ -389,6 +464,14 @@
             }, 500);
             event.preventDefault();
         });
+
+        // CODE FOR SEARCH
+        var options = {
+          valueNames: [ 'name', 'contact', 'email', 'title', 'username', 'date' ]
+        };
+
+        var searchList = new List('search', options);  
+
     });
 
 	var cbpAnimatedHeader = (function() {
@@ -449,7 +532,7 @@
                             pointStrokeColor: "#F8AC59",
                             pointHighlightFill: "#F8AC59",
                             pointHighlightStroke: "rgba(237,85,101,1)",
-                            data: [65, 59, 80, 81, 56, 55, 40,54,32,10,87,92]
+                            data: [9000, 6000, 0, 0, 0, 0, 0,0,0,0,0,0]
                         }
                     ]
                 };
@@ -476,5 +559,103 @@
                 
         });
 
+    <?php } ?>
+
+    <?php if ( $this->curpage == 'Reports' ) { ?>
+        $(document).ready(function(){
+
+            // START - USER
+            var lineData = {
+                labels: ["January", "February", "March", "April", "May", "June", "July","August","September","October","November","December"],
+                datasets: [
+                    {
+                        label: "Example dataset",
+                        fillColor: "rgba(35,198,200,0.9)",
+                        strokeColor: "rgba(35,198,200,0.9)",
+                        pointColor: "rgba(237,85,101,1)",
+                        pointStrokeColor: "#fff",
+                        pointHighlightFill: "#fff",
+                        pointHighlightStroke: "rgba(237,85,101,1)",
+                        data: [65, 59, 40, 51, 36, 25, 40]
+                    }
+                ]
+            };
+
+            var lineOptions = {
+                scaleShowGridLines: true,
+                scaleGridLineColor: "rgba(0,0,0,.05)",
+                scaleGridLineWidth: 1,
+                bezierCurve: true,
+                bezierCurveTension: 0.4,
+                pointDot: true,
+                pointDotRadius: 4,
+                pointDotStrokeWidth: 1,
+                pointHitDetectionRadius: 20,
+                datasetStroke: true,
+                datasetStrokeWidth: 2,
+                datasetFill: true,
+                responsive: true,
+            };
+
+
+            var ctx = document.getElementById("lineChartUser").getContext("2d");
+            var myNewChart = new Chart(ctx).Line(lineData, lineOptions);
+            // END - USER
+
+            // START - USER ACTIVITY
+            var lineData = {
+                labels: ["January", "February", "March", "April", "May", "June", "July","August","September","October","November","December"],
+                datasets: [
+                    {
+                        label: "Example dataset",
+                        fillColor: "rgba(26,179,148,0.5)",
+                        strokeColor: "rgba(26,179,148,0.7)",
+                        pointColor: "rgba(26,179,148,1)",
+                        pointStrokeColor: "#fff",
+                        pointHighlightFill: "#fff",
+                        pointHighlightStroke: "rgba(26,179,148,1)",
+                        data: [48, 48, 60, 39, 56, 37, 30]
+                    }
+                ]
+            };
+
+            var lineOptions = {
+                scaleShowGridLines: true,
+                scaleGridLineColor: "rgba(0,0,0,.05)",
+                scaleGridLineWidth: 1,
+                bezierCurve: true,
+                bezierCurveTension: 0.4,
+                pointDot: true,
+                pointDotRadius: 4,
+                pointDotStrokeWidth: 1,
+                pointHitDetectionRadius: 20,
+                datasetStroke: true,
+                datasetStrokeWidth: 2,
+                datasetFill: true,
+                responsive: true,
+            };
+
+
+            var ctx = document.getElementById("lineChart").getContext("2d");
+            var myNewChart = new Chart(ctx).Line(lineData, lineOptions);
+            // END - USER ACTIVITY
+
+            // START - SALES
+            new Chartist.Bar('#ct-chart4', {
+                labels: ["January", "February", "March", "April", "May", "June", "July","August","September","October","November","December"],
+                series: [
+                    [5, 4, 3, 7, 5, 10, 3]
+                ]
+            }, {
+                seriesBarDistance: 10,
+                reverseData: true,
+                horizontalBars: true,
+                axisY: {
+                    offset: 70
+                }
+            });
+
+            // END - SALES
+        });
     <?php } ?>
 </script>

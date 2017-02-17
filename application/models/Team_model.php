@@ -9,6 +9,7 @@ class Team_model extends CI_Model
 	public $table			=	"team";
 	public $lastname		=	"LASTNAME";
 	public $deletion		= 	"DELETION";
+	public $dbno 			= 	"NO";
 
 	function __construct()
 	{
@@ -22,6 +23,17 @@ class Team_model extends CI_Model
 						->get($this->table);
 
 		return $row->result();
+	}
+
+	public function update($params, $no)
+	{
+		$this->db->where($this->dbno, $no)
+				 ->update($this->table, $params);
+	}
+
+	public function create($params)
+	{
+		$this->db->create($this->table, $params);
 	}
 
 }
