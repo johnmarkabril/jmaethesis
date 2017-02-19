@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 30, 2017 at 02:47 AM
+-- Generation Time: Feb 19, 2017 at 04:00 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.8
 
@@ -298,7 +298,44 @@ CREATE TABLE `paypal_configuration` (
 
 INSERT INTO `paypal_configuration` (`NO`, `NOUSER`, `PAYPAL_EMAIL`, `STATUS`, `DELETION`) VALUES
 (1, '2', 'jmaethesis@gmail.com', 'enabled', 0),
-(2, '2', 'maegregorio@gmail.com', 'disabled', 0);
+(2, '2', 'maegregorio@gmail.com', 'disabled', 0),
+(3, '2', 'testing@gmail.com', 'disabled', 1),
+(4, '2', 'testing2@gmail.com', 'disabled', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `permission_admin`
+--
+
+CREATE TABLE `permission_admin` (
+  `NO` int(11) NOT NULL,
+  `NAME` varchar(100) NOT NULL,
+  `ACTIVE` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `permission_admin`
+--
+
+INSERT INTO `permission_admin` (`NO`, `NAME`, `ACTIVE`) VALUES
+(1, 'Dashboard', 1),
+(2, 'Message', 1),
+(3, 'Notification', 1),
+(4, 'Statistics', 1),
+(5, 'Settings', 1),
+(6, 'About My Site', 1),
+(7, 'Events', 1),
+(8, 'PayPal Configuration', 1),
+(9, 'User Management', 1),
+(10, 'Accounts', 1),
+(11, 'Co-Administrator', 1),
+(12, 'Website', 1),
+(13, 'Website Online', 1),
+(14, 'Website Template', 1),
+(15, 'Team', 1),
+(16, 'Profile', 1),
+(17, 'Contact', 1);
 
 -- --------------------------------------------------------
 
@@ -310,7 +347,8 @@ CREATE TABLE `team` (
   `NO` int(11) NOT NULL,
   `FIRSTNAME` varchar(150) NOT NULL,
   `LASTNAME` varchar(150) NOT NULL,
-  `DESCRIPTION` varchar(500) NOT NULL,
+  `CONTACT` varchar(500) NOT NULL,
+  `EMAILADDRESS` varchar(500) NOT NULL,
   `FACEBOOK` varchar(150) NOT NULL,
   `TWITTER` varchar(150) NOT NULL,
   `IMAGEURL` varchar(150) NOT NULL,
@@ -321,9 +359,9 @@ CREATE TABLE `team` (
 -- Dumping data for table `team`
 --
 
-INSERT INTO `team` (`NO`, `FIRSTNAME`, `LASTNAME`, `DESCRIPTION`, `FACEBOOK`, `TWITTER`, `IMAGEURL`, `DELETION`) VALUES
-(1, 'John Mark', 'Abril', 'Do what is right, not what is easy.', 'https://www.facebook.com/jmabril17', 'https://twitter.com/JohnmarkAbril', 'prof3.jpg', 0),
-(2, 'Farrah Mae', 'Gregorio', 'Every accomplishment begins with the decision to try.', 'https://www.facebook.com/Frrhmgrgrio', 'https://twitter.com/frrhmgrgrio', 'prof1.jpg', 0);
+INSERT INTO `team` (`NO`, `FIRSTNAME`, `LASTNAME`, `CONTACT`, `EMAILADDRESS`, `FACEBOOK`, `TWITTER`, `IMAGEURL`, `DELETION`) VALUES
+(1, 'John Mark', 'Abril', '09208317004', 'johnmarkabril@gmail.com', 'https://www.facebook.com/jmabril17', 'https://twitter.com/JohnmarkAbril', '14495447_961603857295625_3707154493608680853_n.jpg', 0),
+(2, 'Farrah Mae', 'Gregorio', '09484410511', 'frrhmgrgrio@gmail.com', 'https://www.facebook.com/Frrhmgrgrio', 'https://twitter.com/frrhmgrgrio', 'prof1.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -342,18 +380,20 @@ CREATE TABLE `templates` (
   `DATEUPLOADED` varchar(100) NOT NULL,
   `IMAGEURL` varchar(500) NOT NULL,
   `SITEURL` varchar(500) NOT NULL,
+  `OWNERTITLEWEBSITE` varchar(100) NOT NULL,
   `DELETION` int(11) NOT NULL,
-  `AVAILABILITY` int(11) NOT NULL
+  `AVAILABILITY` int(11) NOT NULL,
+  `AGENTSEE` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `templates`
 --
 
-INSERT INTO `templates` (`NO`, `TEMPLATENAME`, `TEMPLATECATEGORY`, `DESCRIPTION`, `LIBRARYUSE`, `PRICE`, `CURRENTOWNER`, `DATEUPLOADED`, `IMAGEURL`, `SITEURL`, `DELETION`, `AVAILABILITY`) VALUES
-(1, 'Blog and Selling of Recipe Template', 'Food E-Commerce', '', 'BootStrap | Inspinia | CodeIgniter Framework', 5753.45, '', 'December 11, 2016', '1.jpg', 'http://preview-template1.jmaeprovider.xyz/', 0, 0),
-(2, 'News and Affairs Template', 'Food E-Commerce', '', 'BootStrap | Inspinia | CodeIgniter Framework', 2615.38, '', 'December 14, 2016', '2.jpg', '', 0, 1),
-(3, 'Restaurant Reservation Template', 'Food E-Commerce', '', 'BootStrap | Inspinia | CodeIgniter Framework', 1569.35, '', 'December 15, 2016', '3.jpg', '', 0, 1);
+INSERT INTO `templates` (`NO`, `TEMPLATENAME`, `TEMPLATECATEGORY`, `DESCRIPTION`, `LIBRARYUSE`, `PRICE`, `CURRENTOWNER`, `DATEUPLOADED`, `IMAGEURL`, `SITEURL`, `OWNERTITLEWEBSITE`, `DELETION`, `AVAILABILITY`, `AGENTSEE`) VALUES
+(1, 'Blog and Selling of Recipe Template', 'Food E-Commerce', '', 'BootStrap | Inspinia | CodeIgniter Framework', 3000.00, 'Mae Abril', 'December 11, 2016', '1.jpg', 'http://template1.jmaeprovider.xyz/', 'Sweet & Pastries Cakes', 0, 0, 1),
+(2, 'News and Affairs Template', 'Food E-Commerce', '', 'BootStrap | Inspinia | CodeIgniter Framework', 3000.00, '', 'December 14, 2016', '2.jpg', '', '', 0, 1, 1),
+(3, 'Restaurant Reservation Template', 'Food E-Commerce', 'Description', 'BootStrap | Inspinia | CodeIgniter Framework', 3000.00, '', 'December 15, 2016', '3.jpg', '', '', 0, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -404,12 +444,10 @@ INSERT INTO `todo_list` (`NO`, `NOUSER`, `LISTNAME`, `LISTSTATUS`, `DATE`, `TIME
 (1, '2', 'Total Sales', '0', 'January 26, 2017', '4:23 AM', 0),
 (2, '2', 'Last Month Sales', '0', 'January 28, 2017', '1:27 PM', 0),
 (3, '2', 'Total Templates', '0', 'January 28, 2017', '1:27 PM', 0),
-(4, '2', 'Site Visit', '1', 'January 26, 2017', '3:30 PM', 1),
 (5, '2', 'Sales for the year', '0', 'January 28, 2017', '1:27 PM', 0),
-(6, '2', 'Contact', '1', 'January 26, 2017', '3:30 PM', 0),
-(7, '2', 'Todo List', '1', 'January 26, 2017', '3:30 PM', 0),
-(9, '2', 'Issue tracker', '1', 'January 26, 2017', '3:30 PM', 1),
-(10, '2', 'Issue tracker', '1', 'January 26, 2017', '3:30 PM', 0);
+(6, '2', 'Contact', '0', 'February 12, 2017', '2:43 AM', 0),
+(7, '2', 'Todo List', '1', 'February 12, 2017', '2:47 AM', 1),
+(10, '2', 'Issue tracker', '1', 'February 12, 2017', '2:47 AM', 1);
 
 -- --------------------------------------------------------
 
@@ -431,6 +469,8 @@ CREATE TABLE `user` (
   `VERIFICATIONCODE` varchar(50) NOT NULL,
   `PERMISSION` varchar(5000) NOT NULL,
   `IMAGEURL` varchar(100) NOT NULL,
+  `DATE` varchar(100) NOT NULL,
+  `TIME` varchar(100) NOT NULL,
   `DELETION` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -438,9 +478,10 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`NO`, `FIRSTNAME`, `LASTNAME`, `USERNAME`, `PHONENUMBER`, `EMAIL`, `PASSWORD`, `ACCOUNT_TYPE`, `ACTIVATED`, `VERIFIED`, `VERIFICATIONCODE`, `PERMISSION`, `IMAGEURL`, `DELETION`) VALUES
-(1, 'John Mark', 'Abril', 'jmabril17', '09208317004', 'johnmarkabril@gmail.com', 'ae2b1fca515949e5d54fb22b8ed95575', 'User', 1, 'YES', '', '', 'prof3.jpg', 0),
-(2, 'Farrah Mae', 'Gregorio', 'frrhmgrgrio', '0948410511', 'frrhmgrgrio@gmail.com', 'ae2b1fca515949e5d54fb22b8ed95575', 'Administrator', 1, 'YES', '', 'Dashboard|Message|Notification|Statistics|Settings|About My Site|Events|PayPal Configuration|User Management|Accounts|Agent|Co-Administrator|Website|Website Online|Website Template|Team', 'prof1.jpg', 0);
+INSERT INTO `user` (`NO`, `FIRSTNAME`, `LASTNAME`, `USERNAME`, `PHONENUMBER`, `EMAIL`, `PASSWORD`, `ACCOUNT_TYPE`, `ACTIVATED`, `VERIFIED`, `VERIFICATIONCODE`, `PERMISSION`, `IMAGEURL`, `DATE`, `TIME`, `DELETION`) VALUES
+(1, 'John Mark', 'Abril', 'jmabril17', '09208317004', 'johnmarkabril@gmail.com', 'ae2b1fca515949e5d54fb22b8ed95575', 'User', 1, 'YES', '', '', 'prof3.jpg', 'December 15, 2016', '03:18 AM', 0),
+(2, 'Farrah Mae', 'Gregorio', 'frrhmgrgrio', '0948410511', 'frrhmgrgrio@gmail.com', 'ae2b1fca515949e5d54fb22b8ed95575', 'Administrator', 1, 'YES', '', 'About My Site|Accounts|Agent|Co-Administrator|Contact|Dashboard|Events|Message|Notification|PayPal Configuration|Profile|Settings|Statistics|Team|User Management|Website|Website Online|Website Template', 'prof1.jpg', 'December 15, 2016', '05:31 AM', 0),
+(3, 'Agent', 'Agent', 'agent123', '', 'agent@gmail.com', 'ae2b1fca515949e5d54fb22b8ed95575', 'Agent', 1, 'YES', '', '', 'noimage.png', 'February 19, 2017', '11:57 AM', 0);
 
 --
 -- Indexes for dumped tables
@@ -510,6 +551,12 @@ ALTER TABLE `notification_admin`
 -- Indexes for table `paypal_configuration`
 --
 ALTER TABLE `paypal_configuration`
+  ADD PRIMARY KEY (`NO`);
+
+--
+-- Indexes for table `permission_admin`
+--
+ALTER TABLE `permission_admin`
   ADD PRIMARY KEY (`NO`);
 
 --
@@ -600,7 +647,12 @@ ALTER TABLE `notification_admin`
 -- AUTO_INCREMENT for table `paypal_configuration`
 --
 ALTER TABLE `paypal_configuration`
-  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `permission_admin`
+--
+ALTER TABLE `permission_admin`
+  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `team`
 --
@@ -610,7 +662,7 @@ ALTER TABLE `team`
 -- AUTO_INCREMENT for table `templates`
 --
 ALTER TABLE `templates`
-  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `testimonial`
 --
@@ -625,7 +677,7 @@ ALTER TABLE `todo_list`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
