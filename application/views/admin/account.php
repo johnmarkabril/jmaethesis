@@ -45,7 +45,7 @@
                                     foreach ( $get_all_user as $gau ) :
                             ?>
                                         <tr>
-                                            <td class="name"><a><?php echo $gau->FIRSTNAME.' '.$gau->LASTNAME; ?></a></td>
+                                            <td class="name"><?php echo $gau->FIRSTNAME.' '.$gau->LASTNAME; ?></td>
                                             <td class="email"><?php echo $gau->EMAIL; ?></td>
                                             <td class="username"><?php echo $gau->USERNAME; ?></td>
                                             <td class="date"><?php echo $gau->DATE.' '.$gau->TIME; ?></td>

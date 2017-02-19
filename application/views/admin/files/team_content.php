@@ -35,6 +35,9 @@
         <div class="modal inmodal" id="modalDeleteTeam<?php echo $gat->NO;?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content animated pulse">
+                	<div class="modal-header">
+                        <h4 class="modal-title">Are you sure, you want delete this as your team member?</h4>
+                    </div>
                     <div class="modal-body padding-bottom padding-top">
                         <div class="row">
                             <div class="col-md-6">

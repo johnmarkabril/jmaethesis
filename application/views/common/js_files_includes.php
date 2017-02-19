@@ -13,6 +13,10 @@
 <script src="<?php echo base_url();?>public/js/plugins/wow/wow.min.js"></script>
 <script src="<?php echo base_url();?>public/js/plugins/owncarousel/own.carousel.min.js"></script>
 <script src="<?php echo base_url();?>public/js/plugins/validate/jquery.validate.min.js"></script>
+<script src="<?php echo base_url();?>public/js/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="<?php echo base_url();?>public/js/plugins/iCheck/icheck.min.js"></script>
+<script src="<?php echo base_url();?>public/js/plugins/staps/jquery.steps.min.js"></script>
+<script src="<?php echo base_url();?>public/js/plugins/chosen/chosen.jquery.js"></script>
 
 <!-- LIST -->
 <script src="<?php echo base_url();?>public/js/plugins/list/list.min.js"></script>
@@ -52,27 +56,290 @@
             //     var checkEmail      = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(txt_team_email);
         // END OF DONT DELETE CODE
 
+        $('#btn_create_wt').click(function(){
+            var txt_name_wt_create         =   $('#txt_name_wt_create').val();
+            var txt_category_wt_create     =   $('#txt_category_wt_create').val();
+            var txt_description_wt_create  =   $('#txt_description_wt_create').val();
+            var txt_library_wt_create      =   $('#txt_library_wt_create').val();
+            var txt_price_wt_create        =   $('#txt_price_wt_create').val();
 
-        $('#btn_update_paypal_account').click(function(){
-            var txt_paypal_no = $('#txt_paypal_no').val();
-            var txt_paypal_email_upd = $('#txt_paypal_email_upd').val();
-            var paypal_email_status = $('#paypal_email_status').val();
-            if ( txt_paypal_email_upd ) {
-                    $.ajax ({
-                        url: "<?php echo base_url(); ?>admin/paypal_configuration/update",
+            if ( txt_name_wt_create.length > 5 ) {
+                if ( txt_category_wt_create.length > 5 ) {
+                    if ( txt_description_wt_create.length > 5 ) {
+                        if ( txt_library_wt_create.length > 5 ) {
+                            if ( txt_price_wt_create.length > 3 ) {
+                                $.ajax({
+                                    url: "<?php echo base_url();?>admin/website_template/create",
+                                    method: "POST",
+                                    data: {  
+                                        txt_name_wt_create         : txt_name_wt_create,
+                                        txt_category_wt_create     : txt_category_wt_create,
+                                        txt_description_wt_create  : txt_description_wt_create,
+                                        txt_library_wt_create      : txt_library_wt_create,
+                                        txt_price_wt_create        : txt_price_wt_create
+                                    },
+                                    success:function(data){
+                                        location.reload('/admin/website_template');
+                                    },
+                                    error:function(){
+                                        toastr.error("ERROR!");
+                                    }
+                                });
+                            } else {
+                                toastr.error("ERROR: Minimum of 3 characters!");
+                            }
+                        } else {
+                            toastr.error("ERROR: Minimum of 5 characters!");
+                        }
+                    } else {
+                        toastr.error("ERROR: Minimum of 5 characters!");
+                    }
+                } else {
+                    toastr.error("ERROR: Minimum of 5 characters!");
+                }
+            } else {
+                toastr.error("ERROR: Minimum of 5 characters!");
+            }
+        });
+
+        $('#btn_update_wt').click(function(){
+            var txt_no_wt           =   $('#txt_no_wt').val();
+            var txt_name_wt         =   $('#txt_name_wt').val();
+            var txt_category_wt     =   $('#txt_category_wt').val();
+            var txt_description_wt  =   $('#txt_description_wt').val();
+            var txt_library_wt      =   $('#txt_library_wt').val();
+            var txt_price_wt        =   $('#txt_price_wt').val();
+
+            if ( txt_name_wt.length > 5 ) {
+                if ( txt_category_wt.length > 5 ) {
+                    if ( txt_description_wt.length > 5 ) {
+                        if ( txt_library_wt.length > 5 ) {
+                            if ( txt_price_wt.length > 5 ) {
+                                $.ajax({
+                                    url: "<?php echo base_url();?>admin/website_template/update",
+                                    method: "POST",
+                                    data: {  
+                                        txt_no_wt           : txt_no_wt,
+                                        txt_name_wt         : txt_name_wt,
+                                        txt_category_wt     : txt_category_wt,
+                                        txt_description_wt  : txt_description_wt,
+                                        txt_library_wt      : txt_library_wt,
+                                        txt_price_wt        : txt_price_wt
+                                    },
+                                    success:function(data){
+                                        location.reload('/admin/website_template');
+                                    },
+                                    error:function(){
+                                        toastr.error("ERROR!");
+                                    }
+                                });
+                            } else {
+                                toastr.error("ERROR: Minimum of 5 characters!");
+                            }
+                        } else {
+                            toastr.error("ERROR: Minimum of 5 characters!");
+                        }
+                    } else {
+                        toastr.error("ERROR: Minimum of 5 characters!");
+                    }
+                } else {
+                    toastr.error("ERROR: Minimum of 5 characters!");
+                }
+            } else {
+                toastr.error("ERROR: Minimum of 5 characters!");
+            }
+
+        });
+
+
+        $('#btn_update_wo').click(function(){
+            var txt_no_wo       = $('#txt_no_wo').val();
+            var txt_title_wo    = $('#txt_title_wo').val();
+            var txt_owner_wo    = $('#txt_owner_wo').val();
+
+            if ( txt_title_wo.length > 5 ) {
+                if ( txt_owner_wo.length > 5 ) {
+                    $.ajax({
+                        url: "<?php echo base_url();?>admin/website_online/update",
                         method: "POST",
-                        data: {
-                            txt_paypal_no           :   txt_paypal_no,
-                            txt_paypal_email_upd    :   txt_paypal_email_upd,
-                            paypal_email_status     :   paypal_email_status
+                        data: {  
+                            txt_no_wo       : txt_no_wo,
+                            txt_title_wo    : txt_title_wo,
+                            txt_owner_wo    : txt_owner_wo
                         },
                         success:function(data){
-                            location.reload('/paypal_configuration');
+                            location.reload('/admin/website_online');
                         },
                         error:function(){
-                            toastr.error("Error: Please refresh the page or contact the administrator");
+                            toastr.error("ERROR!");
                         }
                     });
+                } else {
+                    toastr.error("ERROR: Minimum of 5 characters - owners name!");
+                }
+            } else {
+                toastr.error("ERROR: Minimum of 5 characters - title!");
+            }
+        });
+
+        $('#btn_create_coa_save').click(function(){
+            var txt_create_coa_fname    = $('#txt_create_coa_fname').val();
+            var txt_create_coa_lname    = $('#txt_create_coa_lname').val();
+            var txt_create_coa_uname    = $('#txt_create_coa_uname').val();
+            var txt_create_coa_email    = $('#txt_create_coa_email').val();
+            var txt_create_coa_pword    = $('#txt_create_coa_pword').val();
+            var txt_create_coa_conpword = $('#txt_create_coa_conpword').val();
+
+            var checkFname      = /^[a-zA-Z-_]+( [a-zA-Z-_]+)*$/.test(txt_create_coa_fname);
+            var checkLname      = /^[a-zA-Z-_]+( [a-zA-Z-_]+)*$/.test(txt_create_coa_lname);
+            var checkUname      = /\w$/.test(txt_create_coa_uname);
+            var checkEmail      = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(txt_create_coa_email);
+
+            if ( checkFname ) {
+                if ( checkLname ) {
+                    if ( checkUname ) {
+                        if ( checkEmail ) {
+                            if ( txt_create_coa_pword.length >= 7 ) {
+                                if ( txt_create_coa_pword == txt_create_coa_conpword ) {
+                                    $.ajax ({
+                                        url: "<?php echo base_url(); ?>admin/co_administrator/create",
+                                        method: "POST",
+                                        data: {
+                                            txt_create_coa_fname    : txt_create_coa_fname,
+                                            txt_create_coa_lname    : txt_create_coa_lname,
+                                            txt_create_coa_uname    : txt_create_coa_uname,
+                                            txt_create_coa_email    : txt_create_coa_email,
+                                            txt_create_coa_pword    : txt_create_coa_pword
+                                        },
+                                        success:function(data){
+                                            location.reload('/admin/co_administrator');
+                                        },
+                                        error:function(){
+                                            toastr.error("Error: Please refresh the page or contact the administrator");
+                                        }
+                                    });
+                                } else {
+                                    toastr.error("ERROR: Password doesn't match");
+                                }
+                            } else {
+                                toastr.error("ERROR: Minimum of 7 characters");
+                            }
+                        } else {
+                            toastr.error("ERROR: Invalid email address format");
+                        }
+                    } else {
+                        toastr.error("ERROR: Invalid username format");
+                    }
+                } else {
+                    toastr.error("ERROR: Letters only");
+                }
+            } else {
+                toastr.error("ERROR: Letters only");
+            }
+        });
+
+        $('#btn_update_coa').click(function(){
+            var txt_update_coa_no   = $('#txt_update_coa_no').val();
+            var txt_select_perm_coa = $('#txt_select_perm_coa').val();
+
+            if ( txt_select_perm_coa != "" ) {
+                $.ajax({
+                    url: "<?php echo base_url();?>admin/co_administrator/update",
+                    method: "POST",
+                    data: {  
+                        txt_update_coa_no     : txt_update_coa_no,
+                        txt_select_perm_coa   : txt_select_perm_coa  
+                    },
+                    success:function(data){
+                        location.reload('/admin/co_administrator');
+                        // alert(data);
+                    },
+                    error:function(){
+                        toastr.error("ERROR!");
+                    }
+                });
+            } else {
+                toastr.error("Please select a permission!");
+            }
+        });
+
+        $('#btn_create_agent').click(function(){
+            var txt_fname_agent     = $('#txt_fname_agent').val();
+            var txt_lname_agent     = $('#txt_lname_agent').val();
+            var txt_uname_agent     = $('#txt_uname_agent').val();
+            var txt_email_agent     = $('#txt_email_agent').val();
+            var txt_password_agent  = $('#txt_password_agent').val();
+            var txt_confirm_agent   = $('#txt_confirm_agent').val();
+
+            var checkFname      = /^[a-zA-Z-_]+( [a-zA-Z-_]+)*$/.test(txt_fname_agent);
+            var checkLname      = /^[a-zA-Z-_]+( [a-zA-Z-_]+)*$/.test(txt_lname_agent);
+            var checkUname      = /\w$/.test(txt_uname_agent);
+            var checkEmail      = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(txt_email_agent);
+
+            if ( checkFname ) {
+                if ( checkLname ) {
+                    if ( checkUname ) {
+                        if ( checkEmail ) {
+                            if ( txt_password_agent.length >= 7 ) {
+                                if ( txt_password_agent == txt_confirm_agent ) {
+                                    $.ajax ({
+                                        url: "<?php echo base_url(); ?>admin/agent/create",
+                                        method: "POST",
+                                        data: {
+                                            txt_fname_agent     : txt_fname_agent,
+                                            txt_lname_agent     : txt_lname_agent,
+                                            txt_uname_agent     : txt_uname_agent,
+                                            txt_email_agent     : txt_email_agent,
+                                            txt_password_agent  : txt_password_agent
+                                        },
+                                        success:function(data){
+                                            location.reload('/admin/agent');
+                                        },
+                                        error:function(){
+                                            toastr.error("Error: Please refresh the page or contact the administrator");
+                                        }
+                                    });
+                                } else {
+                                    toastr.error("ERROR: Password doesn't match");
+                                }
+                            } else {
+                                toastr.error("ERROR: Minimum of 7 characters");
+                            }
+                        } else {
+                            toastr.error("ERROR: Invalid email address format");
+                        }
+                    } else {
+                        toastr.error("ERROR: Invalid username format");
+                    }
+                } else {
+                    toastr.error("ERROR: Letters only");
+                }
+            } else {
+                toastr.error("ERROR: Letters only");
+            }
+
+        });
+
+        $('#btn_update_paypal_account').click(function(){
+            var txt_paypal_no           = $('#txt_paypal_no').val();
+            var txt_paypal_email_upd    = $('#txt_paypal_email_upd').val();
+            var paypal_email_status     = $('#paypal_email_status').val();
+            if ( txt_paypal_email_upd ) {
+                $.ajax ({
+                    url: "<?php echo base_url(); ?>admin/paypal_configuration/update",
+                    method: "POST",
+                    data: {
+                        txt_paypal_no           :   txt_paypal_no,
+                        txt_paypal_email_upd    :   txt_paypal_email_upd,
+                        paypal_email_status     :   paypal_email_status
+                    },
+                    success:function(data){
+                        location.reload('/paypal_configuration');
+                    },
+                    error:function(){
+                        toastr.error("Error: Please refresh the page or contact the administrator");
+                    }
+                });
             } else {
                 $('#error_message_paypal').text('ERROR: No email address found!');
             }
@@ -434,6 +701,19 @@
             }
         });
 
+        // CHOSEN
+        var config = {
+            '.chosen-select'           : {},
+            '.chosen-select-deselect'  : {allow_single_deselect:true},
+            '.chosen-select-no-single' : {disable_search_threshold:10},
+            '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
+            '.chosen-select-width'     : {width:"100%"}
+            }
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
+        }
+        //  END CHOSEN
+
         $("#testimonial-slider").owlCarousel({
             items:2,
             itemsDesktop:[1199,2],
@@ -467,7 +747,7 @@
 
         // CODE FOR SEARCH
         var options = {
-          valueNames: [ 'name', 'contact', 'email', 'title', 'username', 'date' ]
+          valueNames: [ 'name', 'contact', 'email', 'title', 'username', 'date', 'link' ]
         };
 
         var searchList = new List('search', options);  

@@ -2,7 +2,7 @@
     <div class="ibox no-margin">
         <div class="ibox-title no-border">
             Small todo list: <span><small>Only 7 todo allowed</small></span>
-            <span class="pull-right"><a data-toggle="modal" data-target="#createTodoDashModal">Add task</a></span>
+            <span class="pull-right"><a data-toggle="modal" data-target="#createTodoDashModal">Add</a></span>
         </div>
         <div class="ibox-content no-padding-top" style="min-height:335px;">
             <ul class="todo-list m-t small-list">

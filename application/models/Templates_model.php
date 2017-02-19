@@ -20,7 +20,36 @@ class Templates_model extends CI_Model
 	{
 		$row = $this->db->where($this->deletion, "0")
 						->where($this->availability, "1")
+						->order_by($this->dbno, "DESC")
+						->get($this->table);
+
+		return $row->result();
+	}
+
+	public function get_all_templates()
+	{
+		$row = $this->db->where($this->deletion, "0")
 						->order_by($this->dbno, "ASC")
+						->get($this->table);
+
+		return $row->result();
+	}
+
+	public function get_latest_templates()
+	{
+		$row = $this->db->where($this->deletion, "0")
+						->order_by($this->dbno, "DESC")
+						->limit(1)
+						->get($this->table);
+
+		return $row->result();
+	}
+
+	public function get_specific_templates($no)
+	{
+		$row = $this->db->where($this->deletion, "0")
+						->where($this->dbno, $no)
+						->limit(1)
 						->get($this->table);
 
 		return $row->result();
@@ -34,6 +63,17 @@ class Templates_model extends CI_Model
 						->get($this->table);
 
 		return $row->result();
+	}
+
+	public function update($params, $no)
+	{
+		$this->db->where($this->dbno, $no)
+				 ->update($this->table,$params);
+	}
+
+	public function create($params)
+	{
+		$this->db->insert($this->table, $params);
 	}
 
 }
