@@ -751,7 +751,7 @@
         };
 
         var searchList = new List('search', options);  
-
+        // END OF CODE SEARCH
     });
 
 	var cbpAnimatedHeader = (function() {

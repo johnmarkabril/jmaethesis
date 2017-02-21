@@ -4,6 +4,7 @@
             <li class="nav-header">
                 <?php
                     foreach ( $get_admin_specific as $gas ) :
+                        $permission = explode('|', $gas->PERMISSION);
                 ?>
                     <div class="dropdown profile-element"> 
                         <span>
@@ -20,8 +21,12 @@
                             </span>
                         </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                            <li><a href="<?php echo base_url(); ?>admin/profile">Profile</a></li>
-                            <li><a href="<?php echo base_url(); ?>admin/contact">Contact</a></li>
+                            <?php if ( in_array("Profile", $permission) ) { ?>
+                                <li><a href="<?php echo base_url(); ?>admin/profile">Profile</a></li>
+                            <?php } ?>
+                            <?php if ( in_array("Contact", $permission) ) { ?>
+                                <li><a href="<?php echo base_url(); ?>admin/contact">Contact</a></li>
+                            <?php } ?>
                         </ul>
                     </div>
                 <?php
