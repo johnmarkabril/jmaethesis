@@ -57,95 +57,98 @@
         // END OF DONT DELETE CODE
 
         <?php 
-            if ( $get_all_post ) {
-                foreach ( $get_all_post as $gap ) :
+            if ( $curpage == 'Profile' ) {
+                if ( $get_all_post ) {
+                    foreach ( $get_all_post as $gap ) :
         ?>
-                    $('#adminReplyPost<?php echo $gap->NO; ?>').keypress(function(event) {
-                        if (event.keyCode == 13 && !event.shiftKey) {
-                            if ( $('#adminReplyPost<?php echo $gap->NO; ?>').val() ) {
-                                $.ajax ({
-                                    url: '<?php echo base_url(); ?>admin/profile/insert_reply',
-                                    method: "POST",
-                                    data: {
-                                        replyMessage    :     $('#adminReplyPost<?php echo $gap->NO; ?>').val(),
-                                        messageNo       :     '<?php echo $gap->NO; ?>'
-                                    },
-                                    success:function(data){
-                                        html =  '<div class="padding-top">';
-                                        html += '   <div class="ibox-content no-border" style="background-color: #F2F2F2;">';
-                                        html += '       <div>';
-                                        html += '           <div class="row">';
-                                        html += '               <div class="col-xs-1">';
-                                        html += '                   <img src="<?php echo base_url(); ?>public/img/<?php echo $session_image; ?>" style="width:40px;height:40px;" />';
-                                        html += '               </div>';
-                                        html += '               <div style="padding-left: 75px;"><span class="text-bold"><?php echo $session_name; ?></span> | <span><?php echo $date; ?></span></div>';
-                                        html += '               <div style="padding-left: 75px;">'+ $('#adminReplyPost<?php echo $gap->NO; ?>').val() +'</div>';
-                                        html += '           </div>';
-                                        html += '       </div>';
-                                        html += '   </div>';
-                                        html += '</div>';
+                        $('#adminReplyPost<?php echo $gap->NO; ?>').keypress(function(event) {
+                            if (event.keyCode == 13 && !event.shiftKey) {
+                                if ( $('#adminReplyPost<?php echo $gap->NO; ?>').val() ) {
+                                    $.ajax ({
+                                        url: '<?php echo base_url(); ?>admin/profile/insert_reply',
+                                        method: "POST",
+                                        data: {
+                                            replyMessage    :     $('#adminReplyPost<?php echo $gap->NO; ?>').val(),
+                                            messageNo       :     '<?php echo $gap->NO; ?>'
+                                        },
+                                        success:function(data){
+                                            html =  '<div class="padding-top">';
+                                            html += '   <div class="ibox-content no-border" style="background-color: #F2F2F2;">';
+                                            html += '       <div>';
+                                            html += '           <div class="row">';
+                                            html += '               <div class="col-xs-1">';
+                                            html += '                   <img src="<?php echo base_url(); ?>public/img/<?php echo $session_image; ?>" style="width:40px;height:40px;" />';
+                                            html += '               </div>';
+                                            html += '               <div style="padding-left: 75px;"><span class="text-bold"><?php echo $session_name; ?></span> | <span><?php echo $date; ?></span></div>';
+                                            html += '               <div style="padding-left: 75px;">'+ $('#adminReplyPost<?php echo $gap->NO; ?>').val() +'</div>';
+                                            html += '           </div>';
+                                            html += '       </div>';
+                                            html += '   </div>';
+                                            html += '</div>';
 
-                                        $('#newReplyPostNo<?php echo $gap->NO; ?>').append(html);
-                                        $('#adminReplyPost<?php echo $gap->NO; ?>').val('');
-                                    },
-                                    error:function(){
-                                        toastr.error('ERROR: Please refresh the page!');
-                                    }
-                                });
-                            } else {
-                                return false;
+                                            $('#newReplyPostNo<?php echo $gap->NO; ?>').append(html);
+                                            $('#adminReplyPost<?php echo $gap->NO; ?>').val('');
+                                        },
+                                        error:function(){
+                                            toastr.error('ERROR: Please refresh the page!');
+                                        }
+                                    });
+                                } else {
+                                    return false;
+                                }
                             }
-                        }
-                    });
+                        });
         <?php
-                endforeach;
-            }
+                    endforeach;
+                }
         ?>
+                $('#btn_post_profile').click(function(){
+                    var txt_post            = $('#txt_post').val();
+                    var txt_no_prof_post    = $('#txt_no_prof_post').val();
 
-        $('#btn_post_profile').click(function(){
-            var txt_post            = $('#txt_post').val();
-            var txt_no_prof_post    = $('#txt_no_prof_post').val();
-
-            if ( txt_post ) {
-                $.ajax({
-                    url: "<?php echo base_url();?>admin/profile/create",
-                    method: "POST",
-                    data: {  
-                        txt_post     : txt_post 
-                    },
-                    success:function(data){
-                        $('#txt_post').val("");
-                        html =  '<div class="padding-top">';
-                        html += '   <div class="ibox-content no-border">';
-                        html += '       <div class="row">';
-                        html += '           <span class="pull-right" style="color:blue;padding-right: 15px;"><a>X</a></span>';
-                        html += '           <div class="col-xs-1">';
-                        html += '               <img src="<?php echo base_url(); ?>public/img/<?php echo $session_image; ?>" style="width:50px;height:50px;" />';
-                        html += '           </div>';
-                        html += '           <div class="text-bold " style="padding-left: 75px;"><?php echo $session_name; ?></div>';
-                        html += '           <div class="" style="padding-left: 75px;"><?php echo $date; ?></div>';
-                        html += '       </div>';
-                        html += '       <hr class="no-margin margin-top"/>';
-                        html += '       <div class="padding-top" style="padding-left: 20px;padding-right: 20px;font-size: 17px;">';
-                        html += txt_post;
-                        html += '       </div>';
-                        html += '       <input type="text" value="'+ data +'" id="txt_no_prof_post" style="display:none;" />';
-                        html += '       <div class="padding-top">';
-                        html += '           <textarea class="form-control" id="adminReplyPost'+ data +'" style="max-width: 100%;max-height: 50px;min-height: 50px;" placeholder="Comment"></textarea>';
-                        html += '       </div>';
-                        html += '       <div id="newReplyPostNo'+ data +'"></div>';
-                        html += '   </div>';
-                        html += '</div>';
-                        $('#newPostAdmin').append(html);
-                    },
-                    error:function(){
-                        toastr.error("ERROR!");
+                    if ( txt_post ) {
+                        $.ajax({
+                            url: "<?php echo base_url();?>admin/profile/create",
+                            method: "POST",
+                            data: {  
+                                txt_post     : txt_post 
+                            },
+                            success:function(data){
+                                $('#txt_post').val("");
+                                html =  '<div class="padding-top">';
+                                html += '   <div class="ibox-content no-border">';
+                                html += '       <div class="row">';
+                                html += '           <span class="pull-right" style="color:blue;padding-right: 15px;"><a>X</a></span>';
+                                html += '           <div class="col-xs-1">';
+                                html += '               <img src="<?php echo base_url(); ?>public/img/<?php echo $session_image; ?>" style="width:50px;height:50px;" />';
+                                html += '           </div>';
+                                html += '           <div class="text-bold " style="padding-left: 75px;"><?php echo $session_name; ?></div>';
+                                html += '           <div class="" style="padding-left: 75px;"><?php echo $date; ?></div>';
+                                html += '       </div>';
+                                html += '       <hr class="no-margin margin-top"/>';
+                                html += '       <div class="padding-top" style="padding-left: 20px;padding-right: 20px;font-size: 17px;">';
+                                html += txt_post;
+                                html += '       </div>';
+                                html += '       <input type="text" value="'+ data +'" id="txt_no_prof_post" style="display:none;" />';
+                                html += '       <div class="padding-top">';
+                                html += '           <textarea class="form-control" id="adminReplyPost'+ data +'" style="max-width: 100%;max-height: 50px;min-height: 50px;" placeholder="Comment"></textarea>';
+                                html += '       </div>';
+                                html += '       <div id="newReplyPostNo'+ data +'"></div>';
+                                html += '   </div>';
+                                html += '</div>';
+                                $('#newPostAdmin').append(html);
+                            },
+                            error:function(){
+                                toastr.error("ERROR!");
+                            }
+                        });
+                    } else{
+                        toastr.error("Write something");
                     }
                 });
-            } else{
-                toastr.error("Write something");
+        <?php
             }
-        });
+        ?>
 
         $('#btn_create_wt').click(function(){
             var txt_name_wt_create         =   $('#txt_name_wt_create').val();

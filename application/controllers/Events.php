@@ -14,7 +14,7 @@ class Events extends CI_Controller {
 	{
 		if ( $this->session->userdata('account_type') == "User" || $this->session->userdata('account_type') == "" ) {
 			$details = array (
-
+				'get_all_events'			=>	$this->Events_model->get_all_events()
 			);
 
 			$data['content']	=	$this->load->view('user/eventscontent', $details, TRUE);
