@@ -8,6 +8,12 @@ class Profile extends CI_Controller {
         parent::__construct();
         $this->curpage = "Profile";
         $this->load->model('Users_model');
+        $this->load->model('Post_admin_model');
+
+        $this->nouser = $this->session->userdata('user_session')->NO;
+    	date_default_timezone_set("Asia/Manila");
+    	$this->date = date("F d, Y");
+    	$this->time = date("g:i A");
     }
 
 	public function index()
@@ -16,7 +22,12 @@ class Profile extends CI_Controller {
 
 		if ( $this->session->userdata('user_session')->ACCOUNT_TYPE == "Administrator" ) {
 			$details = array (
-				'get_admin_specific'		=>	$this->Users_model->get_admin_specific($user_session->NO)
+				'get_admin_specific'		=>	$this->Users_model->get_admin_specific($user_session->NO),
+				'get_all_post'				=>	$this->Post_admin_model->get_all_post(),
+				'session_name'				=>	$this->session->userdata('user_session')->FIRSTNAME." ".$this->session->userdata('user_session')->LASTNAME,
+				'session_image'				=>	$this->session->userdata('user_session')->IMAGEURL,
+				'get_reply'					=> 	$this->Post_admin_model->get_all_reply(),
+				'date'						=>	$this->date
 			);
 
 			$data['content']	=	$this->load->view('admin/profile', $details, TRUE);
@@ -25,6 +36,44 @@ class Profile extends CI_Controller {
 		} else {
 			redirect('/');
 		}	
+	}
+
+	public function create()
+	{
+		$txt_post = $this->input->post('txt_post');
+
+		$params = array(
+			'NO'				=> '',
+			'NAME'				=> $this->session->userdata('user_session')->FIRSTNAME.' '.$this->session->userdata('user_session')->LASTNAME,
+			'IMAGEURL'			=> $this->session->userdata('user_session')->IMAGEURL,
+			'POSTDESCRIPTION'	=> $txt_post,
+			'DATE'				=> $this->date,
+			'TIME'				=> $this->time,
+			'DELETION'			=> 0
+		);
+
+		$ctr = $this->Post_admin_model->get_rows();
+		echo $ctr = $ctr + 1;
+		$this->Post_admin_model->create($params);
+	}
+
+	public function insert_reply()
+	{
+		$replyMessage	= $this->input->post('replyMessage');
+		$messageNo		= $this->input->post('messageNo');
+
+		$params = array(
+			'NO'		=> '',
+			'NOREPLY'	=> $messageNo,
+			'NAME'		=> $this->session->userdata('user_session')->FIRSTNAME.' '.$this->session->userdata('user_session')->LASTNAME,
+			'IMAGEURL'	=> $this->session->userdata('user_session')->IMAGEURL,
+			'REPLY'		=> $replyMessage,
+			'DATE'		=> $this->date,
+			'TIME'		=> $this->time,
+			'DELETION'	=> 0
+		);
+		
+		$this->Post_admin_model->create($params);
 	}
 
 }

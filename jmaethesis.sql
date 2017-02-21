@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 19, 2017 at 04:00 PM
+-- Generation Time: Feb 21, 2017 at 05:36 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.8
 
@@ -195,7 +195,8 @@ CREATE TABLE `inbox_reply` (
 INSERT INTO `inbox_reply` (`NO`, `NOINBOX`, `NOUSER`, `REPLY`, `DATE`, `TIME`, `IMAGEURL`, `DELETION`) VALUES
 (1, '1', '2', 'This is reply of user MAE', '', '', 'prof3.jpg', 0),
 (2, '1', '1', 'This is reply of user JM', '', '', 'prof1.jpg', 0),
-(3, '1', '2', 'This is 2nd reply of Mae', 'January 30, 2017', '3:26 AM', '', 0);
+(3, '1', '2', 'This is 2nd reply of Mae', 'January 30, 2017', '3:26 AM', '', 0),
+(4, '1', '2', 'This is 3rd Reply of Mae', 'February 20, 2017', '3:54 PM', '', 0);
 
 -- --------------------------------------------------------
 
@@ -300,7 +301,8 @@ INSERT INTO `paypal_configuration` (`NO`, `NOUSER`, `PAYPAL_EMAIL`, `STATUS`, `D
 (1, '2', 'jmaethesis@gmail.com', 'enabled', 0),
 (2, '2', 'maegregorio@gmail.com', 'disabled', 0),
 (3, '2', 'testing@gmail.com', 'disabled', 1),
-(4, '2', 'testing2@gmail.com', 'disabled', 1);
+(4, '2', 'testing2@gmail.com', 'disabled', 1),
+(5, '2', 'jhasdkjf@gmail.com', 'disabled', 0);
 
 -- --------------------------------------------------------
 
@@ -336,6 +338,58 @@ INSERT INTO `permission_admin` (`NO`, `NAME`, `ACTIVE`) VALUES
 (15, 'Team', 1),
 (16, 'Profile', 1),
 (17, 'Contact', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `post_admin`
+--
+
+CREATE TABLE `post_admin` (
+  `NO` int(11) NOT NULL,
+  `NAME` varchar(500) NOT NULL,
+  `IMAGEURL` varchar(500) NOT NULL,
+  `POSTDESCRIPTION` varchar(5000) NOT NULL,
+  `DATE` varchar(100) NOT NULL,
+  `TIME` varchar(100) NOT NULL,
+  `DELETION` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `post_admin`
+--
+
+INSERT INTO `post_admin` (`NO`, `NAME`, `IMAGEURL`, `POSTDESCRIPTION`, `DATE`, `TIME`, `DELETION`) VALUES
+(1, 'Farrah Mae Gregorio', 'prof1.jpg', 'No food or drinks. Please follow our instructions.', 'February 22, 2017', '03:22 PM', 0),
+(2, 'Agent Agent', 'noimage.png', 'My day is complete.', 'February 21, 2017', '03:45 PM', 0),
+(3, 'Farrah Mae Gregorio', 'prof1.jpg', 'DO WHAT IS RIGHT! NOT WHAT IS EASY.', 'February 21, 2017', '9:49 PM', 0),
+(4, 'Farrah Mae Gregorio', 'prof1.jpg', 'Will it be easy? Nope. Worth It? Absolutely.', 'February 21, 2017', '9:50 PM', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `post_admin_reply`
+--
+
+CREATE TABLE `post_admin_reply` (
+  `NO` int(11) NOT NULL,
+  `NOREPLY` int(11) NOT NULL,
+  `NAME` varchar(500) NOT NULL,
+  `IMAGEURL` varchar(500) NOT NULL,
+  `REPLY` varchar(5000) NOT NULL,
+  `DATE` varchar(100) NOT NULL,
+  `TIME` varchar(100) NOT NULL,
+  `DELETION` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `post_admin_reply`
+--
+
+INSERT INTO `post_admin_reply` (`NO`, `NOREPLY`, `NAME`, `IMAGEURL`, `REPLY`, `DATE`, `TIME`, `DELETION`) VALUES
+(1, 1, 'Agent Agent', 'noimage.png', 'Ayokong sumunod sa batas dito.', 'February 21, 2017', '03:42 PM', 0),
+(2, 2, 'Farrah Mae Gregorio', 'prof1.jpg', 'Wow, have a nice day!', 'February 21, 2017', '04:27 PM', 0),
+(3, 1, 'Farrah Mae Gregorio', 'prof1.jpg', 'That''s our rules!!!', 'February 21, 2017', '04:28 PM', 0);
 
 -- --------------------------------------------------------
 
@@ -445,9 +499,9 @@ INSERT INTO `todo_list` (`NO`, `NOUSER`, `LISTNAME`, `LISTSTATUS`, `DATE`, `TIME
 (2, '2', 'Last Month Sales', '0', 'January 28, 2017', '1:27 PM', 0),
 (3, '2', 'Total Templates', '0', 'January 28, 2017', '1:27 PM', 0),
 (5, '2', 'Sales for the year', '0', 'January 28, 2017', '1:27 PM', 0),
-(6, '2', 'Contact', '0', 'February 12, 2017', '2:43 AM', 0),
-(7, '2', 'Todo List', '1', 'February 12, 2017', '2:47 AM', 1),
-(10, '2', 'Issue tracker', '1', 'February 12, 2017', '2:47 AM', 1);
+(6, '2', 'Contact', '1', 'February 20, 2017', '3:52 PM', 1),
+(7, '2', 'Todo List', '1', 'February 20, 2017', '3:52 PM', 1),
+(10, '2', 'Issue tracker', '1', 'February 20, 2017', '3:52 PM', 1);
 
 -- --------------------------------------------------------
 
@@ -560,6 +614,18 @@ ALTER TABLE `permission_admin`
   ADD PRIMARY KEY (`NO`);
 
 --
+-- Indexes for table `post_admin`
+--
+ALTER TABLE `post_admin`
+  ADD PRIMARY KEY (`NO`);
+
+--
+-- Indexes for table `post_admin_reply`
+--
+ALTER TABLE `post_admin_reply`
+  ADD PRIMARY KEY (`NO`);
+
+--
 -- Indexes for table `team`
 --
 ALTER TABLE `team`
@@ -627,7 +693,7 @@ ALTER TABLE `inbox`
 -- AUTO_INCREMENT for table `inbox_reply`
 --
 ALTER TABLE `inbox_reply`
-  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `issue_tracker`
 --
@@ -647,12 +713,22 @@ ALTER TABLE `notification_admin`
 -- AUTO_INCREMENT for table `paypal_configuration`
 --
 ALTER TABLE `paypal_configuration`
-  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `permission_admin`
 --
 ALTER TABLE `permission_admin`
   MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+--
+-- AUTO_INCREMENT for table `post_admin`
+--
+ALTER TABLE `post_admin`
+  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `post_admin_reply`
+--
+ALTER TABLE `post_admin_reply`
+  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `team`
 --
@@ -662,7 +738,7 @@ ALTER TABLE `team`
 -- AUTO_INCREMENT for table `templates`
 --
 ALTER TABLE `templates`
-  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `testimonial`
 --
