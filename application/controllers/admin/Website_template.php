@@ -122,4 +122,14 @@ class Website_template extends CI_Controller {
 		$this->session->set_flashdata('success_message', 'New template is added!');
 	}
 
+	public function delete($no)
+	{
+		$params = array (
+			'DELETION' 	=> 1
+		);
+		$this->Templates_model->update($params, $no);
+		$this->session->set_flashdata('success_message', 'Template deleted!');
+		redirect('/admin/website_template');
+	}
+
 }

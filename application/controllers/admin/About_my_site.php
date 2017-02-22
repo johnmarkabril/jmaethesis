@@ -72,6 +72,7 @@ class About_my_site extends CI_Controller {
 				'DELETION'		=>	'0'	
 			);
 
+			$this->session->set_flashdata('success_message', 'New about my site added!');
 			$this->About_my_site_model->insert($params);
 		} else {
 			redirect('/');
@@ -83,18 +84,33 @@ class About_my_site extends CI_Controller {
 		$ams_no_update			=	$this->input->post('ams_no_update');
 		$ams_title_update		=	$this->input->post('ams_title_update');
 		$ams_description_update	=	$this->input->post('ams_description_update');
+		$ams_active_update		=	$this->input->post('ams_active_update');
 
 		if ( $this->session->userdata('user_session')->ACCOUNT_TYPE == "Administrator" ) {
 
-			$params = array(
-				'NOUSER'		=>	$this->nouser,
-				'TITLE'			=>	$ams_title_update,
-				'DESCRIPTION'	=>	$ams_description_update
-			);
+			if ( $ams_active_update == 'enabled' ) {
+				$paramsAll = array(
+					'ACTIVE'		=> 0
+				);
+				$this->About_my_site_model->updateAll($paramsAll);
 
+				$params = array(
+					'NOUSER'		=>	$this->nouser,
+					'TITLE'			=>	$ams_title_update,
+					'DESCRIPTION'	=>	$ams_description_update,
+					'ACTIVE'		=>	1
+				);
+			} else {
+				$params = array(
+					'NOUSER'		=>	$this->nouser,
+					'TITLE'			=>	$ams_title_update,
+					'DESCRIPTION'	=>	$ams_description_update,
+					'ACTIVE'		=>  0
+				);
+			}
+
+			$this->session->set_flashdata('success_message', 'Updated the about my site!');
 			$this->About_my_site_model->update($params, $ams_no_update);
-
-
 		} else {
 			redirect('/');
 		}
@@ -107,6 +123,7 @@ class About_my_site extends CI_Controller {
 		);
 
 
+		$this->session->set_flashdata('success_message', 'Item deleted!');
 		$this->About_my_site_model->update($params, $no);
 		redirect('/admin/about_my_site');
 	}

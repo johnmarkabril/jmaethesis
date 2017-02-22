@@ -8,6 +8,7 @@ class Template extends CI_Controller {
         parent::__construct();
         $this->curpage = "Home";
         $this->load->model('Templates_model');  
+        $this->load->model('About_my_site_model');
     }
 
 	public function index()
@@ -15,7 +16,8 @@ class Template extends CI_Controller {
 		if ( $this->session->userdata('account_type') == "User" || $this->session->userdata('account_type') == "" ) {
 			$details = array (
 				'get_all_available_templates'		=>	$this->Templates_model->get_all_available_templates(),
-				'get_all_rented_templates'			=>	$this->Templates_model->get_all_rented_templates()
+				'get_all_rented_templates'			=>	$this->Templates_model->get_all_rented_templates(),
+				'get_active'						=>	$this->About_my_site_model->get_active()
 			);
 
 			$data['content']	=	$this->load->view('user/homecontent', $details, TRUE);

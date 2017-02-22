@@ -1,7 +1,13 @@
 <div class="ibox no-margin">
     <div class="ibox-title no-border">
         Preview
-        <span class="pull-right"><a data-toggle="modal" data-target="#modalDeletePayPal">Delete</a></span>
+        <?php 
+            foreach ( $get_specific as $gs ) :
+        ?>
+                <span class="pull-right"><a data-toggle="modal" data-target="#modalDeletePayPal<?php echo $gs->NO; ?>">Delete</a></span>
+        <?php
+            endforeach;
+        ?>
     </div>
     <div class="ibox-content min-height">
         <div class="row">
@@ -45,9 +51,12 @@
 <?php
     foreach ($get_specific as $gs) :
 ?>
-        <div class="modal inmodal" id="modalDeletePayPal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal inmodal" id="modalDeletePayPal<?php echo $gs->NO; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content animated pulse">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Are you sure, you want to delete this paypal account?</h4>
+                    </div>
                     <div class="modal-body padding-bottom padding-top">
                         <div class="row">
                             <div class="col-md-6">
