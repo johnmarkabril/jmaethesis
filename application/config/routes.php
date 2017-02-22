@@ -57,3 +57,4 @@ $route['translate_uri_dashes'] = FALSE;
 // $route['admin/compose_message']	= "admin/message/compose_message";
 // $route['']
 $route['admin'] = "admin/dashboard";
+$route['agent'] = "agent/issue_tracker";

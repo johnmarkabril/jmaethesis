@@ -33,6 +33,10 @@ class Login extends CI_Controller {
 					$data = $this->session->set_userdata('user_session',$valid);
 					// $this->session->set_flashdata('success_message', 'This is my message');
 					redirect('/admin');
+				}else if ($_SESSION['account_type'] == "Agent"){
+					$data = $this->session->set_userdata('user_session',$valid);
+					// $this->session->set_flashdata('success_message', 'This is my message');
+					redirect('/agent');
 				}
 			}else{
 				// $this->session->set_flashdata('error_message', 'This is my message');
