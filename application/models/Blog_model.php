@@ -19,7 +19,7 @@ class Blog_model extends CI_Model
 	public function get_all_blog()
 	{
 		$row = $this->db->where($this->deletion, "0")
-						->order_by($this->dbno, "ASC")
+						->order_by($this->dbno, "DESC")
 						->get($this->table);
 
 		return $row->result();

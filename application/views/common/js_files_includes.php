@@ -56,9 +56,109 @@
             //     var checkEmail      = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(txt_team_email);
         // END OF DONT DELETE CODE
 
+        <?php
+            if ( $curpage == 'Events' ) {
+                if ( !empty($this->session->userdata('user_session')) ) {
+                    if ( !empty($get_all_events) ) {
+                        foreach ( $get_all_events as $gae ) :
+                            $sess = $this->session->userdata('user_session');
+        ?>
+                            $('#replyEvent<?php echo $gae->NO; ?>').keypress(function(event) {
+                                if (event.keyCode == 13 && !event.shiftKey) {
+                                    if ( $('#replyEvent<?php echo $gae->NO; ?>').val() != '' ) {
+                                        $.ajax ({
+                                            url: '<?php echo base_url(); ?>events/insert_reply',
+                                            method: "POST",
+                                            data: {
+                                                replyMessage    :     $('#replyEvent<?php echo $gae->NO; ?>').val(),
+                                                messageNo       :     '<?php echo $gae->NO; ?>'
+                                            },
+                                            success:function(data){
+                                                html =  '<div class="padding-top">';
+                                                html += '   <div class="row">';
+                                                html += '       <div class="col-xs-1">';
+                                                html += '           <img style="height:50px;width:50px;" src="<?php echo base_url(); ?>public/img/<?php echo $sess->IMAGEURL; ?>" />';
+                                                html += '       </div>';
+                                                html += '       <div style="padding-left: 85px;">';
+                                                html += '           <div><label><?php echo $sess->FIRSTNAME." ".$sess->LASTNAME; ?></label><?php echo ' - ' . $date; ?></div>';
+                                                html += '           <div style="font-size: 15px;">';
+                                                html +=                 $('#replyEvent<?php echo $gae->NO; ?>').val();
+                                                html += '           </div>';
+                                                html += '       </div>';
+                                                html += '   </div>';
+                                                html += '</div>';
+
+                                                $('#newReplyEvent<?php echo $gae->NO; ?>').append(html);
+                                                $('#replyEvent<?php echo $gae->NO; ?>').val('');
+                                            },
+                                            error:function(){
+                                                toastr.error('ERROR: Please refresh the page!');
+                                            }
+                                        });
+                                    }
+                                }
+                            });
+
+        <?php
+                        endforeach;
+                    }
+                }
+            }
+        ?>
+
+        <?php
+            if ( $curpage == 'Blog' ) {
+                if ( !empty($this->session->userdata('user_session')) ) {
+                    if ( !empty($get_all_blog) ) {
+                        foreach ( $get_all_blog as $gar ) :
+                            $sess = $this->session->userdata('user_session');
+        ?>
+                            $('#replyBlog<?php echo $gar->NO; ?>').keypress(function(event) {
+                                if (event.keyCode == 13 && !event.shiftKey) {
+                                    if ( $('#replyBlog<?php echo $gar->NO; ?>').val() ) {
+                                        $.ajax ({
+                                            url: '<?php echo base_url(); ?>blog/insert_reply',
+                                            method: "POST",
+                                            data: {
+                                                replyMessage    :     $('#replyBlog<?php echo $gar->NO; ?>').val(),
+                                                messageNo       :     '<?php echo $gar->NO; ?>'
+                                            },
+                                            success:function(data){
+                                                html =  '<div class="padding-top">';
+                                                html += '   <div class="row">';
+                                                html += '       <div class="col-xs-1">';
+                                                html += '           <img style="height:50px;width:50px;" src="<?php echo base_url(); ?>public/img/<?php echo $sess->IMAGEURL; ?>" />';
+                                                html += '       </div>';
+                                                html += '       <div style="padding-left: 85px;">';
+                                                html += '           <div><label><?php echo $sess->FIRSTNAME." ".$sess->LASTNAME; ?></label><?php echo ' - ' . $date; ?></div>';
+                                                html += '           <div style="font-size: 15px;">';
+                                                html +=                 $('#replyBlog<?php echo $gar->NO; ?>').val();
+                                                html += '           </div>';
+                                                html += '       </div>';
+                                                html += '   </div>';
+                                                html += '</div>';
+
+                                                $('#newReply<?php echo $gar->NO; ?>').append(html);
+                                                $('#replyBlog<?php echo $gar->NO; ?>').val('');
+                                            },
+                                            error:function(){
+                                                toastr.error('ERROR: Please refresh the page!');
+                                            }
+                                        });
+                                    }
+                                }
+                            });
+
+        <?php
+                        endforeach;
+                    }
+                }
+            }
+        ?>
+
         <?php 
             if ( $curpage == 'Profile' ) {
-                if ( $get_all_post ) {
+                if ( !empty($get_all_post) ) {
                     foreach ( $get_all_post as $gap ) :
         ?>
                         $('#adminReplyPost<?php echo $gap->NO; ?>').keypress(function(event) {
@@ -93,8 +193,6 @@
                                             toastr.error('ERROR: Please refresh the page!');
                                         }
                                     });
-                                } else {
-                                    return false;
                                 }
                             }
                         });
@@ -102,6 +200,7 @@
                     endforeach;
                 }
         ?>
+
                 $('#btn_post_profile').click(function(){
                     var txt_post            = $('#txt_post').val();
                     var txt_no_prof_post    = $('#txt_no_prof_post').val();

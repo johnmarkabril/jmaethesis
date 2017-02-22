@@ -75,7 +75,7 @@
                             <div class="form-group">
                                 <label>Title</label>
                                 <input type="text" class="form-control" required name="event_no_update" value="<?php echo $gs->NO; ?>" style="display: none;" />
-                                <input type="text" class="form-control" required name="event_title_update" value="<?php echo $gs->TITLE; ?>"/>
+                                <input type="text" class="form-control" required name="event_title_update" maxlength="50" value="<?php echo $gs->TITLE; ?>"/>
                             </div>
                             <div class="form-group">
                                 <label>Description</label>

@@ -16,7 +16,28 @@
             		<div>
 						<?php
 							switch ($curpage) {
+						    	case 'Contact':
+						    		echo $content;
+						    		break;
+						    	case 'Events':
+						    		echo $content;
+						    		break;
 						    	case 'Issue Tracker':
+						    		echo $content;
+						    		break;
+						    	case 'Message':
+						    		echo $content;
+						    		break;
+						    	case 'Notification':
+						    		echo $content;
+						    		break;
+						    	case 'Profile':
+						    		echo $content;
+						    		break;
+						    	case 'Purchased Template':
+						    		echo $content;
+						    		break;
+						    	case 'Templates':
 						    		echo $content;
 						    		break;
 							}

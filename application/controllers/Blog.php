@@ -8,14 +8,20 @@ class Blog extends CI_Controller {
         parent::__construct();
         $this->curpage = "Blog";
         $this->load->model('Blog_model'); 
-        $this->load->model('Blog_comment_model'); 
+        $this->load->model('Blog_reply_model');
+
+    	date_default_timezone_set("Asia/Manila");
+    	$this->date = date("F d, Y");
+    	$this->time = date("g:i A");
     }
 
 	public function index()
 	{
 		if ( $this->session->userdata('account_type') == "User" || $this->session->userdata('account_type') == "" ) {
 			$details = array (
-				'get_all_blog'			=>	$this->Blog_model->get_all_blog()
+				'get_all_blog'			=>	$this->Blog_model->get_all_blog(),
+				'get_all_reply'			=>	$this->Blog_reply_model->get_all_reply(),
+				'date'					=>	$this->date
 			);
 
 			$data['content']	=	$this->load->view('user/blogcontent', $details, TRUE);
@@ -26,19 +32,24 @@ class Blog extends CI_Controller {
 		}
 	}
 
-	public function post($randomcode)
+	public function insert_reply()
 	{
-		if ( $this->session->userdata('account_type') == "User" || $this->session->userdata('account_type') == "" ) {
-			$details = array (
-				'get_specific_blog'		=>	$this->Blog_model->get_specific_blog($randomcode),
-				'get_comment_per_blog'	=>	$this->Blog_comment_model->get_comment_per_blog($randomcode)
+		if ( !empty($this->session->userdata('user_session')) ) {
+			$replyMessage	=	$this->input->post('replyMessage');
+			$messageNo		=	$this->input->post('messageNo');
+
+			$params = array(
+				'NO'		=>	'',
+				'BLOGNO'	=>	$messageNo,
+				'NAME'		=>	$this->session->userdata('user_session')->FIRSTNAME.' '.$this->session->userdata('user_session')->LASTNAME,
+				'IMAGEURL'	=>	$this->session->userdata('user_session')->IMAGEURL,
+				'DATE'		=>	$this->date,
+				'TIME'		=>	$this->time,
+				'REPLY'		=>	$replyMessage,
+				'DELETION'	=>	0
 			);
 
-			$data['content']	=	$this->load->view('user/blogcontent', $details, TRUE);
-			$data['curpage']	= 	$this->curpage;
-			$this->load->view('template', $data);
-		} else {
-			redirect('/admin');
+			$this->Blog_reply_model->insertReply($params);
 		}
 	}
 }

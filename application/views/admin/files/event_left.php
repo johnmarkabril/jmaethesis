@@ -41,7 +41,7 @@
             <div class="modal-body no-padding-bottom">
                 <div class="form-group">
                     <label>Title</label>
-                    <input type="text" class="form-control" id="event_title_create" />
+                    <input type="text" class="form-control" id="event_title_create" maxlength="50" />
                 </div>
                 <div class="form-group">
                     <label>Description</label>

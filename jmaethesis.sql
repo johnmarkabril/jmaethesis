@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 22, 2017 at 05:29 AM
+-- Generation Time: Feb 22, 2017 at 07:58 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.8
 
@@ -74,27 +74,29 @@ INSERT INTO `blog` (`NO`, `NAME`, `TITLE`, `DATE`, `HOUR`, `DESCRIPTION`, `IMAGE
 -- --------------------------------------------------------
 
 --
--- Table structure for table `blog_comment`
+-- Table structure for table `blog_reply`
 --
 
-CREATE TABLE `blog_comment` (
+CREATE TABLE `blog_reply` (
   `NO` int(11) NOT NULL,
+  `BLOGNO` int(11) NOT NULL,
   `NAME` varchar(500) NOT NULL,
-  `USERNAME` varchar(500) NOT NULL,
-  `DESCRIPTION` varchar(5000) NOT NULL,
-  `DATE` varchar(100) NOT NULL,
-  `HOUR` varchar(100) NOT NULL,
-  `BLOGHASH` varchar(500) NOT NULL,
   `IMAGEURL` varchar(500) NOT NULL,
+  `DATE` varchar(500) NOT NULL,
+  `TIME` varchar(500) NOT NULL,
+  `REPLY` varchar(5000) NOT NULL,
   `DELETION` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `blog_comment`
+-- Dumping data for table `blog_reply`
 --
 
-INSERT INTO `blog_comment` (`NO`, `NAME`, `USERNAME`, `DESCRIPTION`, `DATE`, `HOUR`, `BLOGHASH`, `IMAGEURL`, `DELETION`) VALUES
-(1, 'Farrahmae Gregorio', 'gregs17', 'Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for ''lorem ipsum'' will uncover many web sites still default model text.', 'January 1, 2017', '10:41 AM', 'AN6KM7cmjIqKOFC', 'prof1.jpg', 0);
+INSERT INTO `blog_reply` (`NO`, `BLOGNO`, `NAME`, `IMAGEURL`, `DATE`, `TIME`, `REPLY`, `DELETION`) VALUES
+(1, 1, 'John Mark Abril', 'prof3.jpg', 'February 22, 2017', '10:59 PM', 'Thank you for the wonderful work!', 0),
+(2, 1, 'John Mark Abril', 'prof3.jpg', 'February 23, 2017', '2:14 AM', 'Belated Merry Christmas.', 0),
+(3, 1, 'John Mark Abril', 'prof3.jpg', 'February 23, 2017', '2:39 AM', 'Belated Happy New Year.', 0),
+(4, 1, 'John Mark Abril', 'prof3.jpg', 'February 23, 2017', '2:55 AM', 'Belated Happy Valentines.', 0);
 
 -- --------------------------------------------------------
 
@@ -146,8 +148,37 @@ CREATE TABLE `events` (
 --
 
 INSERT INTO `events` (`NO`, `NOUSER`, `TITLE`, `DESCRIPTION`, `DATE`, `IMAGEURL`, `DELETION`) VALUES
-(1, '2', 'Testing Title', 'Testing Description', 'January 25, 2017', '', 0),
-(2, '2', 'Testing', 'Testing', 'January 25, 2017', '', 1);
+(1, '2', 'Testing Title', 'Testing Description', 'January 25, 2017', '', 1),
+(2, '2', 'Testing', 'Testing', 'January 25, 2017', 'noimage.png', 1),
+(3, '2', 'Pumpkin Patch Party', 'Bundle up your kids in cutesy pumpkin costumes for a pre-Halloween fun they will love!  Save the Date! The annual Pumpkin Patch Party will be held on October 27, 3pm at Gymboree Play & Music Manila Polo Club, Makati City. It will be an afternoon party of fun costumes, kid-friendly games, arts and crafts and trick or treating. With special guest, Puppeteer and Author of the children’s book, “Ang Batang Gustong Maging Papet”(The Kid Who Wants to be a Puppet).', 'October 11, 2016', 'noimage.png', 0),
+(4, '2', '‘Magical Fields of Light’ in Nuvali', 'People of the South are sure to have a brighter and merrier holidays as Nuvali presents their first-ever ‘Magical Fields of Light’ which started last November 25, and will last until January 8, 2017.The Magical Field of Lights show runs every 30 minutes starting at 6 p.m. and ending at 10 p.m. every day. Each show is separated into two 5-minute-long display of flashing lights and lasers accompanied by a medley of popular Christmas songs—a mix of foreign and Filipino songs.', 'December 13, 2016', 'noimage.png', 0),
+(5, '2', 'New Year’s Eve Events: Countdown to 2017', 'New Year’s Eve in the Philippines is usually celebrated by a multitude of traditions and superstitions. There would be people in the streets, lighting up firecrackers to drive away the bad luck. Some would be in their best polka dotted clothes, and there will be some – kids and adults alike – who’d be jumping as high as they could as soon as the clock strikes 12, marking the start of the new year.', 'December 31, 2016', 'noimage.png', 0),
+(6, '2', 'Celebrate the Year of the Fire Rooster', 'Celebrate the Year of the Fire Rooster as Century City Mall brings you activities to guide you in your journey to fulfillment, wealth, prosperity and good health this 2017.', 'January 15, 2017', 'noimage.png', 0),
+(7, '2', 'International Seminar in Inclusive Education', 'Join this conference and help build an inclusive education community in the Philippines!\r\nFor the first time ever, various educators, legislators, disabled people organizations, students from Philippines and abroad, and international organizations will unite for the International Seminar in Inclusive Education happening from February 22 to 24, 2017 at the SMX Convention Center Manila.', 'January 13, 2017', 'noimage.png', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `event_reply`
+--
+
+CREATE TABLE `event_reply` (
+  `NO` int(11) NOT NULL,
+  `EVENTNO` int(11) NOT NULL,
+  `NAME` varchar(500) NOT NULL,
+  `IMAGEURL` varchar(500) NOT NULL,
+  `DATE` varchar(500) NOT NULL,
+  `TIME` varchar(500) NOT NULL,
+  `REPLY` varchar(5000) NOT NULL,
+  `DELETION` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `event_reply`
+--
+
+INSERT INTO `event_reply` (`NO`, `EVENTNO`, `NAME`, `IMAGEURL`, `DATE`, `TIME`, `REPLY`, `DELETION`) VALUES
+(2, 6, 'John Mark Abril', 'prof3.jpg', 'February 23, 2017', '2:53 AM', 'This is real? If its real then we celebrate.', 0);
 
 -- --------------------------------------------------------
 
@@ -305,7 +336,7 @@ INSERT INTO `paypal_configuration` (`NO`, `NOUSER`, `PAYPAL_EMAIL`, `STATUS`, `D
 (2, '2', 'maegregorio@gmail.com', 'disabled', 0),
 (3, '2', 'testing@gmail.com', 'disabled', 1),
 (4, '2', 'testing2@gmail.com', 'disabled', 1),
-(5, '2', 'jhasdkjf@gmail.com', 'disabled', 0);
+(5, '2', 'jhasdkjf@gmail.com', 'disabled', 1);
 
 -- --------------------------------------------------------
 
@@ -450,7 +481,27 @@ CREATE TABLE `templates` (
 INSERT INTO `templates` (`NO`, `TEMPLATENAME`, `TEMPLATECATEGORY`, `DESCRIPTION`, `LIBRARYUSE`, `PRICE`, `CURRENTOWNER`, `DATEUPLOADED`, `IMAGEURL`, `SITEURL`, `OWNERTITLEWEBSITE`, `DELETION`, `AVAILABILITY`, `AGENTSEE`) VALUES
 (1, 'Blog and Selling of Recipe Template', 'Food E-Commerce', '', 'BootStrap | Inspinia | CodeIgniter Framework', 3000.00, 'Mae Abril', 'December 11, 2016', '1.jpg', 'http://template1.jmaeprovider.xyz/', 'Sweet & Pastries Cakes', 0, 0, 1),
 (2, 'News and Affairs Template', 'Food E-Commerce', '', 'BootStrap | Inspinia | CodeIgniter Framework', 3000.00, '', 'December 14, 2016', '2.jpg', '', '', 0, 1, 1),
-(3, 'Restaurant Reservation Template', 'Food E-Commerce', 'Description', 'BootStrap | Inspinia | CodeIgniter Framework', 3000.00, '', 'December 15, 2016', '3.jpg', '', '', 0, 1, 0);
+(3, 'Restaurant Reservation Template', 'Food E-Commerce', 'Description', 'BootStrap | Inspinia | CodeIgniter Framework', 3000.00, '', 'December 15, 2016', '3.jpg', '', '', 0, 1, 0),
+(4, 'Fruit Stores Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Free CSS Templates', 10000.00, '', 'February 22, 2017', 'fruit-stores.png', '', '', 0, 1, 0),
+(5, 'DapurKue Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap | Tokokoo & instantShift', 10000.00, '', 'February 22, 2017', 'dapurkue.png', '', '', 0, 1, 0),
+(6, 'Brewery Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap | Template Monster', 10000.00, '', 'February 22, 2017', 'brewery.png', '', '', 0, 1, 0),
+(7, 'Cafeteria Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap | Choco Templates', 10000.00, '', 'February 22, 2017', 'cafeteria.png', '', '', 0, 1, 0),
+(8, 'Valencia Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap | Template Monster', 10000.00, '', 'February 22, 2017', 'valencia.png', '', '', 0, 1, 0),
+(9, 'Decanter Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap | Template Monster', 10000.00, '', 'February 22, 2017', 'decanter.png', '', '', 0, 1, 0),
+(10, 'Cake Delights Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap | Template Monster', 10000.00, '', 'February 22, 2017', 'cake-delights.png', '', '', 0, 1, 0),
+(11, 'Garden Truck Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap | Template Monster', 10000.00, '', 'February 22, 2017', 'garden-truck.png', '', '', 0, 1, 0),
+(12, 'Organic Food Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap | Template Monster', 10000.00, '', 'February 22, 2017', 'organic-food.png', '', '', 0, 1, 0),
+(13, 'Gourmet Traditional Restaurant Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap | Template Monster', 10000.00, '', 'February 22, 2017', 'Gourmet-Traditional-Restaurant.png', '', '', 0, 1, 0),
+(14, 'Caprice Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap | Elemis', 10000.00, '', 'February 22, 2017', 'caprice.png', '', '', 0, 1, 0),
+(15, 'Bliss Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap | Template Monster', 10000.00, '', 'February 22, 2017', 'bliss.png', '', '', 0, 1, 0),
+(16, 'Restaurant Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap', 10000.00, '', 'February 22, 2017', 'restaurant.png', '', '', 0, 1, 0),
+(17, 'King of Pasta Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap | Mohamed Sobby', 10000.00, '', 'February 22, 2017', 'king-of-pasta.png', '', '', 0, 1, 0),
+(18, 'Zentro Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap | Tooplate', 10000.00, '', 'February 22, 2017', 'zentro.png', '', '', 0, 1, 0),
+(19, 'Eventrum Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap | Template  Monster', 10000.00, '', 'February 22, 2017', 'eventrum.png', '', '', 0, 1, 0),
+(20, 'Steak House Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap | Templatemo', 10000.00, '', 'February 22, 2017', 'steak-house.png', '', '', 0, 1, 0),
+(21, 'Luxury Restaurant Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap | Website Template', 10000.00, '', 'February 22, 2017', 'luxury-restaurant.png', '', '', 0, 1, 0),
+(22, 'Cafe Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap | Template Monster', 10000.00, '', 'February 22, 2017', 'cafe.png', '', '', 0, 1, 0),
+(23, 'Classic European Cuisine', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap | Template Monster', 10000.00, '', 'February 22, 2017', 'Classic-European-Cuisine.png', '', '', 0, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -569,7 +620,7 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`NO`, `FIRSTNAME`, `LASTNAME`, `USERNAME`, `PHONENUMBER`, `EMAIL`, `PASSWORD`, `ACCOUNT_TYPE`, `ACTIVATED`, `VERIFIED`, `VERIFICATIONCODE`, `PERMISSION`, `IMAGEURL`, `DATE`, `TIME`, `DELETION`) VALUES
 (1, 'John Mark', 'Abril', 'jmabril17', '09208317004', 'johnmarkabril@gmail.com', 'ae2b1fca515949e5d54fb22b8ed95575', 'User', 1, 'YES', '', '', 'prof3.jpg', 'December 15, 2016', '03:18 AM', 0),
 (2, 'Farrah Mae', 'Gregorio', 'frrhmgrgrio', '0948410511', 'frrhmgrgrio@gmail.com', 'ae2b1fca515949e5d54fb22b8ed95575', 'Administrator', 1, 'YES', '', 'About My Site|Accounts|Agent|Co-Administrator|Contact|Dashboard|Events|Message|Notification|PayPal Configuration|Profile|Settings|Statistics|Team|User Management|Website|Website Online|Website Template', 'prof1.jpg', 'December 15, 2016', '05:31 AM', 0),
-(3, 'Agent', 'Agent', 'agent123', '', 'agent@gmail.com', 'ae2b1fca515949e5d54fb22b8ed95575', 'Agent', 1, 'YES', '', '', 'noimage.png', 'February 19, 2017', '11:57 AM', 0);
+(3, 'Agent', 'Agent', 'agent123', '', 'agent@gmail.com', 'ae2b1fca515949e5d54fb22b8ed95575', 'Agent', 1, 'YES', '', 'Issue Tracker|Profile|Contact', 'noimage.png', 'February 19, 2017', '11:57 AM', 0);
 
 --
 -- Indexes for dumped tables
@@ -588,9 +639,9 @@ ALTER TABLE `blog`
   ADD PRIMARY KEY (`NO`);
 
 --
--- Indexes for table `blog_comment`
+-- Indexes for table `blog_reply`
 --
-ALTER TABLE `blog_comment`
+ALTER TABLE `blog_reply`
   ADD PRIMARY KEY (`NO`);
 
 --
@@ -603,6 +654,12 @@ ALTER TABLE `contact_admin`
 -- Indexes for table `events`
 --
 ALTER TABLE `events`
+  ADD PRIMARY KEY (`NO`);
+
+--
+-- Indexes for table `event_reply`
+--
+ALTER TABLE `event_reply`
   ADD PRIMARY KEY (`NO`);
 
 --
@@ -710,10 +767,10 @@ ALTER TABLE `about_my_site`
 ALTER TABLE `blog`
   MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT for table `blog_comment`
+-- AUTO_INCREMENT for table `blog_reply`
 --
-ALTER TABLE `blog_comment`
-  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `blog_reply`
+  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `contact_admin`
 --
@@ -723,6 +780,11 @@ ALTER TABLE `contact_admin`
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
+  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `event_reply`
+--
+ALTER TABLE `event_reply`
   MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `inbox`
@@ -778,7 +840,7 @@ ALTER TABLE `team`
 -- AUTO_INCREMENT for table `templates`
 --
 ALTER TABLE `templates`
-  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT for table `templatesales`
 --
