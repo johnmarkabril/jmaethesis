@@ -11,12 +11,8 @@
                         <h1>We craft<br/>
                             brands, web apps,<br/>
                             and user interfaces<br/>
-                            we are IN+ studio</h1>
+                            we are JMAE Provider</h1>
                         <p>Lorem Ipsum is simply dummy text of the printing.</p>
-                        <p>
-                            <a class="btn btn-lg btn-primary" href="#" role="button">READ MORE</a>
-                            <a class="caption-link" href="#" role="button">Inspinia Theme</a>
-                        </p>
                     </div>
                 </div>
                 <div class="header-back one">
@@ -27,8 +23,6 @@
                 <div class="container">
                     <div class="carousel-caption">
                         <h1>We create meaningful <br/> interfaces that inspire.</h1>
-                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
-                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
                     </div>
                 </div>
                 <!-- Set background for slide in css -->
