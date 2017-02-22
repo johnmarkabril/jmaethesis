@@ -114,7 +114,7 @@ class Website_template extends CI_Controller {
 			'SITEURL'			=> '',
 			'OWNERTITLEWEBSITE'	=> '',
 			'DELETION'			=> 0,
-			'AVAILABILITY'		=> 0,
+			'AVAILABILITY'		=> 1,
 			'AGENTSEE'			=> 0
 		);
 
