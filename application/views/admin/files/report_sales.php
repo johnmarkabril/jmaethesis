@@ -1,6 +1,6 @@
 <div class="ibox no-margin">
     <div class="ibox-title no-border">
-        Number of users
+        Sales Report
         <span class="pull-right"><a data-toggle="modal" data-target="#createModal">This year</a></span>
     </div>
     <div class="ibox-content">

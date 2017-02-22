@@ -906,7 +906,7 @@
                             pointStrokeColor: "#F8AC59",
                             pointHighlightFill: "#F8AC59",
                             pointHighlightStroke: "rgba(237,85,101,1)",
-                            data: [9000, 6000, 0, 0, 0, 0, 0,0,0,0,0,0]
+                            data: <?php echo $sales_for_year; ?>
                         }
                     ]
                 };
@@ -950,7 +950,17 @@
                         pointStrokeColor: "#fff",
                         pointHighlightFill: "#fff",
                         pointHighlightStroke: "rgba(237,85,101,1)",
-                        data: [65, 59, 40, 51, 36, 25, 40]
+                        data: <?php echo $usersPerMonth; ?>
+                    },
+                    {
+                        label: "Example dataset",
+                        fillColor: "rgba(220,220,220,0.5)",
+                        strokeColor: "rgba(220,220,220,1)",
+                        pointColor: "rgba(220,220,220,1)",
+                        pointStrokeColor: "#fff",
+                        pointHighlightFill: "#fff",
+                        pointHighlightStroke: "rgba(220,220,220,1)",
+                        data: <?php echo $usersPerMonthPreviousYear; ?>
                     }
                 ]
             };
@@ -1018,7 +1028,7 @@
             new Chartist.Bar('#ct-chart4', {
                 labels: ["January", "February", "March", "April", "May", "June", "July","August","September","October","November","December"],
                 series: [
-                    [5, 4, 3, 7, 5, 10, 3]
+                    <?php echo $salesReport; ?>
                 ]
             }, {
                 seriesBarDistance: 10,

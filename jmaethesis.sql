@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 21, 2017 at 05:36 PM
+-- Generation Time: Feb 22, 2017 at 05:29 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.8
 
@@ -120,7 +120,10 @@ CREATE TABLE `contact_admin` (
 --
 
 INSERT INTO `contact_admin` (`NO`, `NOUSER`, `NAME`, `CONTACTNO`, `EMAILADDRESS`, `ADDRESS`, `IMAGEURL`, `DATE`, `TIME`, `DELETION`) VALUES
-(4, '2', 'John Mark Abril', '+639208317004', 'johnmarkabril@gmail.com', '655 D. Guillermo St. Gagalangin Tondo, Manila', '14495447_961603857295625_3707154493608680853_n.jpg', 'January 26, 2017', '3:42 AM', 0);
+(4, '2', 'John Mark Abril', '+639208317004', 'johnmarkabril@gmail.com', '655 D. Guillermo St. Gagalangin Tondo, Manila', '14495447_961603857295625_3707154493608680853_n.jpg', 'January 26, 2017', '3:42 AM', 0),
+(5, '2', '', 'asdasda', 'asdasd', 'asdfadsf', 'noimage.png', 'February 22, 2017', '11:27 AM', 1),
+(6, '2', '', 'asdasda', 'asdasd', 'asdfadsf', 'noimage.png', 'February 22, 2017', '11:27 AM', 1),
+(7, '2', 'Vincent Barcelona', '09123456789', 'vincent@gmail.com', 'Caloocan City', 'noimage.png', 'February 22, 2017', '11:32 AM', 0);
 
 -- --------------------------------------------------------
 
@@ -452,6 +455,37 @@ INSERT INTO `templates` (`NO`, `TEMPLATENAME`, `TEMPLATECATEGORY`, `DESCRIPTION`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `templatesales`
+--
+
+CREATE TABLE `templatesales` (
+  `NO` int(11) NOT NULL,
+  `TEMPLATESNO` int(11) NOT NULL,
+  `FIRSTNAME` varchar(500) NOT NULL,
+  `LASTNAME` varchar(500) NOT NULL,
+  `EMAILADDRESS` varchar(500) NOT NULL,
+  `RENTTIME` varchar(500) NOT NULL,
+  `PRICE` double(8,2) NOT NULL,
+  `IMAGEURL` varchar(500) NOT NULL,
+  `DATE` varchar(500) NOT NULL,
+  `TIME` varchar(500) NOT NULL,
+  `DELETION` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `templatesales`
+--
+
+INSERT INTO `templatesales` (`NO`, `TEMPLATESNO`, `FIRSTNAME`, `LASTNAME`, `EMAILADDRESS`, `RENTTIME`, `PRICE`, `IMAGEURL`, `DATE`, `TIME`, `DELETION`) VALUES
+(1, 1, 'Mae', 'Abril', 'maegregorio', '6 months', 18000.00, 'kjuasdfbi213.jpg', 'February 22, 2017', '11:41 AM', 0),
+(2, 3, 'Dale', 'Diaz', 'dalediaz@gmail.com', '1 month', 3000.00, 'IMG_7794.jpg', 'January 11, 2017', '07:39 AM', 0),
+(3, 2, 'Shane', 'Macion', 'shanemacion@gmail.com', '1 month', 3000.00, '15870584_1223823597713667_796951048_n.jpg', 'January 15, 2017', '04:23 PM', 0),
+(4, 1, 'John', 'Abril', 'jmabril@gmail.com', '3 months', 9000.00, '14495447_961603857295625_3707154493608680853_n.jpg', 'August 15, 2016', '09:19 AM', 0),
+(5, 2, 'Beldion', 'Balanan', 'beldbalanan@gmail.com', '2 months', 6000.00, 'noimage.png', 'October 11, 2016', '09:11 AM', 0);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `testimonial`
 --
 
@@ -638,6 +672,12 @@ ALTER TABLE `templates`
   ADD PRIMARY KEY (`NO`);
 
 --
+-- Indexes for table `templatesales`
+--
+ALTER TABLE `templatesales`
+  ADD PRIMARY KEY (`NO`);
+
+--
 -- Indexes for table `testimonial`
 --
 ALTER TABLE `testimonial`
@@ -678,7 +718,7 @@ ALTER TABLE `blog_comment`
 -- AUTO_INCREMENT for table `contact_admin`
 --
 ALTER TABLE `contact_admin`
-  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `events`
 --
@@ -739,6 +779,11 @@ ALTER TABLE `team`
 --
 ALTER TABLE `templates`
   MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `templatesales`
+--
+ALTER TABLE `templatesales`
+  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `testimonial`
 --

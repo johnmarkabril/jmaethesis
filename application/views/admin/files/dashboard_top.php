@@ -3,7 +3,7 @@
 		<div class="widget style1 navy-bg no-margin no-border-radius">
 	        <div class="text-center">
 	        	<span> Total sales </span>
-	            <h2 class="font-bold">₱ 27,000.00</h2>
+	            <h2 class="font-bold">₱ <?php echo number_format($totalSales); ?></h2>
 	        </div>
 	    </div>
 	</div>
@@ -11,7 +11,7 @@
 		<div class="widget style1 lazur-bg no-margin no-border-radius">
 	        <div class="text-center">
 	        	<span> Last year sales </span>
-	            <h2 class="font-bold">₱ 12,000.00</h2>
+	            <h2 class="font-bold">₱ <?php echo number_format($totalSalesLastYear); ?></h2>
 	        </div>
 	    </div>
 	</div>
@@ -19,7 +19,7 @@
 		<div class="widget style1 yellow-bg no-margin no-border-radius">
 	        <div class="text-center">
 	        	<span> Total templates </span>
-	            <h2 class="font-bold">3</h2>
+	            <h2 class="font-bold"><?php echo number_format($numberOfTemplates); ?></h2>
 	        </div>
 	    </div>
 	</div>

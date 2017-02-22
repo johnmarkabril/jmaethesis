@@ -11,24 +11,62 @@ class Dashboard extends CI_Controller {
         $this->load->model('Issue_tracker_reply_model');
         $this->load->model('Contact_admin_model');
         $this->load->model('Todo_list_model');
+        $this->load->model('Templatesales_model');
+        $this->load->model('Templates_model');
         $this->load->model('Users_model');
 
         $this->nouser = $this->session->userdata('user_session')->NO;
     	date_default_timezone_set("Asia/Manila");
     	$this->date = date("F d, Y");
     	$this->time = date("g:i A");
+    	$this->year = date("Y");
     }
 
 	public function index()
 	{
 		$user_session = $this->session->userdata('user_session');
 
+		$month = array ("January", "February", "March", "April", "May", "June", "July","August","September","October","November","December");
+
+		$sales_for_year = array();
+		
+		for ( $ctr = 0; $ctr < sizeof($month); $ctr++ ) {
+			$ctrPrice = 0;
+			$monthArr = $this->Templatesales_model->get_monthly_sales_thisyear($month[$ctr],$this->year);
+			foreach ( $monthArr as $ma ) {
+				$ctrPrice += $ma->PRICE;
+			}
+			array_push($sales_for_year, $ctrPrice);
+		}
+
+		$rowSales = $this->Templatesales_model->get_all_sales_row();
+		for ( $ctr = 0; $ctr < $rowSales; $ctr++ ) {
+			$totalSales = 0;
+			$fetchResult = $this->Templatesales_model->get_all_sales();
+			foreach ($fetchResult as $fr) {
+				$totalSales += $fr->PRICE;
+			}
+		}
+
+		$rowLastYearSales = $this->Templatesales_model->get_last_year_sales_row($this->year - 1);
+		for ( $ctr = 0; $ctr < $rowSales; $ctr++ ) {
+			$totalSalesLastYear = 0;
+			$fetchResult = $this->Templatesales_model->get_last_year_sales($this->year - 1);
+			foreach ($fetchResult as $fr) {
+				$totalSalesLastYear += $fr->PRICE;
+			}
+		}
+
 		if ( $this->session->userdata('user_session')->ACCOUNT_TYPE == "Administrator" ) {
 			$details = array (
 				'get_admin_specific'					=>	$this->Users_model->get_admin_specific($user_session->NO),
 				'get_all_contact_for_specific_admin'	=>	$this->Contact_admin_model->get_all_contact_for_specific_admin($user_session->NO),
 				'get_all_todo_for_specific_admin'		=>	$this->Todo_list_model->get_all_todo_for_specific_admin($user_session->NO),
-				'get_all_issue_tracker'					=>	$this->Issue_tracker_model->get_all_issue_tracker()
+				'get_all_issue_tracker'					=>	$this->Issue_tracker_model->get_all_issue_tracker(),
+				'sales_for_year'						=>	json_encode($sales_for_year),
+				'totalSales'							=>	$totalSales,
+				'totalSalesLastYear'					=>	$totalSalesLastYear,
+				'numberOfTemplates'						=>	$this->Templates_model->get_all_templates_row()
 			);
 
 			$data['content']	=	$this->load->view('admin/dashboard', $details, TRUE);

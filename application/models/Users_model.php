@@ -155,4 +155,15 @@ class Users_model extends CI_Model
 
 			return $row->result();
 	}
+
+	function get_all_users_per_month_row($month, $year)
+	{
+		$row = $this->db->where($this->deletion, 0)
+						->where($this->verified, "YES")
+						->like($this->date, $month)
+						->like($this->date, $year)
+						->get($this->table);
+
+			return $row->num_rows();
+	}
 }
