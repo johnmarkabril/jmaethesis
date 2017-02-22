@@ -79,24 +79,41 @@ class Events extends CI_Controller {
 	
 	public function update()
 	{
-		$event_no_update			=	$this->input->post('event_no_update');
-		$event_title_update			=	$this->input->post('event_title_update');
-		$event_description_update	=	$this->input->post('event_description_update');
+		if ( $_POST['event_update'] ) {
+			$event_no_update			=	$_POST['event_no_update'];
+			$event_title_update			=	$_POST['event_title_update'];
+			$event_description_update	=	$_POST['event_description_update'];
 
-		if ( $this->session->userdata('user_session')->ACCOUNT_TYPE == "Administrator" ) {
+			if ( $this->session->userdata('user_session')->ACCOUNT_TYPE == "Administrator" ) {
+				if ( !empty($_FILES['image']['name']) ) {
+	        		$loc = $_SERVER['DOCUMENT_ROOT'].base_url()."public/img/";
+			        move_uploaded_file($_FILES['image']['tmp_name'], $loc . $_FILES['image']['name']);
 
-			$params = array(
-				'NOUSER'		=>	$this->nouser,
-				'TITLE'			=>	$event_title_update,
-				'DESCRIPTION'	=>	$event_description_update
-			);
+					$params = array(
+						'NOUSER'		=>	$this->nouser,
+						'TITLE'			=>	$event_title_update,
+						'DESCRIPTION'	=>	$event_description_update,
+						'IMAGEURL'		=> 	$_FILES["image"]["name"]
+					);
+				} else {
+					$params = array(
+						'NOUSER'		=>	$this->nouser,
+						'TITLE'			=>	$event_title_update,
+						'DESCRIPTION'	=>	$event_description_update,
+						'IMAGEURL'		=> 	'noimage.png'
+					);
+				}
 
-			$this->Events_model->update($params, $event_no_update);
-
-
+				$this->session->set_flashdata('success_message', 'Event updated!');
+				$this->Events_model->update($params, $event_no_update);
+				redirect('/admin/events');
+			} else {
+				redirect('/admin/events');
+			}
 		} else {
-			redirect('/');
+			redirect('/admin/events');
 		}
+		
 	}
 
 	public function delete($no)
@@ -106,6 +123,7 @@ class Events extends CI_Controller {
 		);
 
 
+		$this->session->set_flashdata('success_message', 'Item deleted!');
 		$this->Events_model->update($params, $no);
 		redirect('/admin/events');
 	}

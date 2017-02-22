@@ -63,6 +63,8 @@ class Paypal_configuration extends CI_Controller {
 			'STATUS'		=>	'disabled',
 			'DELETION'		=>	0
 		);
+		
+		$this->session->set_flashdata('success_message', 'New PayPal Account Added!');
 		$this->Paypal_configuration_model->create($params);
 	}
 
@@ -91,6 +93,7 @@ class Paypal_configuration extends CI_Controller {
 				'STATUS'		=>	'disabled'
 			);
 
+			$this->session->set_flashdata('success_message', 'PayPal Account updated!');
 			$this->Paypal_configuration_model->update($params, $no);
 		}
 
@@ -102,6 +105,7 @@ class Paypal_configuration extends CI_Controller {
 			'DELETION'	=> 1
 		);
 
+		$this->session->set_flashdata('success_message', 'PayPal account deleted!');
 		$this->Paypal_configuration_model->update($params, $no);
 		redirect('/admin/paypal_configuration');
 	}

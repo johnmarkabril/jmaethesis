@@ -30,7 +30,6 @@
     </div>
 </div>
 
-
 <?php
     foreach ($get_all_templates as $gat) :
 ?>

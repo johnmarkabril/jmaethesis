@@ -683,31 +683,31 @@
             }
         });
 
-        $("#event_update").click(function(){
-            var event_no_update             = $("#event_no_update").val();
-            var event_title_update          = $("#event_title_update").val();
-            var event_description_update    = $("#event_description_update").val();
+        // $("#event_update").click(function(){
+        //     var event_no_update             = $("#event_no_update").val();
+        //     var event_title_update          = $("#event_title_update").val();
+        //     var event_description_update    = $("#event_description_update").val();
 
-            if ( event_title_update && event_description_update ) {
-                $.ajax ({
-                    url: '<?php echo base_url(); ?>admin/events/update',
-                    method: "POST",
-                    data: {
-                        event_no_update           : event_no_update,
-                        event_title_update        : event_title_update,
-                        event_description_update  : event_description_update
-                    },
-                    success:function(data){
-                        location.reload('/admin/event/information/'+event_no_update+'');
-                    },
-                    error:function(){
-                        toastr.error('ERROR: Please refresh the page!');
-                    }
-                });
-            } else {
-                toastr.error('ERROR: Incomplete field!');
-            }
-        });
+        //     if ( event_title_update && event_description_update ) {
+        //         $.ajax ({
+        //             url: '<?php echo base_url(); ?>admin/events/update',
+        //             method: "POST",
+        //             data: {
+        //                 event_no_update           : event_no_update,
+        //                 event_title_update        : event_title_update,
+        //                 event_description_update  : event_description_update
+        //             },
+        //             success:function(data){
+        //                 location.reload('/admin/event/information/'+event_no_update+'');
+        //             },
+        //             error:function(){
+        //                 toastr.error('ERROR: Please refresh the page!');
+        //             }
+        //         });
+        //     } else {
+        //         toastr.error('ERROR: Incomplete field!');
+        //     }
+        // });
 
         $("#event_create").click(function(){
             var event_title_create           = $("#event_title_create").val();
@@ -770,9 +770,10 @@
         });
 
         $("#ams_update").click(function(){
-            var ams_no_update           = $("#ams_no_update").val();
-            var ams_title_update           = $("#ams_title_update").val();
-            var ams_description_update     = $("#ams_description_update").val();
+            var ams_no_update               = $("#ams_no_update").val();
+            var ams_title_update            = $("#ams_title_update").val();
+            var ams_description_update      = $("#ams_description_update").val();
+            var ams_active_update           = $("#ams_active_update").val();
 
             if ( ams_title_update && ams_description_update ) {
                 $.ajax ({
@@ -781,10 +782,11 @@
                     data: {
                         ams_no_update           : ams_no_update,
                         ams_title_update        : ams_title_update,
-                        ams_description_update  : ams_description_update
+                        ams_description_update  : ams_description_update,
+                        ams_active_update       : ams_active_update
                     },
                     success:function(data){
-                        location.reload('/admin/about_my_site/information/'+ams_no_update+'');
+                        location.reload('/admin/about_my_site');
                     },
                     error:function(){
                         toastr.error('ERROR: Please refresh the page!');

@@ -9,6 +9,7 @@ class About_my_site_model extends CI_Model
 	public $table			=	"about_my_site";
 	public $dbno			=	"NO";
 	public $deletion		=	"DELETION";
+	public $active 			=	"ACTIVE";
 
 	function __construct()
 	{
@@ -34,6 +35,15 @@ class About_my_site_model extends CI_Model
 		return $row->result();
 	}
 
+	public function get_active()
+	{
+		$row = $this->db->where($this->deletion, "0")
+						->where($this->active, 1)
+						->get($this->table);
+
+			return $row->result();
+	}
+
 	public function get_specific($no)
 	{
 		$row = $this->db->where($this->deletion, "0")
@@ -47,6 +57,12 @@ class About_my_site_model extends CI_Model
 	public function insert($params)
 	{
 		$this->db->insert($this->table, $params);
+	}
+
+	public function updateAll($params)
+	{
+		$this->db->where($this->active, 1)
+				 ->update($this->table, $params);
 	}
 
 	public function update($params, $no)

@@ -18,7 +18,15 @@
                 </div>
                 <div class="col-md-6">
                     <p class="text-color">
-                        <strong><span class="navy">JF Site Provider</span></strong> is owned and operated by JMAE Company as a site provider for you to help your business become better.
+                        <?php
+                            if ( !empty($get_active) ) {
+                                foreach ( $get_active as $ga ) :
+                        ?>
+                                    <strong><span class="navy"><?php echo $ga->TITLE; ?></span></strong> <?php echo $ga->DESCRIPTION; ?>
+                        <?php
+                                endforeach;
+                            }
+                        ?>
                     </p>
                 </div>
                 <div class="col-md-2">
