@@ -13,6 +13,7 @@ class Users_model extends CI_Model
 	public $firstname		=	"FIRSTNAME";
 	public $account_type 	=	"ACCOUNT_TYPE";
 	public $verified		=	"VERIFIED";
+	public $code 			=	"VERIFICATIONCODE";
 	public $date			=	"DATE";
 	public $dbno			=	"NO";
 	public $table			=	"user";
@@ -175,5 +176,37 @@ class Users_model extends CI_Model
 						->get($this->table);
 
 			return $row->num_rows();
+	}
+
+	function get_all()
+	{
+		$row = $this->db->get($this->table);
+		return $row->result();
+	}
+
+	function check_verification_code($email, $code)
+	{
+		$row = $this->db->where($this->code, $code)
+						->where($this->email, $email)
+						->limit(1)
+						->get($this->table);
+
+			return $row->num_rows();
+	}
+
+	function update_verification_code($params, $email)
+	{
+		$this->db->where($this->email, $email)
+			 	 ->update($this->table, $params);
+	}
+
+	function check_email($email)
+	{
+		$row = $this->db->where($this->email, $email)
+						->where($this->verified, "YES")
+						->where($this->deletion, "0")
+						->limit(1)
+			 	 		->get($this->table);
+			return $row->result();
 	}
 }

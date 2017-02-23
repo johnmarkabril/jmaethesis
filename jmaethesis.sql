@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 22, 2017 at 07:58 PM
+-- Generation Time: Feb 23, 2017 at 09:27 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.8
 
@@ -125,7 +125,9 @@ INSERT INTO `contact_admin` (`NO`, `NOUSER`, `NAME`, `CONTACTNO`, `EMAILADDRESS`
 (4, '2', 'John Mark Abril', '+639208317004', 'johnmarkabril@gmail.com', '655 D. Guillermo St. Gagalangin Tondo, Manila', '14495447_961603857295625_3707154493608680853_n.jpg', 'January 26, 2017', '3:42 AM', 0),
 (5, '2', '', 'asdasda', 'asdasd', 'asdfadsf', 'noimage.png', 'February 22, 2017', '11:27 AM', 1),
 (6, '2', '', 'asdasda', 'asdasd', 'asdfadsf', 'noimage.png', 'February 22, 2017', '11:27 AM', 1),
-(7, '2', 'Vincent Barcelona', '09123456789', 'vincent@gmail.com', 'Caloocan City', 'noimage.png', 'February 22, 2017', '11:32 AM', 0);
+(7, '3', 'Vincent Barcelona', '09123456789', 'vincent@gmail.com', 'Caloocan City', 'noimage.png', 'February 22, 2017', '11:32 AM', 0),
+(8, '3', 'asdfa', 'sdfasdf', 'asdfasdfasdf@gmail.com', 'asdf', 'noimage.png', 'February 24, 2017', '3:57 AM', 1),
+(9, '3', 'qwer', 'wqer', 'asd@gmail.com', 'asdf', 'noimage.png', 'February 24, 2017', '3:58 AM', 1);
 
 -- --------------------------------------------------------
 
@@ -154,7 +156,17 @@ INSERT INTO `events` (`NO`, `NOUSER`, `TITLE`, `DESCRIPTION`, `DATE`, `IMAGEURL`
 (4, '2', '‘Magical Fields of Light’ in Nuvali', 'People of the South are sure to have a brighter and merrier holidays as Nuvali presents their first-ever ‘Magical Fields of Light’ which started last November 25, and will last until January 8, 2017.The Magical Field of Lights show runs every 30 minutes starting at 6 p.m. and ending at 10 p.m. every day. Each show is separated into two 5-minute-long display of flashing lights and lasers accompanied by a medley of popular Christmas songs—a mix of foreign and Filipino songs.', 'December 13, 2016', 'noimage.png', 0),
 (5, '2', 'New Year’s Eve Events: Countdown to 2017', 'New Year’s Eve in the Philippines is usually celebrated by a multitude of traditions and superstitions. There would be people in the streets, lighting up firecrackers to drive away the bad luck. Some would be in their best polka dotted clothes, and there will be some – kids and adults alike – who’d be jumping as high as they could as soon as the clock strikes 12, marking the start of the new year.', 'December 31, 2016', 'noimage.png', 0),
 (6, '2', 'Celebrate the Year of the Fire Rooster', 'Celebrate the Year of the Fire Rooster as Century City Mall brings you activities to guide you in your journey to fulfillment, wealth, prosperity and good health this 2017.', 'January 15, 2017', 'noimage.png', 0),
-(7, '2', 'International Seminar in Inclusive Education', 'Join this conference and help build an inclusive education community in the Philippines!\r\nFor the first time ever, various educators, legislators, disabled people organizations, students from Philippines and abroad, and international organizations will unite for the International Seminar in Inclusive Education happening from February 22 to 24, 2017 at the SMX Convention Center Manila.', 'January 13, 2017', 'noimage.png', 0);
+(7, '2', 'International Seminar in Inclusive Education', 'Join this conference and help build an inclusive education community in the Philippines!\r\nFor the first time ever, various educators, legislators, disabled people organizations, students from Philippines and abroad, and international organizations will unite for the International Seminar in Inclusive Education happening from February 22 to 24, 2017 at the SMX Convention Center Manila.', 'January 13, 2017', 'noimage.png', 0),
+(8, '3', 'qwe', 'qwe', 'February 24, 2017', '', 1),
+(9, '3', 'qwer', 'qwe', 'February 24, 2017', 'noimage.png', 1),
+(10, '3', 'asdf', 'asdfasdf', 'February 24, 2017', '', 1),
+(11, '3', 'asdf', 'asdf', 'February 24, 2017', '', 1),
+(12, '3', 'asdf', 'asdf', 'February 24, 2017', '', 1),
+(13, '3', 'asdf', 'asdf', 'February 24, 2017', '', 1),
+(14, '3', 'asdf', 'asdf', 'February 24, 2017', '', 1),
+(15, '3', 'asdfasdfasdf', 'asdfasdf', 'February 24, 2017', '', 1),
+(16, '3', 'asdf', 'asdf', 'February 24, 2017', '', 1),
+(17, '3', 'asdf', 'asdf', 'February 24, 2017', '', 1);
 
 -- --------------------------------------------------------
 
@@ -178,7 +190,9 @@ CREATE TABLE `event_reply` (
 --
 
 INSERT INTO `event_reply` (`NO`, `EVENTNO`, `NAME`, `IMAGEURL`, `DATE`, `TIME`, `REPLY`, `DELETION`) VALUES
-(2, 6, 'John Mark Abril', 'prof3.jpg', 'February 23, 2017', '2:53 AM', 'This is real? If its real then we celebrate.', 0);
+(2, 6, 'John Mark Abril', 'prof3.jpg', 'February 23, 2017', '2:53 AM', 'This is real? If its real then we celebrate.', 0),
+(3, 5, 'John Mark Abril', 'prof3.jpg', 'February 23, 2017', '3:07 PM', 'kjhasdf kjhsadf', 0),
+(4, 7, 'John Mark Abril', 'prof3.jpg', 'February 24, 2017', '4:24 AM', 'Reply', 0);
 
 -- --------------------------------------------------------
 
@@ -203,7 +217,8 @@ CREATE TABLE `inbox` (
 
 INSERT INTO `inbox` (`NO`, `USERFROM`, `USERTO`, `SUBJECT`, `CONTENT`, `DATE`, `TIME`, `DELETION`) VALUES
 (1, '1', 2, 'How did we do? (AEM-HGTLD-431)', 'Recently you have contacted our support service. Please help us improve and kindly rate your latest experience with hostinger.ph.', 'January 27, 2017', '02:13 PM', 0),
-(2, '1', 2, 'Testing Subject', 'Testing Message', 'January 30, 2017', '4:10 AM', 0);
+(2, '1', 2, 'Testing Subject', 'Testing Message', 'January 30, 2017', '4:10 AM', 0),
+(3, '2', 3, 'Thesis 2017', 'Matatapos na to baby ko!', 'February 24, 2017', '3:14 AM', 0);
 
 -- --------------------------------------------------------
 
@@ -230,7 +245,8 @@ INSERT INTO `inbox_reply` (`NO`, `NOINBOX`, `NOUSER`, `REPLY`, `DATE`, `TIME`, `
 (1, '1', '2', 'This is reply of user MAE', '', '', 'prof3.jpg', 0),
 (2, '1', '1', 'This is reply of user JM', '', '', 'prof1.jpg', 0),
 (3, '1', '2', 'This is 2nd reply of Mae', 'January 30, 2017', '3:26 AM', '', 0),
-(4, '1', '2', 'This is 3rd Reply of Mae', 'February 20, 2017', '3:54 PM', '', 0);
+(4, '1', '2', 'This is 3rd Reply of Mae', 'February 20, 2017', '3:54 PM', '', 0),
+(5, '3', '3', 'Yes, finally!', 'February 24, 2017', '3:27 AM', '', 0);
 
 -- --------------------------------------------------------
 
@@ -254,7 +270,7 @@ CREATE TABLE `issue_tracker` (
 --
 
 INSERT INTO `issue_tracker` (`NO`, `NOUSER`, `TITLE`, `DESCRIPTION`, `IMAGEURL`, `STATUS`, `DATEINSERT`, `DELETION`) VALUES
-(1, '1', 'CHANGE IP ADDRESS', 'I WANT TO CHANGE MY IP ADDRESS FROM 31.220.58.2 TO 31.220.58.18', 'prof1.jpg', '2', 'January 28, 2017 1:15 AM', 0),
+(1, '1', 'CHANGE IP ADDRESS', 'I WANT TO CHANGE MY IP ADDRESS FROM 31.220.58.2 TO 31.220.58.18', 'prof1.jpg', '2', 'February 24, 2017 3:02 AM', 0),
 (2, '1', 'DISABLE MY DOMAIN NAME', 'I WANT TO DISABLE MY DOMAIN NAME ON MY VPS SERVER?', 'prof1.jpg', '1', 'January 28, 2017 1:35 PM', 0);
 
 -- --------------------------------------------------------
@@ -289,7 +305,8 @@ INSERT INTO `issue_tracker_reply` (`NO`, `ISSUETRACKERNO`, `NOREPLYFROM`, `REPLY
 (11, '1', '2', 'Testing # 6', 'January 27, 2017', '11:10 AM', 0),
 (12, '1', '2', 'Testing # 7', 'January 27, 2017', '10:00 PM', 0),
 (13, '1', '2', 'Testing # 8', 'January 28, 2017', '1:15 AM', 0),
-(14, '2', '2', 'Nag reply na ako', 'January 28, 2017', '1:35 PM', 0);
+(14, '2', '2', 'Nag reply na ako', 'January 28, 2017', '1:35 PM', 0),
+(15, '1', '3', 'Testing for agent reply', 'February 24, 2017', '3:02 AM', 0);
 
 -- --------------------------------------------------------
 
@@ -311,7 +328,10 @@ CREATE TABLE `notification_admin` (
 --
 
 INSERT INTO `notification_admin` (`NO`, `NOUSER`, `CONTENT`, `DATE`, `TIME`, `DELETION`) VALUES
-(1, '1', 'John Mark change his/her profile picture', 'January 25, 2017', '01:01 AM', 0);
+(1, '1', 'John Mark Abril change his/her profile picture', 'January 25, 2017', '01:01 AM', 0),
+(2, '1', 'John Mark Abril has been logged in.', 'February 24, 2017', '4:21 AM', 0),
+(3, '1', 'John Mark Abril reply to a event.', 'February 24, 2017', '4:24 AM', 0),
+(4, '1', 'John Mark Abril has been logged out.', 'February 24, 2017', '4:26 AM', 0);
 
 -- --------------------------------------------------------
 
@@ -397,7 +417,8 @@ INSERT INTO `post_admin` (`NO`, `NAME`, `IMAGEURL`, `POSTDESCRIPTION`, `DATE`, `
 (1, 'Farrah Mae Gregorio', 'prof1.jpg', 'No food or drinks. Please follow our instructions.', 'February 22, 2017', '03:22 PM', 0),
 (2, 'Agent Agent', 'noimage.png', 'My day is complete.', 'February 21, 2017', '03:45 PM', 0),
 (3, 'Farrah Mae Gregorio', 'prof1.jpg', 'DO WHAT IS RIGHT! NOT WHAT IS EASY.', 'February 21, 2017', '9:49 PM', 0),
-(4, 'Farrah Mae Gregorio', 'prof1.jpg', 'Will it be easy? Nope. Worth It? Absolutely.', 'February 21, 2017', '9:50 PM', 0);
+(4, 'Farrah Mae Gregorio', 'prof1.jpg', 'Will it be easy? Nope. Worth It? Absolutely.', 'February 21, 2017', '9:50 PM', 0),
+(5, 'Agent Agent', 'noimage.png', 'This is my first post!', 'February 24, 2017', '4:07 AM', 0);
 
 -- --------------------------------------------------------
 
@@ -423,7 +444,8 @@ CREATE TABLE `post_admin_reply` (
 INSERT INTO `post_admin_reply` (`NO`, `NOREPLY`, `NAME`, `IMAGEURL`, `REPLY`, `DATE`, `TIME`, `DELETION`) VALUES
 (1, 1, 'Agent Agent', 'noimage.png', 'Ayokong sumunod sa batas dito.', 'February 21, 2017', '03:42 PM', 0),
 (2, 2, 'Farrah Mae Gregorio', 'prof1.jpg', 'Wow, have a nice day!', 'February 21, 2017', '04:27 PM', 0),
-(3, 1, 'Farrah Mae Gregorio', 'prof1.jpg', 'That''s our rules!!!', 'February 21, 2017', '04:28 PM', 0);
+(3, 1, 'Farrah Mae Gregorio', 'prof1.jpg', 'That''s our rules!!!', 'February 21, 2017', '04:28 PM', 0),
+(4, 4, 'Agent Agent', 'noimage.png', 'This is a wonderful quote!', 'February 24, 2017', '4:12 AM', 0);
 
 -- --------------------------------------------------------
 
@@ -620,7 +642,8 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`NO`, `FIRSTNAME`, `LASTNAME`, `USERNAME`, `PHONENUMBER`, `EMAIL`, `PASSWORD`, `ACCOUNT_TYPE`, `ACTIVATED`, `VERIFIED`, `VERIFICATIONCODE`, `PERMISSION`, `IMAGEURL`, `DATE`, `TIME`, `DELETION`) VALUES
 (1, 'John Mark', 'Abril', 'jmabril17', '09208317004', 'johnmarkabril@gmail.com', 'ae2b1fca515949e5d54fb22b8ed95575', 'User', 1, 'YES', '', '', 'prof3.jpg', 'December 15, 2016', '03:18 AM', 0),
 (2, 'Farrah Mae', 'Gregorio', 'frrhmgrgrio', '0948410511', 'frrhmgrgrio@gmail.com', 'ae2b1fca515949e5d54fb22b8ed95575', 'Administrator', 1, 'YES', '', 'About My Site|Accounts|Agent|Co-Administrator|Contact|Dashboard|Events|Message|Notification|PayPal Configuration|Profile|Settings|Statistics|Team|User Management|Website|Website Online|Website Template', 'prof1.jpg', 'December 15, 2016', '05:31 AM', 0),
-(3, 'Agent', 'Agent', 'agent123', '', 'agent@gmail.com', 'ae2b1fca515949e5d54fb22b8ed95575', 'Agent', 1, 'YES', '', 'Issue Tracker|Profile|Contact', 'noimage.png', 'February 19, 2017', '11:57 AM', 0);
+(3, 'Agent', 'Agent', 'agent123', '', 'agent@gmail.com', 'ae2b1fca515949e5d54fb22b8ed95575', 'Agent', 1, 'YES', '', 'Issue Tracker|Profile|Contact|Message|Events|Notification|Template|Purchased Template|Templates|User Management|Agent', 'noimage.png', 'February 19, 2017', '11:57 AM', 0),
+(9, 'Vincent', 'Barcelona', 'vincent123', '09132138216', 'vincentbarcelona@gmail.com', 'ae2b1fca515949e5d54fb22b8ed95575', 'User', 0, 'YES', '', '', 'noimage.png', 'February 24, 2017', '1:50 AM', 0);
 
 --
 -- Indexes for dumped tables
@@ -775,27 +798,27 @@ ALTER TABLE `blog_reply`
 -- AUTO_INCREMENT for table `contact_admin`
 --
 ALTER TABLE `contact_admin`
-  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `event_reply`
 --
 ALTER TABLE `event_reply`
-  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `inbox`
 --
 ALTER TABLE `inbox`
-  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `inbox_reply`
 --
 ALTER TABLE `inbox_reply`
-  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `issue_tracker`
 --
@@ -805,12 +828,12 @@ ALTER TABLE `issue_tracker`
 -- AUTO_INCREMENT for table `issue_tracker_reply`
 --
 ALTER TABLE `issue_tracker_reply`
-  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `notification_admin`
 --
 ALTER TABLE `notification_admin`
-  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `paypal_configuration`
 --
@@ -825,12 +848,12 @@ ALTER TABLE `permission_admin`
 -- AUTO_INCREMENT for table `post_admin`
 --
 ALTER TABLE `post_admin`
-  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `post_admin_reply`
 --
 ALTER TABLE `post_admin_reply`
-  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `team`
 --
@@ -860,7 +883,7 @@ ALTER TABLE `todo_list`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

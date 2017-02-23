@@ -1,5 +1,5 @@
 <?php
-	foreach ( $get_admin_specific as $gas ) :
+	foreach ( $get_agent_specific as $gas ) :
 ?>
 		<div class="ibox-content no-border">
 			<center><img src="<?php echo base_url(); ?>public/img/<?php echo $gas->IMAGEURL; ?>" class="img-responsive" style="width:150px;height:150px;"/></center>

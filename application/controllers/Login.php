@@ -7,7 +7,12 @@ class Login extends CI_Controller {
     {
         parent::__construct();
         $this->curpage = "Login";
+        $this->load->model('Notification_admin_model');
         $this->load->model('Users_model'); 
+
+    	date_default_timezone_set("Asia/Manila");
+    	$this->date = date("F d, Y");
+    	$this->time = date("g:i A");
     }
 
 	public function index()
@@ -27,6 +32,17 @@ class Login extends CI_Controller {
 			if($valid != false){
 				if ($_SESSION['account_type'] == "User") {
 					$data = $this->session->set_userdata('user_session',$valid);
+
+					$params = array(
+						'NO'		=> '',
+						'NOUSER'	=> $this->session->userdata('user_session')->NO,
+						'CONTENT'	=> $this->session->userdata('user_session')->FIRSTNAME.' '.$this->session->userdata('user_session')->LASTNAME.' has been logged in.',
+						'DATE'		=> $this->date,
+						'TIME'		=> $this->time,
+						'DELETION'	=> 0
+					);
+					$this->Notification_admin_model->create($params);
+
 					// $this->session->set_flashdata('success_message', 'This is my message');
 					redirect('/');
 				}else if ($_SESSION['account_type'] == "Administrator"){

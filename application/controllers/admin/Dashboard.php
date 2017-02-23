@@ -190,7 +190,7 @@ class Dashboard extends CI_Controller {
 			echo '
 				<div class="social-comment">
                     <a href="" class="pull-left">
-                        <img alt="image" src="public/img/'.$gr->IMAGEURL.'">
+                        <img style="height:32px;width:32px;" alt="image" src="'.base_url().'public/img/'.$gr->IMAGEURL.'">
                     </a>
                     <div class="media-body">
                         <div class="text-bold">'.$gr->FIRSTNAME.' '.$gr->LASTNAME.'</div>

@@ -24,6 +24,9 @@
 			    	case 'Testimonial':
 			    		echo $content;
 			    		break;
+			    	case 'Signup':
+			    		echo $content;
+			    		break;
 				}
 			?>
 		</div>

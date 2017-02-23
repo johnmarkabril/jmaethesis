@@ -9,6 +9,7 @@ class Inbox_model extends CI_Model
 	public $table			=	"inbox";
 	public $dbno			=	"NO";
 	public $userto 			=	"USERTO";
+	public $userfrom 		=	"USERFROM";
 	public $deletion		=	"DELETION";
 
 	function __construct()
@@ -19,6 +20,7 @@ class Inbox_model extends CI_Model
 	public function get_all_inbox_spec_user($userto)
 	{
 		$row = $this->db->where($this->userto, $userto)
+						->or_where($this->userfrom, $userto)
 						->where($this->deletion, '0')
 						->order_by($this->dbno, 'DESC')
 						->get($this->table);

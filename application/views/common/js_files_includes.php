@@ -56,6 +56,262 @@
             //     var checkEmail      = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(txt_team_email);
         // END OF DONT DELETE CODE
 
+        $('#btn_changepword_fp').click(function(){
+            var txt_email_fp        = $('#txt_email_fp').val();
+            var txt_pword_fp        = $('#txt_pword_fp').val();
+            var txt_conpword_fp     = $('#txt_conpword_fp').val();
+            if ( txt_pword_fp.length >= 8 ) {
+                if ( txt_pword_fp == txt_conpword_fp ) {
+                    $.ajax ({
+                        url: "<?php echo base_url(); ?>signup/reset_password",
+                        method: "POST",
+                        data: {
+                            txt_pword_fp    : txt_pword_fp,
+                            txt_email_fp    : txt_email_fp
+                        },
+                        success:function(data){
+                            $('#third_forgotpassword_form').hide();
+                            $('#fourth_forgotpassword_form').show();
+                        },
+                        error:function(){
+                            toastr.error('ERROR: Please refresh the page!');
+                        }
+                    });
+                } else {
+                    toastr.error('ERROR: Password and confirm password doesnt match!');
+                }
+            } else {
+                toastr.error('ERROR: Password must be at least 8 characters!');
+            }
+        });
+
+        $('#btn_submit_fp').click(function(){
+            var txt_email_fp                = $('#txt_email_fp').val();
+            var txt_verificationcode_fp     = $('#txt_verificationcode_fp').val();
+
+            if ( txt_verificationcode_fp ) {
+                $.ajax ({
+                    url: "<?php echo base_url(); ?>signup/verify_fp",
+                    method: "POST",
+                    data: {
+                        txt_verificationcode_fp     : txt_verificationcode_fp,
+                        txt_email_fp                : txt_email_fp
+                    },
+                    success:function(data){
+                        if ( data == 1 ) {
+                            toastr.success("You can now change your password!");
+                            $('#first_forgotpassword_form').hide();
+                            $('#second_forgotpassword_form').hide();
+                            $('#third_forgotpassword_form').show();
+                        } else {
+                            toastr.error('ERROR: Verification code is incorrect!');
+                        }
+                    },
+                    error:function(){
+                        toastr.error('ERROR: Please refresh the page!');
+                    }
+                });
+            } else {
+                toastr.error('Error: Incomplete field!');
+            }
+        });
+
+        $('#btn_submit_email_fp').click(function(){
+            var txt_email_fp            = $('#txt_email_fp').val();
+            var randomCode              = randomString();
+            var checkEmail      = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(txt_email_fp);
+            if ( txt_email_fp ) {
+                if ( checkEmail ) {
+                    $.ajax ({
+                        url: "<?php echo base_url(); ?>signup/forgotpassword_send",
+                        method: "POST",
+                        data: {
+                            txt_email_fp    : txt_email_fp,
+                            randomCode      : randomCode
+                        },
+                         success:function(data){
+                            if ( data == 1 ) {
+                                toastr.success("We send your verification code on your email provided!");
+                                $('#first_forgotpassword_form').hide();
+                                $('#second_forgotpassword_form').show();
+                            } else {
+                                toastr.error("Email address is not registered!");
+                            }
+                        },
+                        error:function(){
+                            toastr.error('ERROR: Please refresh the page!');
+                        }
+                    });
+                } else {
+                    toastr.error('ERROR: Invalid Email address format');
+                }
+            } else{
+                toastr.error('ERROR: Email address is incomplete!')
+            }
+            
+        });
+
+        $('#resend_code_vc').click(function(){
+            var txt_email_vc            = $('#txt_email_vc').val();
+            var randomCode              = randomString();
+            $.ajax ({
+                url: "<?php echo base_url(); ?>signup/resend",
+                method: "POST",
+                data: {
+                    txt_email_vc    : txt_email_vc,
+                    randomCode      : randomCode
+                },
+                 success:function(data){
+                    toastr.success("We re-send your verification code on your email provided!");
+                },
+                error:function(){
+                    toastr.error('ERROR: Please refresh the page!');
+                }
+            });
+        });
+
+        $('#btn_submit_vc').click(function(){
+            var txt_verificationcode_vc = $('#txt_verificationcode_vc').val();
+            var txt_email_vc            = $('#txt_email_vc').val();
+
+            if ( txt_verificationcode_vc ) {
+                $.ajax ({
+                    url: "<?php echo base_url(); ?>signup/verify",
+                    method: "POST",
+                    data: {
+                        txt_verificationcode_vc     : txt_verificationcode_vc,
+                        txt_email_vc                : txt_email_vc
+                    },
+                    success:function(data){
+                        if ( data == 1 ) {
+                            $('#modalVerificationCode').modal('hide');
+                            $('#modalSuccessSignup').modal('show');
+                            $('#txt_verificationcode_vc').val('');
+                            $('#reopen_verification_code').hide();
+                        } else {
+                            toastr.error('ERROR: Verification code is incorrect!');
+                        }
+                    },
+                    error:function(){
+                        toastr.error('ERROR: Please refresh the page!');
+                    }
+                });
+            } else {
+                toastr.error('Error: Incomplete field!');
+            }
+        });
+
+        function randomString() {
+            var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
+            var string_length = 8;
+            var randomstring = '';
+            for (var i=0; i<string_length; i++) {
+                var rnum = Math.floor(Math.random() * chars.length);
+                randomstring += chars.substring(rnum,rnum+1);
+            }
+            return randomstring;
+        }
+
+        $('#btn_submit_signup').click(function(){
+            var txt_firstname_signup    = $('#txt_firstname_signup').val();
+            var txt_lastname_signup     = $('#txt_lastname_signup').val();
+            var txt_username_signup     = $('#txt_username_signup').val();
+            var txt_contact_signup      = $('#txt_contact_signup').val();
+            var txt_email_signup        = $('#txt_email_signup').val();
+            var txt_pword_signup        = $('#txt_pword_signup').val();
+            var txt_conpword_signup     = $('#txt_conpword_signup').val();
+            var randomCode              = randomString();
+
+            var checkFname      = /^[a-zA-Z-_]+( [a-zA-Z-_]+)*$/.test(txt_firstname_signup);
+            var checkLname      = /^[a-zA-Z-_]+( [a-zA-Z-_]+)*$/.test(txt_lastname_signup);
+            var checkContact    = /^(0|\[0-9]{1,5})?([7-9][0-9]{9})$/.test(txt_contact_signup);
+            var checkEmail      = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(txt_email_signup);
+            if ( txt_firstname_signup ) {
+                if ( checkFname ) {
+                    if ( txt_lastname_signup ) {
+                        if ( checkLname ) {
+                            if ( txt_username_signup ) {
+                                if ( txt_contact_signup ) {
+                                    if ( checkContact ) {
+                                        if ( txt_email_signup ) {
+                                            if ( checkEmail ) {
+                                                if ( txt_pword_signup.length >= 8 ) {
+                                                    if ( txt_pword_signup == txt_conpword_signup ) {
+                                                        <?php
+                                                            if ( !empty($all_email) ) {
+                                                        ?>  
+                                                                if ( jQuery.inArray( txt_email_signup, <?php echo $all_email; ?> ) !== -1 ) {
+                                                                    toastr.error("Email address is already registered!");
+                                                                } else {
+                                                                    $.ajax({
+                                                                        url: "<?php echo base_url();?>signup/create",
+                                                                        method: "POST",
+                                                                        data: {  
+                                                                            txt_firstname_signup    : txt_firstname_signup,
+                                                                            txt_lastname_signup     : txt_lastname_signup,
+                                                                            txt_username_signup     : txt_username_signup,
+                                                                            txt_contact_signup      : txt_contact_signup,
+                                                                            txt_email_signup        : txt_email_signup,
+                                                                            txt_pword_signup        : txt_pword_signup,
+                                                                            randomCode              : randomCode
+                                                                        },
+                                                                        success:function(data){
+                                                                            toastr.success("We send your verification code on your email provided!");
+                                                                            $('#txt_email_vc').val(txt_email_signup);
+
+                                                                            $('#txt_firstname_signup').val('');
+                                                                            $('#txt_lastname_signup').val('');
+                                                                            $('#txt_username_signup').val('');
+                                                                            $('#txt_contact_signup').val('');
+                                                                            $('#txt_email_signup').val('');
+                                                                            $('#txt_pword_signup').val('');
+                                                                            $('#txt_conpword_signup').val('');
+                                                                            $('#modalVerificationCode').modal('show');
+                                                                            $('#reopen_verification_code').show();
+                                                                        },
+                                                                        error:function(){
+                                                                            toastr.error("ERROR: Please reload the page!");
+                                                                        }
+                                                                    });
+                                                                }
+                                                        <?php
+                                                            }
+                                                        ?>
+                                                    } else {
+                                                        toastr.error('ERROR: Password and confirm password doesnt match!');
+                                                    } 
+                                                } else {
+                                                    toastr.error('ERROR: Password must be atleast 8 characters!');
+                                                }   
+                                            } else {
+                                                toastr.error('ERROR: Invalid Email address format');
+                                            }
+                                        } else {
+                                            toastr.error('ERROR: Email address is incomplete!');
+                                        }
+                                    } else {
+                                        toastr.error('ERROR: Invalid contact format!');
+                                    }
+                                } else {
+                                    toastr.error('ERROR: Contact is incomplete!');
+                                }
+                            } else {
+                                toastr.error('ERROR: Username is incomplete!');
+                            }
+                        } else {
+                            toastr.error('ERROR: Invalid lastname format!');
+                        }
+                    } else {
+                        toastr.error('ERROR: Lastname is incomplete!');
+                    }
+                } else {
+                    toastr.error('ERROR: Invalid firstname format!');
+                }
+            } else {
+                toastr.error('ERROR: Firstname is incomplete!');
+            }
+        });
+
         <?php
             if ( $curpage == 'Events' ) {
                 if ( !empty($this->session->userdata('user_session')) ) {

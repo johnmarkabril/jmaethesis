@@ -22,10 +22,10 @@
                         </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
                             <?php if ( in_array("Profile", $permission) ) { ?>
-                                <li><a href="<?php echo base_url(); ?>admin/profile">Profile</a></li>
+                                <li><a href="<?php echo base_url(); ?>agent/profile">Profile</a></li>
                             <?php } ?>
                             <?php if ( in_array("Contact", $permission) ) { ?>
-                                <li><a href="<?php echo base_url(); ?>admin/contact">Contact</a></li>
+                                <li><a href="<?php echo base_url(); ?>agent/contact">Contact</a></li>
                             <?php } ?>
                         </ul>
                     </div>
@@ -51,19 +51,19 @@
 
             <?php if ( in_array("Events", $permission) ) { ?>
                 <li class="<?php echo ($this->curpage == 'Events') ? 'active' : ''; ?>">
-                    <a href="<?php echo base_url(); ?>admin/events"><i class="fa fa-list-alt"></i> <span class="nav-label">Events</span></a>
+                    <a href="<?php echo base_url(); ?>agent/events"><i class="fa fa-list-alt"></i> <span class="nav-label">Events</span></a>
                 </li>
             <?php } ?>
 
             <?php if ( in_array("Message", $permission) ) { ?>
                 <li class="<?php echo ($this->curpage == 'Message') ? 'active' : ''; ?>">
-                    <a href="<?php echo base_url(); ?>admin/message"><i class="fa fa-envelope"></i> <span class="nav-label">Message</span></a>
+                    <a href="<?php echo base_url(); ?>agent/message"><i class="fa fa-envelope"></i> <span class="nav-label">Message</span></a>
                 </li>
             <?php } ?>
             
             <?php if ( in_array("Notification", $permission) ) { ?>
                 <li class="<?php echo ($this->curpage == 'Notification') ? 'active' : ''; ?>">
-                    <a href="<?php echo base_url(); ?>admin/notification"><i class="fa fa-bell"></i> <span class="nav-label">Notification</span></a>
+                    <a href="<?php echo base_url(); ?>agent/notification"><i class="fa fa-bell"></i> <span class="nav-label">Notification</span></a>
                 </li>
             <?php } ?>
             
@@ -73,7 +73,7 @@
                     <ul class="nav nav-second-level collapse">
 
                         <?php if ( in_array("Agent", $permission) ) { ?>
-                            <li><a href="<?php echo base_url(); ?>admin/agent">Agent</a></li>
+                            <li><a href="<?php echo base_url(); ?>agent/agent">Agent</a></li>
                         <?php } ?>
 
                     </ul>
@@ -81,16 +81,16 @@
             <?php } ?>
             
             <?php if ( in_array("Template", $permission) ) { ?>
-                <li class="<?php echo ($this->curpage == 'Rented Template' || $this->curpage == 'Template') ? 'active' : ''; ?>">
+                <li class="<?php echo ($this->curpage == 'Purchased Template' || $this->curpage == 'Templates') ? 'active' : ''; ?>">
                     <a href="#"><i class="fa fa-sitemap"></i> <span class="nav-label">Template</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
 
-                        <?php if ( in_array("Website Online", $permission) ) { ?>
-                            <li><a href="<?php echo base_url(); ?>admin/website_online">Template</a></li>
+                        <?php if ( in_array("Purchased Template", $permission) ) { ?>
+                            <li><a href="<?php echo base_url(); ?>agent/purchased_template">Purchased Template</a></li>
                         <?php } ?>
 
-                        <?php if ( in_array("Website Template", $permission) ) { ?>
-                            <li><a href="<?php echo base_url(); ?>admin/website_template">Rented Template</a></li>
+                        <?php if ( in_array("Templates", $permission) ) { ?>
+                            <li><a href="<?php echo base_url(); ?>agent/templates">Templates</a></li>
                         <?php } ?>
                     </ul>
                 </li>

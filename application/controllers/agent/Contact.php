@@ -7,6 +7,7 @@ class Contact extends CI_Controller {
     {
         parent::__construct();
         $this->curpage = "Contact";
+        $this->load->model('Contact_admin_model');
         $this->load->model('Users_model');
 
         $this->nouser = $this->session->userdata('user_session')->NO;
@@ -21,15 +22,67 @@ class Contact extends CI_Controller {
 
 		if ( $this->session->userdata('user_session')->ACCOUNT_TYPE == "Agent" ) {
 			$details = array (
-				'get_agent_specific'		=>	$this->Users_model->get_agent_specific($user_session->NO)
+				'get_agent_specific'		=>	$this->Users_model->get_agent_specific($user_session->NO),
+				'get_all_contact'		=>	$this->Contact_admin_model->get_all_contact_for_specific_admin($this->nouser)
 			);
 
-			$data['content']	=	$this->load->view('agent/issue_tracker', $details, TRUE);
+			$data['content']	=	$this->load->view('agent/contact', $details, TRUE);
 			$data['curpage']	= 	$this->curpage;
 			$this->load->view('template2', $data);
 		} else {
 			redirect('/');
 		}	
+	}
+
+	public function insert()
+	{
+        $loc = $_SERVER['DOCUMENT_ROOT'].base_url()."public/img/";
+
+		$contactDash_name_create		= $_POST['contactDash_name_create'];
+		$contactDash_contact_create		= $_POST['contactDash_contact_create'];
+		$contactDash_email_create		= $_POST['contactDash_email_create'];
+		$contactDash_address_create		= $_POST['contactDash_address_create'];
+
+		if ( isset($_POST['contactDash_create']) ) {
+
+			$image_name = addslashes($_FILES['image']['name']);
+			$ctr_imgname = 'noimage.png';
+			if ( !empty($image_name) ) {
+				$ctr_imgname = $image_name;
+            	move_uploaded_file($_FILES['image']['tmp_name'], $loc . $_FILES['image']['name']);
+			}
+
+			$params = array(
+				'NO'			=> 	'',
+				'NOUSER'		=> 	$this->nouser,
+				'NAME'			=> 	$contactDash_name_create,
+				'CONTACTNO'		=> 	$contactDash_contact_create,
+				'EMAILADDRESS'	=> 	$contactDash_email_create,
+				'ADDRESS'		=> 	$contactDash_address_create,
+				'IMAGEURL'		=> 	$ctr_imgname,
+				'DATE'			=> 	$this->date,
+				'TIME'			=> 	$this->time,
+				'DELETION'		=> 	'0'
+			);
+
+			$this->Contact_admin_model->insert($params);
+			$this->session->set_flashdata('success_message', 'New contact added!');
+			redirect('/agent/contact');
+		} else {
+			redirect('/agent/contact');
+		}
+	}
+
+	public function delete($no)
+	{
+		$params = array(
+			'DELETION'	=>	1
+		);
+
+		$this->Contact_admin_model->update($params, $no);
+
+		$this->session->set_flashdata('success_message', 'Account Deleted!');
+		redirect('/agent/contact');
 	}
 
 }

@@ -39,6 +39,11 @@ class Post_admin_model extends CI_Model
 		$this->db->insert($this->table, $params);
 	}
 
+	public function insertReply($params)
+	{
+		$this->db->insert($this->tableReply, $params);
+	}
+
 	public function get_rows()
 	{
 		$row = $this->db->order_by($this->dbno, 'DESC')
