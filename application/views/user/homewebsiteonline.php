@@ -15,14 +15,14 @@
                             <img src="<?php echo base_url(); ?>public/img/template/<?php echo $gart->IMAGEURL; ?>" class="img-responsive" />
                         </div>
                         <div class="product-desc">
-                            <a href="#" class="product-name" style="height:44px">
-                            <?php echo $gart->TEMPLATENAME; ?>   
+                            <a href="<?php echo $gart->SITEURL; ?>" target="_blank" class="product-name" style="height:44px">
+                                <?php echo $gart->TEMPLATENAME; ?>   
                             </a>
                             <div class="small m-t-xs" style="height: 30px">
                                 <?php echo $gart->LIBRARYUSE; ?>
                             </div>
                             <div class="m-t text-righ text-center">
-                                <a href="#" class="btn btn-xs btn-outline btn-primary">View this site</i> </a>
+                                <a href="<?php echo $gart->SITEURL; ?>" target="_blank" class="btn btn-xs btn-outline btn-primary">View this site</i> </a>
                             </div>
                         </div>
                     </div>

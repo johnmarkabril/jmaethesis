@@ -54,6 +54,16 @@ class Users_model extends CI_Model
 			return $row->result();
 	}
 
+	function get_user_specific($no)
+	{
+		$row = $this->db->where($this->dbno,$no)
+						->where($this->account_type, 'User')
+						->limit(1)
+						->get($this->table);
+
+			return $row->result();
+	}
+
 	function checkEmail($email)
 	{
 		$row = $this->db->where($this->email,$email)

@@ -32,8 +32,10 @@ class Signup extends CI_Controller {
 
 			$data['content'] = $this->load->view('signup.php',$details,TRUE);
 			$this->load->view('template.php', $data);
-		} else {
-			redirect('/');
+		} else if ( $this->session->userdata('account_type') == "Administrator" ) {
+			redirect('/admin');
+		} else if ( $this->session->userdata('account_type') == "Agent" ) {
+			redirect('/agent');
 		}
 	}
 

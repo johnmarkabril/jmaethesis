@@ -30,8 +30,10 @@ class Blog extends CI_Controller {
 			$data['content']	=	$this->load->view('user/blogcontent', $details, TRUE);
 			$data['curpage']	= 	$this->curpage;
 			$this->load->view('template', $data);
-		} else {
+		} else if ( $this->session->userdata('account_type') == "Administrator" ) {
 			redirect('/admin');
+		} else if ( $this->session->userdata('account_type') == "Agent" ) {
+			redirect('/agent');
 		}
 	}
 

@@ -56,6 +56,42 @@
             //     var checkEmail      = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(txt_team_email);
         // END OF DONT DELETE CODE
 
+        <?php 
+            if ( $curpage == 'Home' ) {
+                if ( !empty($get_all_available_templates) ) {
+                    foreach ( $get_all_available_templates as $gaat ) :
+        ?>
+                        $('#btn_submit_rts<?php echo $gaat->NO; ?>').click(function(){
+                            var txt_no_rts          = $('#txt_no_rts<?php echo $gaat->NO; ?>').val();
+                            var txt_period_rts      = $('#txt_period_rts<?php echo $gaat->NO; ?>').val();
+                            var txt_subdomain_rts   = $('#txt_subdomain_rts<?php echo $gaat->NO; ?>').val();
+                            var txt_jmaedomain_rts  = $('#txt_jmaedomain_rts<?php echo $gaat->NO; ?>').val();
+                            var checkSubDomain      = /^[a-zA-Z-_]*$/.test(txt_subdomain_rts);
+                            var arrayCustom = '';
+                            if ( txt_period_rts ) { 
+                                if ( txt_subdomain_rts ) {
+                                    if ( checkSubDomain ) {
+                                        arrayCustom = 'subdomain='+txt_subdomain_rts+txt_jmaedomain_rts+'&'+txt_period_rts;
+                                        $('#custom_js_rts<?php echo $gaat->NO; ?>').val(arrayCustom);
+                                        $('#first_form_rts<?php echo $gaat->NO; ?>').hide();
+                                        $('#second_form_rts<?php echo $gaat->NO; ?>').show();
+                                        $('#item_price<?php echo $gaat->NO; ?>').val(txt_period_rts.substring(23));
+                                    } else {
+                                        toastr.error('Error: Letters only on sub-domain!');
+                                    }
+                                } else {
+                                    toastr.error('Error: Sub-domain not found!');
+                                }
+                            } else {
+                                toastr.error('Error: Select a period of time!');
+                            }
+                        });
+        <?php
+                    endforeach;
+                }
+            }
+        ?>
+
         $('#btn_changepword_fp').click(function(){
             var txt_email_fp        = $('#txt_email_fp').val();
             var txt_pword_fp        = $('#txt_pword_fp').val();

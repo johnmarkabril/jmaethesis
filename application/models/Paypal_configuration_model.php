@@ -66,4 +66,13 @@ class Paypal_configuration_model extends CI_Model
 	{
 		$this->db->insert($this->table, $params);
 	}
+
+	public function get_enable()
+	{
+		$row = $this->db->where($this->status, 'enabled')
+						->limit(1)
+						->get($this->table);
+
+				return $row->result();
+	}
 }

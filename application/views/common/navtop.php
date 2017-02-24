@@ -39,7 +39,7 @@
                         ?>
 
                                 <li class="text-center">
-                                    <a class="hvr-underline-reveal" href="#" ><strong>Profile</strong></a>
+                                    <a class="hvr-underline-reveal" href="<?php echo base_url();?>profile" ><strong>Profile</strong></a>
                                 </li>
 
                                 <li class="text-center">

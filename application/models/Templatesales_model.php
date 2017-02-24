@@ -59,4 +59,9 @@ class Templatesales_model extends CI_Model
 
 		return $row->num_rows();
 	}
+
+	public function create($params)
+	{
+		$this->db->insert($this->table, $params);
+	}
 }

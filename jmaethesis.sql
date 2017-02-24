@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 23, 2017 at 09:27 PM
+-- Generation Time: Feb 24, 2017 at 05:28 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.8
 
@@ -331,7 +331,9 @@ INSERT INTO `notification_admin` (`NO`, `NOUSER`, `CONTENT`, `DATE`, `TIME`, `DE
 (1, '1', 'John Mark Abril change his/her profile picture', 'January 25, 2017', '01:01 AM', 0),
 (2, '1', 'John Mark Abril has been logged in.', 'February 24, 2017', '4:21 AM', 0),
 (3, '1', 'John Mark Abril reply to a event.', 'February 24, 2017', '4:24 AM', 0),
-(4, '1', 'John Mark Abril has been logged out.', 'February 24, 2017', '4:26 AM', 0);
+(4, '1', 'John Mark Abril has been logged out.', 'February 24, 2017', '4:26 AM', 0),
+(5, '3', 'Agent Agent has been logged out.', 'February 24, 2017', '4:42 AM', 0),
+(6, '1', 'John Mark Abril has been logged in.', 'February 24, 2017', '11:02 AM', 0);
 
 -- --------------------------------------------------------
 
@@ -502,28 +504,28 @@ CREATE TABLE `templates` (
 
 INSERT INTO `templates` (`NO`, `TEMPLATENAME`, `TEMPLATECATEGORY`, `DESCRIPTION`, `LIBRARYUSE`, `PRICE`, `CURRENTOWNER`, `DATEUPLOADED`, `IMAGEURL`, `SITEURL`, `OWNERTITLEWEBSITE`, `DELETION`, `AVAILABILITY`, `AGENTSEE`) VALUES
 (1, 'Blog and Selling of Recipe Template', 'Food E-Commerce', '', 'BootStrap | Inspinia | CodeIgniter Framework', 3000.00, 'Mae Abril', 'December 11, 2016', '1.jpg', 'http://template1.jmaeprovider.xyz/', 'Sweet & Pastries Cakes', 0, 0, 1),
-(2, 'News and Affairs Template', 'Food E-Commerce', '', 'BootStrap | Inspinia | CodeIgniter Framework', 3000.00, '', 'December 14, 2016', '2.jpg', '', '', 0, 1, 1),
-(3, 'Restaurant Reservation Template', 'Food E-Commerce', 'Description', 'BootStrap | Inspinia | CodeIgniter Framework', 3000.00, '', 'December 15, 2016', '3.jpg', '', '', 0, 1, 0),
-(4, 'Fruit Stores Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Free CSS Templates', 10000.00, '', 'February 22, 2017', 'fruit-stores.png', '', '', 0, 1, 0),
-(5, 'DapurKue Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap | Tokokoo & instantShift', 10000.00, '', 'February 22, 2017', 'dapurkue.png', '', '', 0, 1, 0),
-(6, 'Brewery Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap | Template Monster', 10000.00, '', 'February 22, 2017', 'brewery.png', '', '', 0, 1, 0),
-(7, 'Cafeteria Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap | Choco Templates', 10000.00, '', 'February 22, 2017', 'cafeteria.png', '', '', 0, 1, 0),
-(8, 'Valencia Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap | Template Monster', 10000.00, '', 'February 22, 2017', 'valencia.png', '', '', 0, 1, 0),
-(9, 'Decanter Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap | Template Monster', 10000.00, '', 'February 22, 2017', 'decanter.png', '', '', 0, 1, 0),
-(10, 'Cake Delights Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap | Template Monster', 10000.00, '', 'February 22, 2017', 'cake-delights.png', '', '', 0, 1, 0),
-(11, 'Garden Truck Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap | Template Monster', 10000.00, '', 'February 22, 2017', 'garden-truck.png', '', '', 0, 1, 0),
-(12, 'Organic Food Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap | Template Monster', 10000.00, '', 'February 22, 2017', 'organic-food.png', '', '', 0, 1, 0),
-(13, 'Gourmet Traditional Restaurant Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap | Template Monster', 10000.00, '', 'February 22, 2017', 'Gourmet-Traditional-Restaurant.png', '', '', 0, 1, 0),
-(14, 'Caprice Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap | Elemis', 10000.00, '', 'February 22, 2017', 'caprice.png', '', '', 0, 1, 0),
-(15, 'Bliss Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap | Template Monster', 10000.00, '', 'February 22, 2017', 'bliss.png', '', '', 0, 1, 0),
-(16, 'Restaurant Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap', 10000.00, '', 'February 22, 2017', 'restaurant.png', '', '', 0, 1, 0),
-(17, 'King of Pasta Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap | Mohamed Sobby', 10000.00, '', 'February 22, 2017', 'king-of-pasta.png', '', '', 0, 1, 0),
-(18, 'Zentro Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap | Tooplate', 10000.00, '', 'February 22, 2017', 'zentro.png', '', '', 0, 1, 0),
-(19, 'Eventrum Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap | Template  Monster', 10000.00, '', 'February 22, 2017', 'eventrum.png', '', '', 0, 1, 0),
-(20, 'Steak House Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap | Templatemo', 10000.00, '', 'February 22, 2017', 'steak-house.png', '', '', 0, 1, 0),
-(21, 'Luxury Restaurant Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap | Website Template', 10000.00, '', 'February 22, 2017', 'luxury-restaurant.png', '', '', 0, 1, 0),
-(22, 'Cafe Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap | Template Monster', 10000.00, '', 'February 22, 2017', 'cafe.png', '', '', 0, 1, 0),
-(23, 'Classic European Cuisine', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap | Template Monster', 10000.00, '', 'February 22, 2017', 'Classic-European-Cuisine.png', '', '', 0, 1, 0);
+(2, 'News and Affairs Template', 'Food E-Commerce', '', 'BootStrap | Inspinia | CodeIgniter Framework', 1.00, '', 'December 14, 2016', '2.jpg', 'http://template2.jmaeprovider.xyz/', '', 0, 1, 1),
+(3, 'Restaurant Reservation Template', 'Food E-Commerce', 'Description', 'BootStrap | Inspinia | CodeIgniter Framework', 3000.00, '', 'December 15, 2016', '3.jpg', 'http://template3.jmaeprovider.xyz/', '', 0, 1, 0),
+(4, 'Fruit Stores Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Free CSS Templates', 3000.00, '', 'February 22, 2017', 'fruit-stores.png', 'http://template4.jmaeprovider.xyz/', '', 0, 1, 0),
+(5, 'DapurKue Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap | Tokokoo & instantShift', 3000.00, '', 'February 22, 2017', 'dapurkue.png', 'http://template5.jmaeprovider.xyz/', '', 0, 1, 0),
+(6, 'Brewery Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap | Template Monster', 3000.00, '', 'February 22, 2017', 'brewery.png', 'http://template6.jmaeprovider.xyz/', '', 0, 1, 0),
+(7, 'Cafeteria Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap | Choco Templates', 3000.00, '', 'February 22, 2017', 'cafeteria.png', 'http://template7.jmaeprovider.xyz/', '', 1, 1, 0),
+(8, 'Valencia Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap | Template Monster', 3000.00, '', 'February 22, 2017', 'valencia.png', 'http://template8.jmaeprovider.xyz/', '', 1, 1, 0),
+(9, 'Decanter Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap | Template Monster', 3000.00, '', 'February 22, 2017', 'decanter.png', 'http://template9.jmaeprovider.xyz/', '', 1, 1, 0),
+(10, 'Cake Delights Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap | Template Monster', 3000.00, '', 'February 22, 2017', 'cake-delights.png', 'http://template10.jmaeprovider.xyz/', '', 1, 1, 0),
+(11, 'Garden Truck Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap | Template Monster', 3000.00, '', 'February 22, 2017', 'garden-truck.png', 'http://template.jmaeprovider.xyz/', '', 1, 1, 0),
+(12, 'Organic Food Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap | Template Monster', 3000.00, '', 'February 22, 2017', 'organic-food.png', 'http://template.jmaeprovider.xyz/', '', 1, 1, 0),
+(13, 'Gourmet Traditional Restaurant Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap | Template Monster', 3000.00, '', 'February 22, 2017', 'Gourmet-Traditional-Restaurant.png', 'http://template.jmaeprovider.xyz/', '', 1, 1, 0),
+(14, 'Caprice Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap | Elemis', 3000.00, '', 'February 22, 2017', 'caprice.png', 'http://template.jmaeprovider.xyz/', '', 1, 1, 0),
+(15, 'Bliss Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap | Template Monster', 3000.00, '', 'February 22, 2017', 'bliss.png', 'http://template.jmaeprovider.xyz/', '', 1, 1, 0),
+(16, 'Restaurant Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap', 3000.00, '', 'February 22, 2017', 'restaurant.png', 'http://template.jmaeprovider.xyz/', '', 1, 1, 0),
+(17, 'King of Pasta Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap | Mohamed Sobby', 3000.00, '', 'February 22, 2017', 'king-of-pasta.png', 'http://template.jmaeprovider.xyz/', '', 1, 1, 0),
+(18, 'Zentro Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap | Tooplate', 3000.00, '', 'February 22, 2017', 'zentro.png', 'http://template.jmaeprovider.xyz/', '', 1, 1, 0),
+(19, 'Eventrum Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap | Template  Monster', 3000.00, '', 'February 22, 2017', 'eventrum.png', 'http://template.jmaeprovider.xyz/', '', 1, 1, 0),
+(20, 'Steak House Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap | Templatemo', 3000.00, '', 'February 22, 2017', 'steak-house.png', 'http://template.jmaeprovider.xyz/', '', 1, 1, 0),
+(21, 'Luxury Restaurant Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap | Website Template', 3000.00, '', 'February 22, 2017', 'luxury-restaurant.png', 'http://template.jmaeprovider.xyz/', '', 1, 1, 0),
+(22, 'Cafe Template', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap | Template Monster', 3000.00, '', 'February 22, 2017', 'cafe.png', 'http://template.jmaeprovider.xyz/', '', 1, 1, 0),
+(23, 'Classic European Cuisine', 'Food E-Commerce', 'At this category, you can find templates related to food and drink to make a website for a company dealing with cakes, wine, chocolate, etc. ', 'HTML | Bootstrap | Template Monster', 3000.00, '', 'February 22, 2017', 'Classic-European-Cuisine.png', 'http://template.jmaeprovider.xyz/', '', 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -833,7 +835,7 @@ ALTER TABLE `issue_tracker_reply`
 -- AUTO_INCREMENT for table `notification_admin`
 --
 ALTER TABLE `notification_admin`
-  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `paypal_configuration`
 --
