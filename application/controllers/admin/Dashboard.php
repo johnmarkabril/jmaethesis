@@ -14,6 +14,7 @@ class Dashboard extends CI_Controller {
         $this->load->model('Templatesales_model');
         $this->load->model('Templates_model');
         $this->load->model('Users_model');
+        $this->load->model('Location_model');
 
         $this->nouser = $this->session->userdata('user_session')->NO;
     	date_default_timezone_set("Asia/Manila");
@@ -66,7 +67,8 @@ class Dashboard extends CI_Controller {
 				'sales_for_year'						=>	json_encode($sales_for_year),
 				'totalSales'							=>	$totalSales,
 				'totalSalesLastYear'					=>	$totalSalesLastYear,
-				'numberOfTemplates'						=>	$this->Templates_model->get_all_templates_row()
+				'numberOfTemplates'						=>	$this->Templates_model->get_all_templates_row(),
+				'all_user_latlong'						=>	$this->Users_model->getAllLatLong()
 			);
 
 			$data['content']	=	$this->load->view('admin/dashboard', $details, TRUE);
@@ -196,7 +198,7 @@ class Dashboard extends CI_Controller {
                         <div class="text-bold">'.$gr->FIRSTNAME.' '.$gr->LASTNAME.'</div>
                         '.$gr->REPLY.'
                         <br>
-                        <small class="text-muted">'.$gr->DATE.' - '.$gr->TIME.'</small>
+                        <small class="text-muted">'.$gr->DATEREPLY.' - '.$gr->TIMEREPLY.'</small>
                     </div>
                 </div>
 			';
@@ -223,8 +225,8 @@ class Dashboard extends CI_Controller {
 			'ISSUETRACKERNO'	=> $issueTrackerNo,
 			'NOREPLYFROM'		=> $this->nouser,
 			'REPLY'				=> $issueTrackerReply,
-			'DATE'				=> $this->date,
-			'TIME'				=> $this->time,
+			'DATEREPLY'			=> $this->date,
+			'TIMEREPLY'			=> $this->time,
 			'DELETION'			=> 0
 		);
 		$this->Issue_tracker_reply_model->insert_reply($params);

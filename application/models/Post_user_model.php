@@ -3,13 +3,13 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Post_admin_model extends CI_Model
+class Post_user_model extends CI_Model
 {
 
-	public $table			=	"post_admin";
-	public $tableReply 		=	"post_admin_reply";
+	public $table			=	"post_user";
+	public $tableReply 		=	"post_user_reply";
 	public $dbno			=	"NO";
-	public $name 			=	"NAME";
+	public $name 			= 	"NAME";
 	public $deletion		= 	"DELETION";
 
 	function __construct()
@@ -64,4 +64,5 @@ class Post_admin_model extends CI_Model
 		$this->db->where($this->name, $name)
 				 ->update($this->tableReply, $params);
 	}
+
 }

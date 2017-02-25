@@ -1,37 +1,33 @@
-<?php
-	foreach ( $get_agent_specific as $gas ) :
+<?php 
+	if ( !empty($get_user_specific) ) {
+		foreach ( $get_user_specific as $gus ) :
 ?>
-		<div class="ibox-content no-border">
-			<center><img src="<?php echo base_url(); ?>public/img/<?php echo $gas->IMAGEURL; ?>" class="img-responsive" style="width:150px;height:150px;"/></center>
-		</div>
-		
-		<hr class="margin-top no-margin"/>
-
-		<div class="padding-top">
-			<div class="ibox-content no-margin no-border">
-				<div class="form-group">
-					<label>Name</label>
-					<div><?php echo $gas->FIRSTNAME.' '.$gas->LASTNAME; ?></div>
-				</div>
-				<div class="form-group">
-					<label>Email Address</label>
-					<div><?php echo $gas->EMAIL; ?></div>
-				</div>
-				<div class="form-group">
-					<label>Username</label>
-					<div><?php echo $gas->USERNAME; ?></div>
-				</div>
-				<div class="form-group">
-					<label>Contact</label>
-					<div><?php echo $gas->PHONENUMBER; ?></div>
+			<center><img class="img-responsive" src="<?php echo base_url(); ?>public/img/<?php echo $gus->IMAGEURL; ?>" style="width:150px;height:150px;"/></center>
+			<hr class="no-margin margin-top"/>
+			<div class="padding-top">
+				<div class="ibox-content no-margin no-border">
+					<div class="form-group">
+						<label>Name</label>
+						<div><?php echo $gus->FIRSTNAME.' '.$gus->LASTNAME; ?></div>
+					</div>
+					<div class="form-group">
+						<label>Email Address</label>
+						<div><?php echo $gus->EMAIL; ?></div>
+					</div>
+					<div class="form-group">
+						<label>Username</label>
+						<div><?php echo $gus->USERNAME; ?></div>
+					</div>
+					<div class="form-group">
+						<label>Contact</label>
+						<div><?php echo $gus->PHONENUMBER; ?></div>
+					</div>
 				</div>
 			</div>
-		</div>
-
 <?php
-	endforeach;
+		endforeach;
+	}
 ?>
-
 <hr class="no-margin"/>
 <div class="padding-top">
 	<input type="button" value="Change Profile Picture" data-toggle="modal" data-target="#modalChangeProfilePicture" class="btn btn-default full-width"/>
@@ -60,24 +56,25 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Latitude</label>
-                            <input type="text" class="form-control" id="txt_lat_prof" disabled />
+                            <input type="text" class="form-control" id="txt_lat_prof_user" disabled />
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Longhitude</label>
-                            <input type="text" class="form-control" id="txt_long_prof" disabled />
+                            <input type="text" class="form-control" id="txt_long_prof_user" disabled />
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <button class="btn btn-success full-width" type="submit" id="btn_latlong_submit">Submit</button>
+                    <button class="btn btn-success full-width" type="submit" id="btn_latlong_submit_user">Submit</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 
 <div class="modal inmodal" id="modalChangeProfilePicture" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog modal-sm" role="document">
@@ -89,7 +86,7 @@
             	<div class="form-group">
             		<img class="img-responsive" style="height: 200px;width:100%;" src="<?php echo base_url(); ?>public/img/<?php echo $this->session->userdata('user_session')->IMAGEURL;?>" />
             	</div>
-                <form method="POST" enctype="multipart/form-data" action="<?php echo base_url();?>agent/profile/change_profile">
+                <form method="POST" enctype="multipart/form-data" action="<?php echo base_url();?>profile/change_profile">
                     <div class="form-group">
                         <input type="file" name="image" class="file hide" required />
                         <div class="input-group">
@@ -121,36 +118,36 @@
             		<div class="col-md-6">
             			<div class="form-group">
             				<label>Firstname</label>
-            				<input type="text" class="form-control" id="txt_fname_profile_change_admin" value="<?php echo $this->session->userdata('user_session')->FIRSTNAME; ?>" />
+            				<input type="text" class="form-control" id="txt_fname_profile_change" value="<?php echo $this->session->userdata('user_session')->FIRSTNAME; ?>" />
             			</div>
             		</div>
             		<div class="col-md-6">
             			<div class="form-group">
             				<label>Lastname</label>
-            				<input type="text" class="form-control" id="txt_lname_profile_change_admin" value="<?php echo $this->session->userdata('user_session')->LASTNAME; ?>" />
+            				<input type="text" class="form-control" id="txt_lname_profile_change" value="<?php echo $this->session->userdata('user_session')->LASTNAME; ?>" />
             			</div>
             		</div>
             		<div class="col-md-12">
             			<div class="form-group">
             				<label>Email Address</label>
-            				<input type="text" class="form-control" id="txt_email_profile_change_admin" value="<?php echo $this->session->userdata('user_session')->EMAIL; ?>" />
+            				<input type="text" class="form-control" id="txt_email_profile_change" value="<?php echo $this->session->userdata('user_session')->EMAIL; ?>" />
             			</div>
             		</div>
             		<div class="col-md-6">
             			<div class="form-group">
             				<label>Username</label>
-            				<input type="text" class="form-control" id="txt_uname_profile_change_admin" value="<?php echo $this->session->userdata('user_session')->USERNAME; ?>" />
+            				<input type="text" class="form-control" id="txt_uname_profile_change" value="<?php echo $this->session->userdata('user_session')->USERNAME; ?>" />
             			</div>
             		</div>
             		<div class="col-md-6">
             			<div class="form-group">
             				<label>Contact</label>
-            				<input type="text" class="form-control" id="txt_contact_profile_change_admin" value="<?php echo $this->session->userdata('user_session')->PHONENUMBER; ?>" />
+            				<input type="text" class="form-control" id="txt_contact_profile_change" value="<?php echo $this->session->userdata('user_session')->PHONENUMBER; ?>" />
             			</div>
             		</div>
             	</div>
             	<div class="form-group">
-            		<button class="btn btn-success full-width" id="btn_submit_change_information_profile_admin">Submit</button>
+            		<button class="btn btn-success full-width" id="btn_submit_change_information_profile">Submit</button>
             	</div>
             </div>
         </div>
@@ -168,24 +165,24 @@
             		<div class="col-md-12">
             			<div class="form-group">
             				<label>Current Password</label>
-            				<input type="password" class="form-control" id="txt_current_pword_admin" />
+            				<input type="password" class="form-control" id="txt_current_pword" />
             			</div>
             		</div>
             		<div class="col-md-12">
             			<div class="form-group">
             				<label>Password</label>
-            				<input type="password" class="form-control" id="txt_pword_changeprofile_admin" disabled />
+            				<input type="password" class="form-control" id="txt_pword_changeprofile" disabled />
             			</div>
             		</div>
             		<div class="col-md-12">
             			<div class="form-group">
             				<label>Confirm Password</label>
-            				<input type="password" class="form-control" id="txt_conpword_changeprofile_admin" disabled />
+            				<input type="password" class="form-control" id="txt_conpword_changeprofile" disabled />
             			</div>
             		</div>
             	</div>
             	<div class="form-group">
-            		<button class="btn btn-success full-width" id="btn_submit_change_password_profile_admin">Submit</button>
+            		<button class="btn btn-success full-width" id="btn_submit_change_password_profile">Submit</button>
             	</div>
             </div>
         </div>

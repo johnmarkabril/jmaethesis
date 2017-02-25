@@ -1,4 +1,4 @@
-<div class="padding-top">
+<div class="padding-top" id="dashPrintSales">
 	<div class="ibox no-margin">
 		<div class="ibox-title no-border">
         	Template sales for the year

@@ -65,7 +65,9 @@ class Signup extends CI_Controller {
 			'IMAGEURL'			=> 'noimage.png',
 			'DATE'				=> $this->date,
 			'TIME'				=> $this->time,
-			'DELETION'			=> 0
+			'DELETION'			=> 0,
+			'LATITUDE'			=> '',
+			'LONGHITUDE'		=> ''
 		);
 
 		$this->Users_model->create($params);

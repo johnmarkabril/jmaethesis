@@ -57,7 +57,8 @@ class Template extends CI_Controller {
 			'IMAGEURL'		=> $this->session->userdata('user_session')->IMAGEURL,
 			'DATE'			=> $this->date,
 			'TIME'			=> $this->time,
-			'DELETION'		=> 0
+			'DELETION'		=> 0,
+			'AGENTSEE'		=> 0
 		);
 
 		$this->Templatesales_model->create($params);

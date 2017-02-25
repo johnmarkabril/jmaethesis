@@ -67,19 +67,6 @@
                 </li>
             <?php } ?>
             
-            <?php if ( in_array("User Management", $permission) ) { ?>
-                <li class="<?php echo ($this->curpage == 'User Management' || $this->curpage == 'Agent') ? 'active' : ''; ?>">
-                    <a href="#"><i class="fa fa-cogs"></i> <span class="nav-label">User Management</span><span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level collapse">
-
-                        <?php if ( in_array("Agent", $permission) ) { ?>
-                            <li><a href="<?php echo base_url(); ?>agent/agent">Agent</a></li>
-                        <?php } ?>
-
-                    </ul>
-                </li>
-            <?php } ?>
-            
             <?php if ( in_array("Template", $permission) ) { ?>
                 <li class="<?php echo ($this->curpage == 'Purchased Template' || $this->curpage == 'Templates') ? 'active' : ''; ?>">
                     <a href="#"><i class="fa fa-sitemap"></i> <span class="nav-label">Template</span><span class="fa arrow"></span></a>

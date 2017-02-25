@@ -9,7 +9,7 @@
             endforeach;
         ?>
 	</div>
-    <div class="ibox-content min-height no-padding-top">
+    <div class="ibox-content  full-height no-padding-top">
         <?php
             foreach ( $get_specific as $gs ) :
         ?>  

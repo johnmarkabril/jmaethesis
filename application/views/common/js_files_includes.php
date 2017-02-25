@@ -23,6 +23,8 @@
 
 <?php if ($this->curpage == "Dashboard") { ?>
     <script src="<?php echo base_url();?>public/js/plugins/chartJs/Chart.min.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5h8RE_Re9V9PJ-ROp7TKXQBKbMnWXDVE&callback=initMap">
+    </script>
 <?php } ?>
 
 <?php if ( $this->curpage == 'Reports' ) { ?>
@@ -30,7 +32,10 @@
     <script src="<?php echo base_url();?>public/js/plugins/chartist/chartist.min.js"></script>
 <?php } ?>
 
-
+<?php if ( $this->curpage == "Profile" ) { ?>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5h8RE_Re9V9PJ-ROp7TKXQBKbMnWXDVE&callback=initMap">
+    </script>
+<?php } ?>
 
 <script>
 
@@ -55,6 +60,499 @@
             //     var checkContact    = /^(0|\[0-9]{1,5})?([7-9][0-9]{9})$/.test(txt_team_contact);
             //     var checkEmail      = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(txt_team_email);
         // END OF DONT DELETE CODE
+        function tError(message){
+            toastr.error("Error: "+ message +"!");
+        }   
+
+        $('#btn_latlong_submit_user').click(function(){
+            var txt_lat_prof    = $('#txt_lat_prof_user').val();
+            var txt_long_prof   = $('#txt_long_prof_user').val();
+            if ( txt_lat_prof && txt_long_prof ) {
+                $.ajax ({
+                    url: '<?php echo base_url(); ?>profile/updateLocation',
+                    method: "POST",
+                    data: {
+                        txt_lat_prof    : txt_lat_prof,
+                        txt_long_prof   : txt_long_prof
+                    },
+                    success:function(data){
+                        location.reload('/agent/profile');
+                    },
+                    error:function(){
+                        toastr.error('ERROR: Please refresh the page!');
+                    }
+                });
+            } else {
+                tError('Select your place');
+            }
+        });
+
+        $('#btn_latlong_submit').click(function(){
+            var txt_lat_prof    = $('#txt_lat_prof').val();
+            var txt_long_prof   = $('#txt_long_prof').val();
+            if ( txt_lat_prof && txt_long_prof ) {
+                $.ajax ({
+                    url: '<?php echo base_url(); ?>admin/profile/updateLocation',
+                    method: "POST",
+                    data: {
+                        txt_lat_prof    : txt_lat_prof,
+                        txt_long_prof   : txt_long_prof
+                    },
+                    success:function(data){
+                        location.reload('/agent/profile');
+                    },
+                    error:function(){
+                        toastr.error('ERROR: Please refresh the page!');
+                    }
+                });
+            } else {
+                tError('Select your place');
+            }
+        });
+
+        $('#btn_submit_change_password_profile_admin').click(function(){
+            var txt_current_pword = $('#txt_current_pword_admin').val();
+            var txt_pword_changeprofile     = $('#txt_pword_changeprofile_admin').val();
+            var txt_conpword_changeprofile  = $('#txt_conpword_changeprofile_admin').val();
+
+            if ( txt_current_pword ) {
+                $.ajax ({
+                    url: '<?php echo base_url(); ?>admin/profile/check_pword',
+                    method: "POST",
+                    data: {
+                        txt_current_pword   : txt_current_pword
+                    },
+                    success:function(data){
+                        if ( data == 1 ) {
+                            if ( txt_pword_changeprofile.length >= 6 ) {
+                                if ( txt_pword_changeprofile == txt_conpword_changeprofile ) {
+                                    $.ajax ({
+                                        url: '<?php echo base_url(); ?>admin/profile/changePassword',
+                                        method: "POST",
+                                        data: {
+                                            txt_pword_changeprofile   : txt_pword_changeprofile
+                                        },
+                                        success:function(data){
+                                            location.reload('/admin/profile');
+                                        },
+                                        error:function(){
+                                            toastr.error('ERROR: Please refresh the page!');
+                                        }
+                                    });
+                                } else {
+                                    tError('Password and confirm password is not the same');
+                                }
+                            } else {
+                                tError('Password must be 6 characters and above');
+                            }
+                        } else {
+                            tError('Current password doesnt match');
+                        }
+                    },
+                    error:function(){
+                        toastr.error('ERROR: Please refresh the page!');
+                    }
+                });
+            } else {
+                tError('Current password is empty');
+            }
+            
+        });
+
+        $('#txt_current_pword_admin').keyup(function(){
+            var txt_current_pword = $('#txt_current_pword_admin').val();
+
+            $.ajax ({
+                url: '<?php echo base_url(); ?>admin/profile/check_pword',
+                method: "POST",
+                data: {
+                    txt_current_pword   : txt_current_pword
+                },
+                success:function(data){
+                    if ( data == 1 ) {
+                        $("#txt_pword_changeprofile_admin").prop('disabled', false);
+                        $("#txt_conpword_changeprofile_admin").prop('disabled', false);
+                    } else {
+                        $("#txt_pword_changeprofile_admin").prop('disabled', true);
+                        $("#txt_conpword_changeprofile_admin").prop('disabled', true);
+                    }
+                },
+                error:function(){
+                    toastr.error('ERROR: Please refresh the page!');
+                }
+            });
+        });
+
+        $('#btn_submit_change_information_profile_admin').click(function(){
+            var txt_fname_profile_change    = $('#txt_fname_profile_change_admin').val();
+            var txt_lname_profile_change    = $('#txt_lname_profile_change_admin').val();
+            var txt_email_profile_change    = $('#txt_email_profile_change_admin').val();
+            var txt_uname_profile_change    = $('#txt_uname_profile_change_admin').val();
+            var txt_contact_profile_change  = $('#txt_contact_profile_change_admin').val();
+
+            var checkFname      = /^[a-zA-Z-_]+( [a-zA-Z-_]+)*$/.test(txt_fname_profile_change);
+            var checkLname      = /^[a-zA-Z-_]+( [a-zA-Z-_]+)*$/.test(txt_lname_profile_change);
+            var checkUname      = /\w$/.test(txt_uname_profile_change);
+            var checkContact    = /^(0|\[0-9]{1,5})?([7-9][0-9]{9})$/.test(txt_contact_profile_change);
+            var checkEmail      = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(txt_email_profile_change);
+
+            if ( txt_fname_profile_change ) {
+                if ( checkFname ) {
+                    if ( txt_lname_profile_change ) {
+                        if ( checkLname ) {
+                            if ( txt_email_profile_change ) {
+                                if ( checkEmail ) {
+                                    if ( txt_contact_profile_change ) {
+                                        if ( checkContact ) {
+                                            $.ajax ({
+                                                url: '<?php echo base_url(); ?>admin/profile/changeInformation',
+                                                method: "POST",
+                                                data: {
+                                                    txt_fname_profile_change    : txt_fname_profile_change,
+                                                    txt_lname_profile_change    : txt_lname_profile_change,
+                                                    txt_email_profile_change    : txt_email_profile_change,
+                                                    txt_uname_profile_change    : txt_uname_profile_change,
+                                                    txt_contact_profile_change  : txt_contact_profile_change
+                                                },
+                                                success:function(data){
+                                                    location.reload('/admin/profile');
+                                                },
+                                                error:function(){
+                                                    toastr.error('ERROR: Please refresh the page!');
+                                                }
+                                            });
+                                        } else {
+                                            tError('Invalid format of contact');
+                                        }
+                                    } else {
+                                        tError('Contact field is empty');
+                                    }
+                                } else {
+                                    tError('Invalid format of ');
+                                }
+                            } else {
+                                tError(' field is empty');
+                            }
+                        } else {
+                            tError('Invalid format of ');
+                        }
+                    } else {
+                        tError(' field is empty');
+                    }
+                } else {
+                    tError('Invalid format of ');
+                }
+            } else {
+                tError('Firstname field is empty');
+            }
+        });
+
+        $('#btn_submit_change_password_profile').click(function(){
+            var txt_current_pword = $('#txt_current_pword').val();
+            var txt_pword_changeprofile     = $('#txt_pword_changeprofile').val();
+            var txt_conpword_changeprofile  = $('#txt_conpword_changeprofile').val();
+            if ( txt_current_pword ) {
+                $.ajax ({
+                    url: '<?php echo base_url(); ?>profile/check_pword',
+                    method: "POST",
+                    data: {
+                        txt_current_pword   : txt_current_pword
+                    },
+                    success:function(data){
+                        if ( data == 1 ) {
+                            if ( txt_pword_changeprofile.length >= 6 ) {
+                                if ( txt_pword_changeprofile == txt_conpword_changeprofile ) {
+                                    $.ajax ({
+                                        url: '<?php echo base_url(); ?>profile/changePassword',
+                                        method: "POST",
+                                        data: {
+                                            txt_pword_changeprofile   : txt_pword_changeprofile
+                                        },
+                                        success:function(data){
+                                            location.reload('/profile');
+                                        },
+                                        error:function(){
+                                            toastr.error('ERROR: Please refresh the page!');
+                                        }
+                                    });
+                                } else {
+                                    tError('Password and confirm password is not the same');
+                                }
+                            } else {
+                                tError('Password must be 6 characters and above');
+                            }
+                        } else {
+                            tError('Current password doesnt match');
+                        }
+                    },
+                    error:function(){
+                        toastr.error('ERROR: Please refresh the page!');
+                    }
+                });
+            } else {
+                tError('Current password is empty');
+            }
+            
+        });
+
+        $('#txt_current_pword').keyup(function(){
+            var txt_current_pword = $('#txt_current_pword').val();
+
+            $.ajax ({
+                url: '<?php echo base_url(); ?>profile/check_pword',
+                method: "POST",
+                data: {
+                    txt_current_pword   : txt_current_pword
+                },
+                success:function(data){
+                    if ( data == 1 ) {
+                        $("#txt_pword_changeprofile").prop('disabled', false);
+                        $("#txt_conpword_changeprofile").prop('disabled', false);
+                    } else {
+                        $("#txt_pword_changeprofile").prop('disabled', true);
+                        $("#txt_conpword_changeprofile").prop('disabled', true);
+                    }
+                },
+                error:function(){
+                    toastr.error('ERROR: Please refresh the page!');
+                }
+            });
+        });
+
+        $('#btn_submit_change_information_profile').click(function(){
+            var txt_fname_profile_change    = $('#txt_fname_profile_change').val();
+            var txt_lname_profile_change    = $('#txt_lname_profile_change').val();
+            var txt_email_profile_change    = $('#txt_email_profile_change').val();
+            var txt_uname_profile_change    = $('#txt_uname_profile_change').val();
+            var txt_contact_profile_change  = $('#txt_contact_profile_change').val();
+
+            var checkFname      = /^[a-zA-Z-_]+( [a-zA-Z-_]+)*$/.test(txt_fname_profile_change);
+            var checkLname      = /^[a-zA-Z-_]+( [a-zA-Z-_]+)*$/.test(txt_lname_profile_change);
+            var checkUname      = /\w$/.test(txt_uname_profile_change);
+            var checkContact    = /^(0|\[0-9]{1,5})?([7-9][0-9]{9})$/.test(txt_contact_profile_change);
+            var checkEmail      = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(txt_email_profile_change);
+
+            if ( txt_fname_profile_change ) {
+                if ( checkFname ) {
+                    if ( txt_lname_profile_change ) {
+                        if ( checkLname ) {
+                            if ( txt_email_profile_change ) {
+                                if ( checkEmail ) {
+                                    if ( txt_contact_profile_change ) {
+                                        if ( checkContact ) {
+                                            $.ajax ({
+                                                url: '<?php echo base_url(); ?>profile/changeInformation',
+                                                method: "POST",
+                                                data: {
+                                                    txt_fname_profile_change    : txt_fname_profile_change,
+                                                    txt_lname_profile_change    : txt_lname_profile_change,
+                                                    txt_email_profile_change    : txt_email_profile_change,
+                                                    txt_uname_profile_change    : txt_uname_profile_change,
+                                                    txt_contact_profile_change  : txt_contact_profile_change
+                                                },
+                                                success:function(data){
+                                                    location.reload('/profile');
+                                                },
+                                                error:function(){
+                                                    toastr.error('ERROR: Please refresh the page!');
+                                                }
+                                            });
+                                        } else {
+                                            tError('Invalid format of contact');
+                                        }
+                                    } else {
+                                        tError('Contact field is empty');
+                                    }
+                                } else {
+                                    tError('Invalid format of ');
+                                }
+                            } else {
+                                tError(' field is empty');
+                            }
+                        } else {
+                            tError('Invalid format of ');
+                        }
+                    } else {
+                        tError(' field is empty');
+                    }
+                } else {
+                    tError('Invalid format of ');
+                }
+            } else {
+                tError('Firstname field is empty');
+            }
+        });
+
+        $('#btn_issue_tracker_user').click(function(){
+            var txt_title_isu   = $('#txt_title_isu').val();
+            var txt_desc_isu    = $('#txt_desc_isu').val();
+            if ( txt_title_isu ) {
+                if ( txt_desc_isu ) {
+                    $.ajax ({
+                        url: '<?php echo base_url(); ?>profile/newIssueTracker',
+                        method: "POST",
+                        data: {
+                            txt_title_isu   : txt_title_isu,
+                            txt_desc_isu    : txt_desc_isu
+                        },
+                        success:function(data){
+                            location.reload('/profile/issue_tracker');
+                        },
+                        error:function(){
+                            toastr.error('ERROR: Please refresh the page!');
+                        }
+                    });
+                } else {
+                    toastr.error("Error: Description must not be blank!");
+                }
+            } else {
+                toastr.error("Error: Title must not be blank!");
+            }
+        });
+
+        <?php 
+            if ( $curpage == "Issue Tracker" && $this->session->userdata('account_type') == "User" ) {
+                if ( !empty ($get_all_issue_tracker) ) {
+                    foreach ( $get_all_issue_tracker as $gait ) :
+        ?>
+                        $('#replyforIssueIDUSER<?php echo $gait->NO; ?>').keypress(function(event) {
+                            if (event.keyCode == 13 && !event.shiftKey) {
+                                if ( $('#replyforIssueIDUSER<?php echo $gait->NO; ?>').val() ) {
+                                    $.ajax ({
+                                        url: '<?php echo base_url(); ?>profile/insert_reply_it',
+                                        method: "POST",
+                                        data: {
+                                            issueTrackerNo      :   '<?php echo $gait->NO; ?>',
+                                            issueTrackerReply   :   $('#replyforIssueIDUSER<?php echo $gait->NO; ?>').val()
+                                        },
+                                        success:function(data){
+                                            location.reload('/profile/issue_tracker');
+                                            // alert(data);
+                                        },
+                                        error:function(){
+                                            toastr.error('ERROR: Please refresh the page!');
+                                        }
+                                    });
+                                } else {
+                                    return false;
+                                }
+                            }
+                        });
+
+                        $("#replyIDUSER<?php echo $gait->NO; ?>").click(function(){
+                            $.ajax ({
+                                url: '<?php echo base_url(); ?>profile/getReplyIssueTracker',
+                                method: "POST",
+                                data: {
+                                    no           : $("#replyNO<?php echo $gait->NO; ?>").val()
+                                },
+                                success:function(data){
+                                    $("#dataBodyIssueTrackerProfile<?php echo $gait->NO; ?>").html(data);
+                                },
+                                error:function(){
+                                    toastr.error('ERROR: Please refresh the page!');
+                                }
+                            });
+                        });
+
+        <?php
+                    endforeach;
+                }
+            }
+        ?>
+
+        <?php 
+            if ( $curpage == 'Profile' && $this->session->userdata('account_type') == "User" ) {
+                if ( !empty($get_all_post) ) {
+                    foreach ( $get_all_post as $gap ) :
+        ?>
+                        $('#adminReplyPost<?php echo $gap->NO; ?>').keypress(function(event) {
+                            if (event.keyCode == 13 && !event.shiftKey) {
+                                if ( $('#adminReplyPost<?php echo $gap->NO; ?>').val() ) {
+                                    $.ajax ({
+                                        url: '<?php echo base_url(); ?>profile/insert_reply',
+                                        method: "POST",
+                                        data: {
+                                            replyMessage    :     $('#adminReplyPost<?php echo $gap->NO; ?>').val(),
+                                            messageNo       :     '<?php echo $gap->NO; ?>'
+                                        },
+                                        success:function(data){
+                                            html =  '<div class="padding-top">';
+                                            html += '   <div class="ibox-content no-border" style="background-color: #F2F2F2;">';
+                                            html += '       <div>';
+                                            html += '           <div class="row">';
+                                            html += '               <div class="col-xs-1">';
+                                            html += '                   <img src="<?php echo base_url(); ?>public/img/<?php echo $session_image; ?>" style="width:40px;height:40px;" />';
+                                            html += '               </div>';
+                                            html += '               <div style="padding-left: 75px;"><span class="text-bold"><?php echo $session_name; ?></span> | <span><?php echo $date; ?></span></div>';
+                                            html += '               <div style="padding-left: 75px;">'+ $('#adminReplyPost<?php echo $gap->NO; ?>').val() +'</div>';
+                                            html += '           </div>';
+                                            html += '       </div>';
+                                            html += '   </div>';
+                                            html += '</div>';
+
+                                            $('#newReplyPostNo<?php echo $gap->NO; ?>').append(html);
+                                            $('#adminReplyPost<?php echo $gap->NO; ?>').val('');
+                                        },
+                                        error:function(){
+                                            toastr.error('ERROR: Please refresh the page!');
+                                        }
+                                    });
+                                }
+                            }
+                        });
+        <?php
+                    endforeach;
+                }
+        ?>
+
+                $('#btn_post_profile').click(function(){
+                    var txt_post            = $('#txt_post').val();
+                    var txt_no_prof_post    = $('#txt_no_prof_post').val();
+
+                    if ( txt_post ) {
+                        $.ajax({
+                            url: "<?php echo base_url();?>profile/create",
+                            method: "POST",
+                            data: {  
+                                txt_post     : txt_post 
+                            },
+                            success:function(data){
+                                $('#txt_post').val("");
+                                html =  '<div class="padding-top">';
+                                html += '   <div class="ibox-content no-border">';
+                                html += '       <div class="row">';
+                                html += '           <span class="pull-right" style="color:blue;padding-right: 15px;"><a>X</a></span>';
+                                html += '           <div class="col-xs-1">';
+                                html += '               <img src="<?php echo base_url(); ?>public/img/<?php echo $session_image; ?>" style="width:50px;height:50px;" />';
+                                html += '           </div>';
+                                html += '           <div class="text-bold " style="padding-left: 75px;"><?php echo $session_name; ?></div>';
+                                html += '           <div class="" style="padding-left: 75px;"><?php echo $date; ?></div>';
+                                html += '       </div>';
+                                html += '       <hr class="no-margin margin-top"/>';
+                                html += '       <div class="padding-top" style="padding-left: 20px;padding-right: 20px;font-size: 17px;">';
+                                html += txt_post;
+                                html += '       </div>';
+                                html += '       <input type="text" value="'+ data +'" id="txt_no_prof_post" style="display:none;" />';
+                                html += '       <div class="padding-top">';
+                                html += '           <textarea class="form-control" id="adminReplyPost'+ data +'" style="max-width: 100%;max-height: 50px;min-height: 50px;" placeholder="Comment"></textarea>';
+                                html += '       </div>';
+                                html += '       <div id="newReplyPostNo'+ data +'"></div>';
+                                html += '   </div>';
+                                html += '</div>';
+                                $('#newPostUser').append(html);
+                            },
+                            error:function(){
+                                toastr.error("ERROR!");
+                            }
+                        });
+                    } else{
+                        toastr.error("Write something");
+                    }
+                });
+        <?php
+            }
+        ?>
 
         <?php 
             if ( $curpage == 'Home' ) {
@@ -96,7 +594,7 @@
             var txt_email_fp        = $('#txt_email_fp').val();
             var txt_pword_fp        = $('#txt_pword_fp').val();
             var txt_conpword_fp     = $('#txt_conpword_fp').val();
-            if ( txt_pword_fp.length >= 8 ) {
+            if ( txt_pword_fp.length >= 6 ) {
                 if ( txt_pword_fp == txt_conpword_fp ) {
                     $.ajax ({
                         url: "<?php echo base_url(); ?>signup/reset_password",
@@ -117,7 +615,7 @@
                     toastr.error('ERROR: Password and confirm password doesnt match!');
                 }
             } else {
-                toastr.error('ERROR: Password must be at least 8 characters!');
+                toastr.error('ERROR: Password must be at least 6 characters!');
             }
         });
 
@@ -271,7 +769,7 @@
                                     if ( checkContact ) {
                                         if ( txt_email_signup ) {
                                             if ( checkEmail ) {
-                                                if ( txt_pword_signup.length >= 8 ) {
+                                                if ( txt_pword_signup.length >= 6 ) {
                                                     if ( txt_pword_signup == txt_conpword_signup ) {
                                                         <?php
                                                             if ( !empty($all_email) ) {
@@ -317,7 +815,7 @@
                                                         toastr.error('ERROR: Password and confirm password doesnt match!');
                                                     } 
                                                 } else {
-                                                    toastr.error('ERROR: Password must be atleast 8 characters!');
+                                                    toastr.error('ERROR: Password must be atleast 6 characters!');
                                                 }   
                                             } else {
                                                 toastr.error('ERROR: Invalid Email address format');
@@ -449,7 +947,7 @@
         ?>
 
         <?php 
-            if ( $curpage == 'Profile' ) {
+            if ( $curpage == 'Profile' && $this->session->userdata('account_type') == "Administrator" ) {
                 if ( !empty($get_all_post) ) {
                     foreach ( $get_all_post as $gap ) :
         ?>
@@ -1074,32 +1572,6 @@
             }
         });
 
-        // $("#event_update").click(function(){
-        //     var event_no_update             = $("#event_no_update").val();
-        //     var event_title_update          = $("#event_title_update").val();
-        //     var event_description_update    = $("#event_description_update").val();
-
-        //     if ( event_title_update && event_description_update ) {
-        //         $.ajax ({
-        //             url: '<?php echo base_url(); ?>admin/events/update',
-        //             method: "POST",
-        //             data: {
-        //                 event_no_update           : event_no_update,
-        //                 event_title_update        : event_title_update,
-        //                 event_description_update  : event_description_update
-        //             },
-        //             success:function(data){
-        //                 location.reload('/admin/event/information/'+event_no_update+'');
-        //             },
-        //             error:function(){
-        //                 toastr.error('ERROR: Please refresh the page!');
-        //             }
-        //         });
-        //     } else {
-        //         toastr.error('ERROR: Incomplete field!');
-        //     }
-        // });
-
         $("#event_create").click(function(){
             var event_title_create           = $("#event_title_create").val();
             var event_description_create     = $("#event_description_create").val();
@@ -1240,6 +1712,81 @@
         var searchList = new List('search', options);  
         // END OF CODE SEARCH
     });
+    
+    // GOOGLE MAP API CODE START
+    function initMap() {
+        var mapOptions = {
+            zoom: 12,
+            center: {lat: 14.5911452, lng: 120.9993137},
+                styles: [{"stylers":[{"hue":"#18a689"},{"visibility":"on"},{"invert_lightness":true},{"saturation":40},{"lightness":10}]}]
+        };
+
+        var mapElement = document.getElementById('map');
+        var map = new google.maps.Map(mapElement, mapOptions);
+
+        <?php
+            if ( $curpage == "Profile" && $this->session->userdata('user_session')->ACCOUNT_TYPE == "Agent" ) {
+        ?>
+                google.maps.event.addListener(map,'click',function(event) {
+                    $('#txt_lat_prof').val(event.latLng.lat());
+                    $('#txt_long_prof').val(event.latLng.lng());
+                });
+        <?php
+            }
+        ?>
+
+        <?php
+            if ( $curpage == "Profile" && $this->session->userdata('user_session')->ACCOUNT_TYPE == "Administrator" ) {
+        ?>
+                google.maps.event.addListener(map,'click',function(event) {
+                    $('#txt_lat_prof').val(event.latLng.lat());
+                    $('#txt_long_prof').val(event.latLng.lng());
+                });
+        <?php
+            }
+        ?>
+
+        <?php
+            if ( $curpage == "Profile" && $this->session->userdata('user_session')->ACCOUNT_TYPE == "User" ) {
+        ?>
+                google.maps.event.addListener(map,'click',function(event) {
+                    $('#txt_lat_prof_user').val(event.latLng.lat());
+                    $('#txt_long_prof_user').val(event.latLng.lng());
+                });
+        <?php
+            }
+        ?>
+
+        <?php
+            if ( $curpage == "Dashboard" ) {
+                foreach ( $all_user_latlong as $aul ) : 
+        ?>
+            <?php 
+                if ( $aul->LATITUDE  != 0.0000000 && $aul->LONGHITUDE  != 0.0000000 ) {
+            ?>
+                var latDB = <?php echo $aul->LATITUDE;?>;
+                var longDB = <?php echo $aul->LONGHITUDE;?>;
+                    var marker = new google.maps.Marker({
+                        position: {lat: latDB, lng: longDB},
+                        icon: {
+                            url: '<?php echo base_url();?>public/img/<?php echo $aul->IMAGEURL; ?>',
+                            scaledSize : new google.maps.Size(35, 35),
+                            origin: new google.maps.Point(0, 0),
+                            anchor: new google.maps.Point(15, 15)
+                        },
+                        map: map
+                    });
+            <?php
+                }
+            ?>
+
+        <?php 
+                endforeach; 
+            }
+        ?>
+
+    }
+    // GOOGLE MAP API CODE END
 
 	var cbpAnimatedHeader = (function() {
         var docElem = document.documentElement,

@@ -44,4 +44,19 @@ class Issue_tracker_model extends CI_Model
 				 ->update($this->table, $params);
 	}
 
+	public function get_all_issue_tracker_by_user($no)
+	{
+		$row = $this->db->where('user.DELETION', "0")
+						->join('issue_tracker','user.NO = issue_tracker.NOUSER')
+						->where('issue_tracker.NOUSER', $no)
+						->order_by('issue_tracker.NO', "DESC")
+						->get($this->tableUser);
+
+		return $row->result();
+	}
+
+	public function insert($params)
+	{
+		$this->db->insert($this->table, $params);
+	}
 }

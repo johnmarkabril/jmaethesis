@@ -14,4 +14,7 @@
 	<div class="col-md-9">
 		<?php $this->load->view('admin/files/dashboard_issue'); ?>
 	</div>
+	<div class="col-md-12">
+		<?php $this->load->view('admin/files/dashboard_map'); ?>
+	</div>
 </div>

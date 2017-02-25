@@ -3,7 +3,7 @@
         Inbox
         <span class="pull-right"><a data-toggle="modal" data-target="#createModal">Compose Message</a></span>
     </div>
-    <div class="ibox-content min-height" id="search">
+    <div class="ibox-content  full-height" id="search">
         <div class="no-margins">
             <div class="row">
                 <div class="col-md-12">

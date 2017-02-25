@@ -20,9 +20,287 @@
 
 <!-- LIST -->
 <script src="<?php echo base_url();?>public/js/plugins/list/list.min.js"></script>
-
+<?php if ( $this->curpage == "Profile" ) { ?>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5h8RE_Re9V9PJ-ROp7TKXQBKbMnWXDVE&callback=initMap">
+    </script>
+<?php } ?>
 <script>
 	$(document).ready(function(){
+        function tError(message){
+            toastr.error("Error: "+ message +"!");
+        }
+        
+        $('#btn_create_wt').click(function(){
+            var txt_name_wt_create         =   $('#txt_name_wt_create').val();
+            var txt_category_wt_create     =   $('#txt_category_wt_create').val();
+            var txt_description_wt_create  =   $('#txt_description_wt_create').val();
+            var txt_library_wt_create      =   $('#txt_library_wt_create').val();
+            var txt_price_wt_create        =   $('#txt_price_wt_create').val();
+
+            if ( txt_name_wt_create.length > 5 ) {
+                if ( txt_category_wt_create.length > 5 ) {
+                    if ( txt_description_wt_create.length > 5 ) {
+                        if ( txt_library_wt_create.length > 5 ) {
+                            if ( txt_price_wt_create.length > 3 ) {
+                                $.ajax({
+                                    url: "<?php echo base_url();?>agent/templates/create",
+                                    method: "POST",
+                                    data: {  
+                                        txt_name_wt_create         : txt_name_wt_create,
+                                        txt_category_wt_create     : txt_category_wt_create,
+                                        txt_description_wt_create  : txt_description_wt_create,
+                                        txt_library_wt_create      : txt_library_wt_create,
+                                        txt_price_wt_create        : txt_price_wt_create
+                                    },
+                                    success:function(data){
+                                        location.reload('/admin/website_template');
+                                    },
+                                    error:function(){
+                                        toastr.error("ERROR!");
+                                    }
+                                });
+                            } else {
+                                toastr.error("ERROR: Minimum of 3 characters!");
+                            }
+                        } else {
+                            toastr.error("ERROR: Minimum of 5 characters!");
+                        }
+                    } else {
+                        toastr.error("ERROR: Minimum of 5 characters!");
+                    }
+                } else {
+                    toastr.error("ERROR: Minimum of 5 characters!");
+                }
+            } else {
+                toastr.error("ERROR: Minimum of 5 characters!");
+            }
+        });
+
+        $('#btn_update_wt').click(function(){
+            var txt_no_wt           =   $('#txt_no_wt').val();
+            var txt_name_wt         =   $('#txt_name_wt').val();
+            var txt_category_wt     =   $('#txt_category_wt').val();
+            var txt_description_wt  =   $('#txt_description_wt').val();
+            var txt_library_wt      =   $('#txt_library_wt').val();
+            var txt_price_wt        =   $('#txt_price_wt').val();
+
+            if ( txt_name_wt.length > 5 ) {
+                if ( txt_category_wt.length > 5 ) {
+                    if ( txt_description_wt.length > 5 ) {
+                        if ( txt_library_wt.length > 5 ) {
+                            if ( txt_price_wt.length > 5 ) {
+                                $.ajax({
+                                    url: "<?php echo base_url();?>agent/templates/update",
+                                    method: "POST",
+                                    data: {  
+                                        txt_no_wt           : txt_no_wt,
+                                        txt_name_wt         : txt_name_wt,
+                                        txt_category_wt     : txt_category_wt,
+                                        txt_description_wt  : txt_description_wt,
+                                        txt_library_wt      : txt_library_wt,
+                                        txt_price_wt        : txt_price_wt
+                                    },
+                                    success:function(data){
+                                        location.reload('/admin/website_template');
+                                    },
+                                    error:function(){
+                                        toastr.error("ERROR!");
+                                    }
+                                });
+                            } else {
+                                toastr.error("ERROR: Minimum of 5 characters!");
+                            }
+                        } else {
+                            toastr.error("ERROR: Minimum of 5 characters!");
+                        }
+                    } else {
+                        toastr.error("ERROR: Minimum of 5 characters!");
+                    }
+                } else {
+                    toastr.error("ERROR: Minimum of 5 characters!");
+                }
+            } else {
+                toastr.error("ERROR: Minimum of 5 characters!");
+            }
+
+        });
+
+        var timeout = setInterval(reloadNotificationTemplate, 1000);    
+        function reloadNotificationTemplate () {
+            $.ajax ({
+                url: '<?php echo base_url(); ?>agent/issue_tracker/getNotify',
+                method: "POST",
+                data: {
+                },
+                success:function(data){
+                    $('#sidebar-panel-notify').html(data);
+                },
+                error:function(){
+                    toastr.error('ERROR: Please refresh the page!');
+                }
+            });
+            
+        }
+
+        $('#btn_latlong_submit').click(function(){
+            var txt_lat_prof    = $('#txt_lat_prof').val();
+            var txt_long_prof   = $('#txt_long_prof').val();
+            if ( txt_lat_prof && txt_long_prof ) {
+                $.ajax ({
+                    url: '<?php echo base_url(); ?>agent/profile/updateLocation',
+                    method: "POST",
+                    data: {
+                        txt_lat_prof    : txt_lat_prof,
+                        txt_long_prof   : txt_long_prof
+                    },
+                    success:function(data){
+                        location.reload('/admin/profile');
+                    },
+                    error:function(){
+                        toastr.error('ERROR: Please refresh the page!');
+                    }
+                });
+            } else {
+                tError('Select your place');
+            }
+        });
+
+        $('#btn_submit_change_password_profile_admin').click(function(){
+            var txt_current_pword           = $('#txt_current_pword_admin').val();
+            var txt_pword_changeprofile     = $('#txt_pword_changeprofile_admin').val();
+            var txt_conpword_changeprofile  = $('#txt_conpword_changeprofile_admin').val();
+
+            if ( txt_current_pword ) {
+                $.ajax ({
+                    url: '<?php echo base_url(); ?>agent/profile/check_pword',
+                    method: "POST",
+                    data: {
+                        txt_current_pword   : txt_current_pword
+                    },
+                    success:function(data){
+                        if ( data == 1 ) {
+                            if ( txt_pword_changeprofile.length >= 6 ) {
+                                if ( txt_pword_changeprofile == txt_conpword_changeprofile ) {
+                                    $.ajax ({
+                                        url: '<?php echo base_url(); ?>agent/profile/changePassword',
+                                        method: "POST",
+                                        data: {
+                                            txt_pword_changeprofile   : txt_pword_changeprofile
+                                        },
+                                        success:function(data){
+                                            location.reload('/agent/profile');
+                                        },
+                                        error:function(){
+                                            toastr.error('ERROR: Please refresh the page!');
+                                        }
+                                    });
+                                } else {
+                                    tError('Password and confirm password is not the same');
+                                }
+                            } else {
+                                tError('Password must be 6 characters and above');
+                            }
+                        } else {
+                            tError('Current password doesnt match');
+                        }
+                    },
+                    error:function(){
+                        toastr.error('ERROR: Please refresh the page!');
+                    }
+                });
+            } else {
+                tError('Current password is empty');
+            }
+            
+        });
+
+        $('#txt_current_pword_admin').keyup(function(){
+            var txt_current_pword = $('#txt_current_pword_admin').val();
+
+            $.ajax ({
+                url: '<?php echo base_url(); ?>agent/profile/check_pword',
+                method: "POST",
+                data: {
+                    txt_current_pword   : txt_current_pword
+                },
+                success:function(data){
+                    if ( data == 1 ) {
+                        $("#txt_pword_changeprofile_admin").prop('disabled', false);
+                        $("#txt_conpword_changeprofile_admin").prop('disabled', false);
+                    } else {
+                        $("#txt_pword_changeprofile_admin").prop('disabled', true);
+                        $("#txt_conpword_changeprofile_admin").prop('disabled', true);
+                    }
+                },
+                error:function(){
+                    toastr.error('ERROR: Please refresh the page!');
+                }
+            });
+        });
+
+        $('#btn_submit_change_information_profile_admin').click(function(){
+            var txt_fname_profile_change    = $('#txt_fname_profile_change_admin').val();
+            var txt_lname_profile_change    = $('#txt_lname_profile_change_admin').val();
+            var txt_email_profile_change    = $('#txt_email_profile_change_admin').val();
+            var txt_uname_profile_change    = $('#txt_uname_profile_change_admin').val();
+            var txt_contact_profile_change  = $('#txt_contact_profile_change_admin').val();
+
+            var checkFname      = /^[a-zA-Z-_]+( [a-zA-Z-_]+)*$/.test(txt_fname_profile_change);
+            var checkLname      = /^[a-zA-Z-_]+( [a-zA-Z-_]+)*$/.test(txt_lname_profile_change);
+            var checkUname      = /\w$/.test(txt_uname_profile_change);
+            var checkContact    = /^(0|\[0-9]{1,5})?([7-9][0-9]{9})$/.test(txt_contact_profile_change);
+            var checkEmail      = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(txt_email_profile_change);
+
+            if ( txt_fname_profile_change ) {
+                if ( checkFname ) {
+                    if ( txt_lname_profile_change ) {
+                        if ( checkLname ) {
+                            if ( txt_email_profile_change ) {
+                                if ( checkEmail ) {
+                                    if ( txt_contact_profile_change ) {
+                                        if ( checkContact ) {
+                                            $.ajax ({
+                                                url: '<?php echo base_url(); ?>admin/profile/changeInformation',
+                                                method: "POST",
+                                                data: {
+                                                    txt_fname_profile_change    : txt_fname_profile_change,
+                                                    txt_lname_profile_change    : txt_lname_profile_change,
+                                                    txt_email_profile_change    : txt_email_profile_change,
+                                                    txt_uname_profile_change    : txt_uname_profile_change,
+                                                    txt_contact_profile_change  : txt_contact_profile_change
+                                                },
+                                                success:function(data){
+                                                    location.reload('/admin/profile');
+                                                },
+                                                error:function(){
+                                                    toastr.error('ERROR: Please refresh the page!');
+                                                }
+                                            });
+                                        } else {
+                                            tError('Invalid format of contact');
+                                        }
+                                    } else {
+                                        tError('Contact field is empty');
+                                    }
+                                } else {
+                                    tError('Invalid format of ');
+                                }
+                            } else {
+                                tError(' field is empty');
+                            }
+                        } else {
+                            tError('Invalid format of ');
+                        }
+                    } else {
+                        tError(' field is empty');
+                    }
+                } else {
+                    tError('Invalid format of ');
+                }
+            } else {
+                tError('Firstname field is empty');
+            }
+        });
 
         <?php 
             if ( $curpage == 'Profile' ) {
@@ -326,7 +604,30 @@
         var searchList = new List('search', options);  
         // END OF DEFAULT CODE
 	});
+    // GOOGLE MAP API CODE START
+    function initMap() {
+        var mapOptions = {
+            zoom: 13,
+            center: {lat: 14.633420, lng: 120.973839},
+                styles: [{"stylers":[{"hue":"#18a689"},{"visibility":"on"},{"invert_lightness":true},{"saturation":40},{"lightness":10}]}]
+        };
 
+        var mapElement = document.getElementById('map');
+        var map = new google.maps.Map(mapElement, mapOptions);
+
+        <?php
+            if ( $curpage == "Profile" ) {
+        ?>
+
+                google.maps.event.addListener(map,'click',function(event) {
+                    $('#txt_lat_prof').val(event.latLng.lat());
+                    $('#txt_long_prof').val(event.latLng.lng());
+                });
+        <?php
+            }
+        ?>
+    }
+    // GOOGLE MAP API CODE END
 	// DEFAULT CODE - DONT DELETE - START
 	var cbpAnimatedHeader = (function() {
         var docElem = document.documentElement,

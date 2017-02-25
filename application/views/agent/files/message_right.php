@@ -2,7 +2,7 @@
     <div class="ibox-title no-border">
         Inbox Message
     </div>
-    <div class="ibox-content min-height">
+    <div class="ibox-content full-height">
         <div class="no-margins">
         	<?php
         		if ( !empty($get_specific_content) ) {

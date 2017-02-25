@@ -219,4 +219,23 @@ class Users_model extends CI_Model
 			 	 		->get($this->table);
 			return $row->result();
 	}
+
+	function check_password_using_no($pword, $no)
+	{
+		$row = $this->db->where($this->password, $pword)
+						->where($this->dbno, $no)
+						->where($this->verified, "YES")
+						->where($this->deletion, "0")
+						->limit(1)
+			 	 		->get($this->table);
+			return $row->result();
+	}
+
+	function getAllLatLong()
+	{
+		$row = $this->db->where($this->verified, "YES")
+						->where($this->deletion, "0")
+			 	 		->get($this->table);
+			return $row->result();
+	}
 }

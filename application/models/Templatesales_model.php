@@ -10,6 +10,7 @@ class Templatesales_model extends CI_Model
 	public $dbno			=	"NO";
 	public $deletion		= 	"DELETION";
 	public $date 			=	"DATE";
+	public $agentsee 		= 	"AGENTSEE";
 
 	function __construct()
 	{
@@ -29,6 +30,16 @@ class Templatesales_model extends CI_Model
 	public function get_all_sales()
 	{
 		$row = $this->db->where($this->deletion, "0")
+						->get($this->table);
+
+		return $row->result();
+	}
+
+	public function get_all_agentsee()
+	{
+		$row = $this->db->where($this->deletion, "0")
+						->where($this->agentsee, "0")
+						->limit(15)
 						->get($this->table);
 
 		return $row->result();

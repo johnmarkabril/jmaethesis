@@ -21,6 +21,9 @@
 			    	case 'Home':
 			    		echo $content;
 			    		break;
+			    	case 'Issue Tracker':
+			    		echo $content;
+			    		break;
 			    	case 'Profile':
 			    		echo $content;
 			    		break;

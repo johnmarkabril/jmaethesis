@@ -3,7 +3,7 @@
         <div class="form-group">
             <input type="text" class="form-control search" placeholder="Search..." />
         </div>
-        <div class="ibox-content no-padding-top no-border">
+        <div class="ibox-content no-padding-top no-border  full-height">
             <div class="table-responsive" style="height: 100%;">
                 <table class="table table-hover" >
                 	<thead>

@@ -25,6 +25,7 @@ class Notification_admin_model extends CI_Model
 		return $row->result();
 	}
 
+
 	public function create($params)
 	{
 		$this->db->insert($this->table, $params);
