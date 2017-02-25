@@ -39,6 +39,7 @@ class Templatesales_model extends CI_Model
 	{
 		$row = $this->db->where($this->deletion, "0")
 						->where($this->agentsee, "0")
+						->order_by($this->dbno, 'DESC')
 						->limit(15)
 						->get($this->table);
 
