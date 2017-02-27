@@ -60,11 +60,11 @@
                                         <input type="text" class="form-control" id="txt_no_rts<?php echo $gaat->NO;?>" value="<?php echo $gaat->NO; ?>" style="display:none;"/>
                                         <label>Select a period of time</label>
                                         <select class="form-control text-center" id="txt_period_rts<?php echo $gaat->NO;?>" required>
-                                            <option value="period=01 month&price=<?php echo number_format($gaat->PRICE*1); ?>">1 month - ₱<?php echo number_format($gaat->PRICE*1); ?></option>
-                                            <option value="period=03 months&price=<?php echo number_format($gaat->PRICE*3); ?>">3 months - ₱<?php echo number_format($gaat->PRICE*3); ?></option>
-                                            <option value="period=06 months&price=<?php echo number_format($gaat->PRICE*6); ?>">6 months - ₱<?php echo number_format($gaat->PRICE*6); ?></option>
-                                            <option value="period=12 months&price=<?php echo number_format($gaat->PRICE*12); ?>">12 months - ₱<?php echo number_format($gaat->PRICE*12); ?></option>
-                                            <option value="period=24 months&price=<?php echo number_format($gaat->PRICE*24); ?>">24 months - ₱<?php echo number_format($gaat->PRICE*24); ?></option>
+                                            <option value="period=01 month&price=<?php echo $gaat->PRICE*1; ?>">1 month - ₱<?php echo number_format($gaat->PRICE*1); ?></option>
+                                            <option value="period=03 months&price=<?php echo $gaat->PRICE*3; ?>">3 months - ₱<?php echo number_format($gaat->PRICE*3); ?></option>
+                                            <option value="period=06 months&price=<?php echo $gaat->PRICE*6; ?>">6 months - ₱<?php echo number_format($gaat->PRICE*6); ?></option>
+                                            <option value="period=12 months&price=<?php echo $gaat->PRICE*12; ?>">12 months - ₱<?php echo number_format($gaat->PRICE*12); ?></option>
+                                            <option value="period=24 months&price=<?php echo $gaat->PRICE*24; ?>">24 months - ₱<?php echo number_format($gaat->PRICE*24); ?></option>
                                         </select>
                                     </div>
                                     <div class="row">

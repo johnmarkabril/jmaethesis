@@ -102,7 +102,7 @@ class Co_administrator extends CI_Controller {
 			'PHONENUMBER'		=>	'',
 			'EMAIL'				=>	$txt_create_coa_email,
 			'PASSWORD'			=>	md5($txt_create_coa_pword),
-			'ACCOUNT_TYPE'		=>	'Co-Administrator',
+			'ACCOUNT_TYPE'		=>	'Administrator',
 			'ACTIVATED'			=>	1,
 			'VERIFIED'			=>	'YES',
 			'VERIFICATIONCODE'	=>	'',

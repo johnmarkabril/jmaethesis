@@ -85,7 +85,7 @@ class Agent extends CI_Controller {
 			'ACTIVATED'			=>	1,
 			'VERIFIED'			=>	'YES',
 			'VERIFICATIONCODE'	=>	'',
-			'PERMISSION'		=>	'',
+			'PERMISSION'		=>	'Issue Tracker|Profile|Contact|Message|Events|Notification|Template|Purchased Template|Templates|User Management|Agent',
 			'IMAGEURL'			=>	'noimage.png',
 			'DATE'				=>	$this->date,
 			'TIME'				=>	$this->time,

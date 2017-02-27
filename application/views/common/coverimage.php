@@ -12,7 +12,6 @@
                             brands, web apps,<br/>
                             and user interfaces<br/>
                             we are JMAE Provider</h1>
-                        <p>Lorem Ipsum is simply dummy text of the printing.</p>
                     </div>
                 </div>
                 <div class="header-back one">
