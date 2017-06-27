@@ -120,13 +120,13 @@
             	<div class="row">
             		<div class="col-md-6">
             			<div class="form-group">
-            				<label>Firstname</label>
+            				<label>First name</label>
             				<input type="text" class="form-control" id="txt_fname_profile_change_admin" value="<?php echo $this->session->userdata('user_session')->FIRSTNAME; ?>" />
             			</div>
             		</div>
             		<div class="col-md-6">
             			<div class="form-group">
-            				<label>Lastname</label>
+            				<label>Last name</label>
             				<input type="text" class="form-control" id="txt_lname_profile_change_admin" value="<?php echo $this->session->userdata('user_session')->LASTNAME; ?>" />
             			</div>
             		</div>

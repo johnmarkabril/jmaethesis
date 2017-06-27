@@ -7,13 +7,13 @@
 	<div class="row">
 		<div class="col-md-6">
 			<div class="form-group">
-				<label>Firstname</label>
+				<label>First name</label>
 				<input type="text" class="form-control" id="txt_firstname_signup" />
 			</div>
 		</div>
 		<div class="col-md-6">
 			<div class="form-group">
-				<label>Lastname</label>
+				<label>Last name</label>
 				<input type="text" class="form-control" id="txt_lastname_signup" />
 			</div>
 		</div>
@@ -25,7 +25,7 @@
 		</div>
 		<div class="col-md-6">
 			<div class="form-group">
-				<label>Contact no</label>
+				<label>Contact number</label>
 				<input type="text" class="form-control" id="txt_contact_signup" maxlength="11" />
 			</div>
 		</div>

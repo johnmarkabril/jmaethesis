@@ -67,6 +67,7 @@
 				</div>
 			</div>
 		</div>
+		<?php $this->load->view('common/analyticstracking.php'); ?>
 		<?php $this->load->view('common/js_files_includes'); ?>
 	</body>
 </html>

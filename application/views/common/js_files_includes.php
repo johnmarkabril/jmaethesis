@@ -559,6 +559,11 @@
                 if ( !empty($get_all_available_templates) ) {
                     foreach ( $get_all_available_templates as $gaat ) :
         ?>
+                        $('#btn_back_rts<?php echo $gaat->NO; ?>').click(function(){
+                            $('#first_form_rts<?php echo $gaat->NO; ?>').show();
+                            $('#second_form_rts<?php echo $gaat->NO; ?>').hide();
+                        });
+
                         $('#btn_submit_rts<?php echo $gaat->NO; ?>').click(function(){
                             var txt_no_rts          = $('#txt_no_rts<?php echo $gaat->NO; ?>').val();
                             var txt_period_rts      = $('#txt_period_rts<?php echo $gaat->NO; ?>').val();

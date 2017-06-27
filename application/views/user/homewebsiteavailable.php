@@ -60,7 +60,7 @@
                                         <input type="text" class="form-control" id="txt_no_rts<?php echo $gaat->NO;?>" value="<?php echo $gaat->NO; ?>" style="display:none;"/>
                                         <label>Select a period of time</label>
                                         <select class="form-control text-center" id="txt_period_rts<?php echo $gaat->NO;?>" required>
-                                            <option value="period=01 month&price=<?php echo $gaat->PRICE*1; ?>">1 month - ₱<?php echo number_format($gaat->PRICE*1); ?></option>
+                                            <option value="period=01 month&price= <?php echo $gaat->PRICE*1; ?>">1 month - ₱<?php echo number_format($gaat->PRICE*1); ?></option>
                                             <option value="period=03 months&price=<?php echo $gaat->PRICE*3; ?>">3 months - ₱<?php echo number_format($gaat->PRICE*3); ?></option>
                                             <option value="period=06 months&price=<?php echo $gaat->PRICE*6; ?>">6 months - ₱<?php echo number_format($gaat->PRICE*6); ?></option>
                                             <option value="period=12 months&price=<?php echo $gaat->PRICE*12; ?>">12 months - ₱<?php echo number_format($gaat->PRICE*12); ?></option>
@@ -86,19 +86,20 @@
                                     </div>
                                 </div>
                                 <div id="second_form_rts<?php echo $gaat->NO; ?>"  style="display: none;">
-                                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="no-margin">
                                         <input type="hidden" name="cmd" value="_xclick">
                                         <input type="hidden" name="business" value="<?php echo $paypal_id;?>">
                                         <input type="hidden" name="custom" value="" id="custom_js_rts<?php echo $gaat->NO; ?>">
                                         <input type="hidden" name="item_name" value="<?php echo $gaat->TEMPLATENAME;?>">
                                         <input type="hidden" name="currency_code" value="PHP">
                                         <input type="hidden" name="item_number" value="<?php echo $gaat->NO; ?>">
-                                        <input type="" name="amount"  id="item_price<?php echo $gaat->NO; ?>" >
+                                        <input type="hidden" name="amount"  id="item_price<?php echo $gaat->NO; ?>" >
                                         <button type="submit" class="btn btn-success btn-lg full-width" name="btn_submit_rts<?php echo $gaat->NO; ?>">Rent Now</button>
-                                        <input type="hidden" name="return" value="http://localhost/jmaethesis/template/success">
-                                        <input type='hidden' name='notify_url' value='http://localhost/jmaethesis/template/success'>
-                                        <input type="hidden" name="cancel_return" value="http://localhost/jmaethesis/template">
+                                        <input type="hidden" name="return" value="http://jmaeprovider.xyz/template/success">
+                                        <input type='hidden' name='notify_url' value='http://jmaeprovider.xyz/template/success'>
+                                        <input type="hidden" name="cancel_return" value="http://jmaeprovider.xyz/template">
                                     </form>
+                                    <button class="btn btn-link full-width" id="btn_back_rts<?php echo $gaat->NO;?>">Back</button>
                                 </div>
                             </div>
                         </div>

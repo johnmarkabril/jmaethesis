@@ -45,6 +45,7 @@
         	</div>
 
 		</div>
+		<?php $this->load->view('common/analyticstracking.php'); ?>
 		<?php $this->load->view('common/js_files_includes_agent'); ?>
 	</body>
 </html>

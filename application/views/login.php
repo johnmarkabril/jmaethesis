@@ -10,30 +10,30 @@
             if( !$this->session->userdata('user_session') ){
                 echo form_open('Login');
         ?>                        
-                <div class="form-group padding-top">
-                    <label id="navtop-login-color">Email Address</label>
-                    <input type="text" class="form-control" name="login_email" id="login-email" autocomplete="off"/>
-                </div>
-                <div class="form-group">
-                    <label id="navtop-login-color">Password</label>
-                    <input type="password" class="form-control" name="login_password" id="login-password" autocomplete="off" />
-                </div>
-                <div class="form-group no-margin">
-                    <input type="submit" class="btn btn-primary full-width" value="Login"/>
-                    <div class="row padding-top">
-                        <div class="col-md-12">
-                            <div class="text-center">
-                                <small class="text-center"><a data-toggle="modal" data-target="#modalForgotPassword" id="navtop-login-color">Forgot your Password?</a></small>
+                    <div class="form-group padding-top">
+                        <label id="navtop-login-color">Email Address</label>
+                        <input type="text" class="form-control" name="login_email" id="login-email" autocomplete="off"/>
+                    </div>
+                    <div class="form-group">
+                        <label id="navtop-login-color">Password</label>
+                        <input type="password" class="form-control" name="login_password" id="login-password" autocomplete="off" />
+                    </div>
+                    <div class="form-group no-margin">
+                        <input type="submit" class="btn btn-primary full-width" value="Login"/>
+                        <div class="row padding-top">
+                            <div class="col-md-12">
+                                <div class="text-center">
+                                    <small class="text-center"><a data-toggle="modal" data-target="#modalForgotPassword" id="navtop-login-color">Forgot your Password?</a></small>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="text-center">
-                                <small class="text-center"><a href="<?php echo base_url(); ?>signup" id="navtop-login-color">Create an Account?</a></small>
+                            <div class="col-md-12">
+                                <div class="text-center">
+                                    <small class="text-center"><a href="<?php echo base_url(); ?>signup" id="navtop-login-color">Create an Account?</a></small>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-        </form>
+                </form>
         <?php
             }
         ?>
@@ -82,7 +82,7 @@
                             <input type="password" class="form-control" id="txt_pword_fp" />
                         </div>
                         <div class="form-group">
-                            <label>Password</label>
+                            <label>Confirm Password</label>
                             <input type="password" class="form-control" id="txt_conpword_fp" />
                         </div>
                         <div class="form-group no-margin">
